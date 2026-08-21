@@ -1,0 +1,3258 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Titre de la page -->
+  <title>Safia Massaid | Full-Stack Developer & Project Delivery Specialist</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Full-stack developer and project delivery specialist. Web, desktop and mobile products built end to end — specification, architecture, interface, testing and documentation.">
+  <meta name="keywords"
+    content="Safia Massaid, Full-Stack Developer, IT Engineer, Laravel, PHP, React, Node.js, Flask, UI/UX Design, Figma, QA Testing, Project Management, Portfolio, Remote Developer">
+  <meta name="author" content="Safia Massaid">
+  <link rel="canonical" href="https://massaid-safia.netlify.app/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Safia Massaid">
+  <meta property="og:url" content="https://massaid-safia.netlify.app/">
+  <meta property="og:title" content="Safia Massaid | Full-Stack Developer & Project Delivery Specialist">
+  <meta property="og:description"
+    content="Full-stack developer and project delivery specialist. Web, desktop and mobile products built end to end — from specification through testing, documentation and release.">
+  <meta property="og:image" content="https://massaid-safia.netlify.app/images/portfolio.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Safia Massaid | Full-Stack Developer">
+  <meta name="twitter:description"
+    content="Web, desktop and mobile products built end to end — specification, architecture, testing and documentation.">
+  <meta name="twitter:image" content="https://massaid-safia.netlify.app/images/portfolio.png">
+  <!-- Favicon -->
+<link rel="icon" type="image/png" href="./images/favicon.ico">
+  <!-- CSS externes -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8C4A6B',
+            dark: '#1a1a1a',
+          },
+          animation: {
+            'fade-in-down': 'fadeInDown 0.8s ease-out',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeInDown: {
+              '0%': { opacity: '0', transform: 'translateY(-15px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Optionnel: ton propre CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
+
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/portfolio.css">
+</head>
+
+
+<body class="text-slate-900 overflow-x-hidden bg-white">
+
+  <!-- Header -->
+  <div class="fixed top-4 left-0 right-0 z-50">
+    <!-- Same container as every section, so the bar's edges land on the content column -->
+    <div class="container mx-auto px-6 lg:px-12">
+      <header id="main-header"
+        class="glass-header w-full py-2.5 pl-4 pr-2.5 sm:pl-5 sm:pr-3 rounded-2xl flex items-center justify-between gap-6 transition-all duration-300">
+
+        <!-- Brand — also the link home, so the nav doesn't repeat it -->
+        <a href="index.html#home" class="flex items-center gap-2.5 group shrink-0" aria-label="Safia Massaid — home">
+          <span class="relative flex items-center justify-center">
+            <span
+              class="absolute inset-0 bg-primary/20 hexa-logo group-hover:bg-primary transition-all duration-500 scale-125 group-hover:rotate-[30deg]"></span>
+            <span
+              class="relative w-8 h-8 bg-white hexa-logo flex items-center justify-center group-hover:scale-90 transition-transform duration-500">
+              <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </span>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="brand-name">Safia <span class="brand-name__last">Massaid</span></span>
+            <span class="brand-role">Full-Stack Engineer</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Main">
+          <a href="index.html#about" class="nav-link nav-item">About</a>
+          <a href="index.html#services" class="nav-link nav-item">Services</a>
+          <a href="index.html#experience" class="nav-link nav-item">Experience</a>
+          <a href="index.html#skills" class="nav-link nav-item">Skills</a>
+          <a href="projects.html" class="nav-link nav-item">Work</a>
+          <a href="docs.html" class="nav-link nav-item">Docs</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-1 shrink-0">
+          <a href="index.html#contact" class="header-cta hidden sm:inline-flex">Contact</a>
+
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+            class="menu-toggle lg:hidden p-2 rounded-lg focus:outline-none">
+            <span class="pf-sr">Menu</span>
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile menu — hidden in the markup too, so it can't flash before main.js runs -->
+      <div id="mobile-menu" hidden class="w-full mt-2 p-3 glass-header rounded-2xl lg:hidden shadow-2xl">
+        <nav class="flex flex-col" aria-label="Main (mobile)">
+          <a href="index.html#about" class="mobile-nav-link nav-item py-3 px-2">About</a>
+          <a href="index.html#services" class="mobile-nav-link nav-item py-3 px-2">Services</a>
+          <a href="index.html#experience" class="mobile-nav-link nav-item py-3 px-2">Experience</a>
+          <a href="index.html#skills" class="mobile-nav-link nav-item py-3 px-2">Skills</a>
+          <a href="projects.html" class="mobile-nav-link nav-item py-3 px-2">Work</a>
+          <a href="docs.html" class="mobile-nav-link nav-item py-3 px-2">Docs</a>
+          <a href="index.html#contact" class="mobile-nav-link header-cta header-cta--block mt-2">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+
+ 
+<!-- ============================================================ -->
+<!-- HERO -->
+<!-- ============================================================ -->
+<section id="home" class="relative isolate pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-white">
+
+  <!-- Background layers. These used to sit at -z-10, which put them behind the
+       section's own white background — nothing was visible. -->
+  <div class="hero-pattern absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="hero-glow absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+
+    <!-- Availability — stated once, here, and nowhere else on the page -->
+    <div
+      class="hero-badge inline-flex items-center gap-3 px-4 py-2 rounded-full backdrop-blur-md motion-safe:animate-fade-in-down mb-8">
+      <span class="relative flex h-2 w-2">
+        <span
+          class="hero-badge__dot motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"></span>
+        <span class="hero-badge__dot relative inline-flex rounded-full h-2 w-2"></span>
+      </span>
+      <span class="hero-badge__label code-font text-[10px] font-bold uppercase tracking-[0.16em]">
+        Available for new projects
+      </span>
+      <span class="hero-badge__sep hidden sm:block w-px h-3"></span>
+      <span class="hero-badge__meta code-font hidden sm:inline text-[10px] font-bold uppercase tracking-[0.16em]">
+        Remote · Freelance · Contract
+      </span>
+    </div>
+
+    <h1
+      class="hero-title font-extrabold tracking-[-0.02em] leading-[1.05] text-[2.5rem] sm:text-6xl lg:text-[4.2rem] max-w-[18ch] mb-7">
+      Full-stack developer
+      <span class="hero-title__accent block">for modern digital products.</span>
+    </h1>
+
+    <p class="hero-lede max-w-[58ch] text-[16px] lg:text-[17px] leading-[1.75] mb-9">
+      I build digital products <strong>from the first specification to the release note</strong> — backend
+      architecture, the interface on top of it, the test campaign that proves it works, and the documentation
+      that keeps it maintainable. One person accountable for
+      <strong>development, UI/UX, QA and coordination</strong>.
+    </p>
+
+    <div class="flex flex-wrap items-center gap-3 mb-14">
+      <a href="projects.html" class="hero-cta">
+        View the work <i class="bi bi-arrow-right" aria-hidden="true"></i>
+      </a>
+      <a href="#contact" class="hero-cta hero-cta--ghost">
+        Start a project
+      </a>
+      <a href="docs.html" class="hero-cta hero-cta--quiet">
+        <i class="bi bi-file-earmark-text" aria-hidden="true"></i> Read the documentation
+      </a>
+    </div>
+
+    <!-- Facts, each one verifiable elsewhere on the site.
+         Full container width on purpose: it gives the hero a bottom edge that
+         lines up with the header bar above it. -->
+    <dl class="hero-stats grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden">
+
+      <div class="hero-stat">
+        <dd class="hero-stat__num">3<span class="hero-stat__plus">+</span></dd>
+        <dt class="hero-stat__label">Years building</dt>
+      </div>
+
+      <div class="hero-stat">
+        <dd class="hero-stat__num hero-stat__num--accent" data-pf-count="all">57</dd>
+        <dt class="hero-stat__label">Projects shipped</dt>
+      </div>
+
+      <div class="hero-stat">
+        <dd class="hero-stat__num">21</dd>
+        <dt class="hero-stat__label">Documents written</dt>
+      </div>
+
+      <div class="hero-stat">
+        <dd class="hero-stat__num">3</dd>
+        <dt class="hero-stat__label">Working languages</dt>
+      </div>
+
+    </dl>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ABOUT -->
+<!-- ============================================================ -->
+<section id="about" class="py-28 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+
+    <div class="grid lg:grid-cols-12 gap-14 lg:gap-20 items-start">
+
+      <!-- Narrative -->
+      <div class="lg:col-span-7">
+
+        <p class="pf-eyebrow mb-4">About</p>
+
+        <h2 class="text-3xl lg:text-[2.6rem] font-extrabold tracking-tight text-slate-900 leading-[1.12] mb-7"
+          style="text-wrap: balance">
+          I carry a product from brief to release —
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-600">not just the part
+            that fits my job title.</span>
+        </h2>
+
+        <p class="text-slate-600 leading-[1.85] text-[15px] mb-5 max-w-[62ch]">
+          I'm a computer-systems engineer with a Master's degree and three years building software end to
+          end: backend architecture and database design, the interfaces on top of them, and the test
+          campaigns and documentation that prove the result works.
+        </p>
+
+        <p class="text-slate-600 leading-[1.85] text-[15px] mb-10 max-w-[62ch]">
+          Most of my projects have been for small teams where nobody hands you a finished specification. So I
+          write the specification, plan the sprints, build the thing, test it, and document it. That range is
+          the reason clients bring me in — one person accountable from the first meeting to the release note.
+        </p>
+
+        <!-- What that actually covers -->
+        <div class="grid sm:grid-cols-3 gap-3">
+
+          <div class="p-5 rounded-2xl border border-[#EAE4E7] bg-[#FBFAFB]">
+            <i class="bi bi-code-slash text-primary text-lg" aria-hidden="true"></i>
+            <p class="text-sm font-bold text-slate-900 mt-3 mb-1">Build</p>
+            <p class="text-xs text-slate-500 leading-relaxed">Laravel, React, Node, Flask, PostgreSQL</p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-[#EAE4E7] bg-[#FBFAFB]">
+            <i class="bi bi-palette text-primary text-lg" aria-hidden="true"></i>
+            <p class="text-sm font-bold text-slate-900 mt-3 mb-1">Design</p>
+            <p class="text-xs text-slate-500 leading-relaxed">Figma, prototypes, design systems</p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-[#EAE4E7] bg-[#FBFAFB]">
+            <i class="bi bi-shield-check text-primary text-lg" aria-hidden="true"></i>
+            <p class="text-sm font-bold text-slate-900 mt-3 mb-1">Prove</p>
+            <p class="text-xs text-slate-500 leading-relaxed">Test plans, bug reports, documentation</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Facts -->
+      <div class="lg:col-span-5">
+        <div class="rounded-[28px] border border-[#EAE4E7] bg-white shadow-xl shadow-slate-100/60 overflow-hidden">
+
+          <div class="px-7 py-5 border-b border-[#EAE4E7] flex items-center justify-between gap-4">
+            <p class="pf-eyebrow">At a glance</p>
+            <span class="pf-footer__status" style="color:#0F9D76">Available</span>
+          </div>
+
+          <dl class="divide-y divide-[#F3EFF1]">
+
+            <div class="px-7 py-5 flex items-start gap-4">
+              <i class="bi bi-briefcase text-primary text-base mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div>
+                <dt class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.16em] mb-1">Current focus</dt>
+                <dd class="text-[15px] font-bold text-slate-900 leading-tight">Full-stack product delivery</dd>
+                <dd class="text-xs text-slate-500 mt-1">Development · UI/UX · QA · Coordination</dd>
+              </div>
+            </div>
+
+            <div class="px-7 py-5 flex items-start gap-4">
+              <i class="bi bi-graph-up-arrow text-primary text-base mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div>
+                <dt class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.16em] mb-1">Experience</dt>
+                <dd class="text-[15px] font-bold text-slate-900 leading-tight">3+ years, <span
+                    data-pf-count="all">57</span> projects shipped</dd>
+                <dd class="text-xs text-slate-500 mt-1">Web, desktop, mobile and interface design</dd>
+              </div>
+            </div>
+
+            <div class="px-7 py-5 flex items-start gap-4">
+              <i class="bi bi-mortarboard text-primary text-base mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div>
+                <dt class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.16em] mb-1">Education</dt>
+                <dd class="text-[15px] font-bold text-slate-900 leading-tight">M.Sc. Computer Systems</dd>
+                <dd class="text-xs text-slate-500 mt-1">Université Mouloud Mammeri, Tizi-Ouzou</dd>
+              </div>
+            </div>
+
+            <div class="px-7 py-5 flex items-start gap-4">
+              <i class="bi bi-translate text-primary text-base mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div>
+                <dt class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.16em] mb-1">Languages</dt>
+                <dd class="text-[15px] font-bold text-slate-900 leading-tight">French · English · Arabic</dd>
+                <dd class="text-xs text-slate-500 mt-1">Comfortable working remotely across time zones</dd>
+              </div>
+            </div>
+
+          </dl>
+
+          <a href="#contact"
+            class="flex items-center justify-between gap-4 px-7 py-5 bg-[#FBFAFB] border-t border-[#EAE4E7] no-underline hover:bg-white transition-colors group">
+            <span class="text-[13px] font-bold text-slate-900">Start a conversation</span>
+            <i class="bi bi-arrow-right text-primary group-hover:translate-x-1 transition-transform"
+              aria-hidden="true"></i>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SERVICES -->
+<!-- ============================================================ -->
+<section id="services" class="py-28 bg-[#FBFAFB] relative overflow-hidden">
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+
+    <!-- Header -->
+    <div class="grid lg:grid-cols-12 gap-10 items-end mb-14">
+      <div class="lg:col-span-7">
+        <p class="pf-eyebrow mb-4">Services</p>
+        <h2 class="text-3xl lg:text-[2.6rem] font-extrabold tracking-tight text-slate-900 leading-[1.12]"
+          style="text-wrap: balance">
+          Four ways I get brought in —
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-600">often all four on
+            the same project.</span>
+        </h2>
+      </div>
+      <div class="lg:col-span-5">
+        <p class="text-slate-600 leading-[1.85] text-[15px] lg:text-right">
+          Every line below links to real work: a case study, a design file, or the test report that came out of it.
+        </p>
+      </div>
+    </div>
+
+    <!-- Service rows -->
+    <div class="rounded-[28px] border border-[#EAE4E7] bg-white overflow-hidden divide-y divide-[#F3EFF1]">
+
+      <!-- Web Development -->
+      <a href="service/service-details.html" class="svc-row group">
+        <span class="svc-row__icon">
+          <i class="bi bi-code-slash" aria-hidden="true"></i>
+        </span>
+        <span class="svc-row__body">
+          <span class="svc-row__title">Web Development</span>
+          <span class="svc-row__desc">
+            Applications built to specification and made to last — backend architecture, database design and the
+            interfaces on top of them.
+          </span>
+          <span class="pf-chips">
+            <span class="pf-chip">Laravel</span>
+            <span class="pf-chip">React</span>
+            <span class="pf-chip">Node.js</span>
+            <span class="pf-chip">PostgreSQL</span>
+          </span>
+        </span>
+        <span class="svc-row__go">
+          <span class="svc-row__count"><b data-pf-count="dev">41</b> projects</span>
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </span>
+      </a>
+
+      <!-- UI/UX Design -->
+      <a href="service/servicedes.html" class="svc-row group">
+        <span class="svc-row__icon">
+          <i class="bi bi-palette" aria-hidden="true"></i>
+        </span>
+        <span class="svc-row__body">
+          <span class="svc-row__title">UI/UX Design</span>
+          <span class="svc-row__desc">
+            Interfaces designed before they're built — research, wireframes, high-fidelity prototypes and a design
+            system the developers can actually follow.
+          </span>
+          <span class="pf-chips">
+            <span class="pf-chip">Figma</span>
+            <span class="pf-chip">Prototyping</span>
+            <span class="pf-chip">Design systems</span>
+          </span>
+        </span>
+        <span class="svc-row__go">
+          <span class="svc-row__count"><b data-pf-count="design">16</b> designs</span>
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </span>
+      </a>
+
+      <!-- Project Management -->
+      <a href="service/servicegest.html" class="svc-row group">
+        <span class="svc-row__icon">
+          <i class="bi bi-kanban" aria-hidden="true"></i>
+        </span>
+        <span class="svc-row__body">
+          <span class="svc-row__title">Project Management</span>
+          <span class="svc-row__desc">
+            Specification, sprint planning, risk tracking and the coordination that keeps a cross-functional team
+            pointed at the same release date.
+          </span>
+          <span class="pf-chips">
+            <span class="pf-chip">Scrum</span>
+            <span class="pf-chip">MS Project</span>
+            <span class="pf-chip">Jira</span>
+            <span class="pf-chip">Trello</span>
+          </span>
+        </span>
+        <span class="svc-row__go">
+          <span class="svc-row__count"><b>10</b> plans</span>
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </span>
+      </a>
+
+      <!-- QA & Testing -->
+      <a href="docs.html" class="svc-row group">
+        <span class="svc-row__icon">
+          <i class="bi bi-shield-check" aria-hidden="true"></i>
+        </span>
+        <span class="svc-row__body">
+          <span class="svc-row__title">QA &amp; Testing</span>
+          <span class="svc-row__desc">
+            Functional and regression campaigns, API testing, severity-classified bug reports — and the written
+            evidence that a release is actually ready.
+          </span>
+          <span class="pf-chips">
+            <span class="pf-chip">Postman</span>
+            <span class="pf-chip">TestRail</span>
+            <span class="pf-chip">Locust</span>
+          </span>
+        </span>
+        <span class="svc-row__go">
+          <span class="svc-row__count"><b>6</b> reports</span>
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CONTACT -->
+<!-- ============================================================ -->
+<section id="contact" class="py-28 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+
+    <div class="rounded-[32px] border border-[#EAE4E7] overflow-hidden grid lg:grid-cols-12">
+
+      <!-- Pitch -->
+      <div class="lg:col-span-5 p-9 lg:p-12 text-white flex flex-col justify-between gap-10"
+        style="background: linear-gradient(160deg, #1C1418 0%, #3A2434 100%)">
+
+        <div>
+          <p class="pf-eyebrow mb-4" style="color: rgba(255,255,255,.45)">Contact</p>
+          <h2 class="font-extrabold tracking-tight leading-[1.1] text-[1.9rem] lg:text-[2.3rem] mb-5"
+            style="text-wrap: balance">
+            Tell me what you're building.
+          </h2>
+          <p class="text-[14px] leading-[1.85]" style="color: rgba(255,255,255,.68)">
+            Send a couple of sentences about the project and what "done" looks like. You'll get back a scope, a
+            timeline and a price — not a sales call.
+          </p>
+        </div>
+
+        <ul class="flex flex-col gap-3 list-none p-0 m-0">
+          <li class="flex items-center gap-2.5 text-[12.5px]" style="color: rgba(255,255,255,.7)">
+            <i class="bi bi-check-circle-fill text-[#0F9D76] text-[13px]" aria-hidden="true"></i>
+            Usually a reply within 24 hours
+          </li>
+          <li class="flex items-center gap-2.5 text-[12.5px]" style="color: rgba(255,255,255,.7)">
+            <i class="bi bi-check-circle-fill text-[#0F9D76] text-[13px]" aria-hidden="true"></i>
+            Remote, comfortable across time zones
+          </li>
+          <li class="flex items-center gap-2.5 text-[12.5px]" style="color: rgba(255,255,255,.7)">
+            <i class="bi bi-check-circle-fill text-[#0F9D76] text-[13px]" aria-hidden="true"></i>
+            French, English and Arabic
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Channels -->
+      <div class="lg:col-span-7 bg-white">
+
+        <a href="mailto:massaidsafia2@gmail.com" class="ct-row group">
+          <span class="ct-row__icon"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+          <span class="ct-row__body">
+            <span class="ct-row__label">Email — the best way to reach me</span>
+            <span class="ct-row__value">massaidsafia2@gmail.com</span>
+          </span>
+          <i class="bi bi-arrow-up-right ct-row__go" aria-hidden="true"></i>
+        </a>
+
+        <a href="tel:+213799214852" class="ct-row group">
+          <span class="ct-row__icon"><i class="bi bi-telephone" aria-hidden="true"></i></span>
+          <span class="ct-row__body">
+            <span class="ct-row__label">Phone &amp; WhatsApp</span>
+            <span class="ct-row__value">+213 7 99 21 48 52</span>
+          </span>
+          <i class="bi bi-arrow-up-right ct-row__go" aria-hidden="true"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/safia-massaid-171b19235/" target="_blank" rel="noopener"
+          class="ct-row group">
+          <span class="ct-row__icon"><i class="bi bi-linkedin" aria-hidden="true"></i></span>
+          <span class="ct-row__body">
+            <span class="ct-row__label">LinkedIn</span>
+            <span class="ct-row__value">safia-massaid</span>
+          </span>
+          <i class="bi bi-arrow-up-right ct-row__go" aria-hidden="true"></i>
+        </a>
+
+        <a href="https://github.com/safiamassaid" target="_blank" rel="noopener" class="ct-row group">
+          <span class="ct-row__icon"><i class="bi bi-github" aria-hidden="true"></i></span>
+          <span class="ct-row__body">
+            <span class="ct-row__label">GitHub</span>
+            <span class="ct-row__value">safiamassaid</span>
+          </span>
+          <i class="bi bi-arrow-up-right ct-row__go" aria-hidden="true"></i>
+        </a>
+
+        <div class="p-9 lg:p-10 bg-[#FBFAFB] border-t border-[#EAE4E7] flex flex-wrap items-center gap-4">
+          <a href="mailto:massaidsafia2@gmail.com"
+            class="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white rounded-xl text-[10px] font-bold uppercase tracking-widest no-underline hover:bg-[#5E2E45] transition-colors">
+            Send a brief <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a href="projects.html"
+            class="inline-flex items-center gap-2 px-6 py-3.5 border border-[#EAE4E7] rounded-xl text-[10px] font-bold uppercase tracking-widest text-slate-900 no-underline hover:border-primary hover:text-primary transition-colors">
+            See the work first
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ============================================================ -->
+<!-- EXPERIENCE -->
+<!-- ============================================================ -->
+<section id="experience" class="py-28 bg-[#FBFAFB] relative overflow-hidden">
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+
+    <div class="grid lg:grid-cols-12 gap-14 lg:gap-20 items-start">
+
+      <!-- Intro -->
+      <div class="lg:col-span-4 lg:sticky lg:top-28">
+
+        <p class="pf-eyebrow mb-4">Experience</p>
+
+        <h2 class="text-3xl lg:text-[2.4rem] font-extrabold tracking-tight text-slate-900 leading-[1.12] mb-6"
+          style="text-wrap: balance">
+          From writing the code to
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-600">running the
+            project.</span>
+        </h2>
+
+        <p class="text-slate-600 leading-[1.85] text-[15px] mb-8 max-w-[46ch]">
+          Five roles across three years, moving steadily from implementation toward specification,
+          coordination and delivery — while never letting go of the build itself.
+        </p>
+
+        <dl class="grid grid-cols-2 gap-px bg-[#EAE4E7] rounded-2xl overflow-hidden border border-[#EAE4E7]">
+          <div class="bg-white p-5">
+            <dt class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.14em] mb-1">Years</dt>
+            <dd class="font-mono text-2xl font-bold text-slate-900">3+</dd>
+          </div>
+          <div class="bg-white p-5">
+            <dt class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.14em] mb-1">Projects</dt>
+            <dd class="font-mono text-2xl font-bold text-primary" data-pf-count="all">57</dd>
+          </div>
+          <div class="bg-white p-5">
+            <dt class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.14em] mb-1">Current roles</dt>
+            <dd class="font-mono text-2xl font-bold text-slate-900">2</dd>
+          </div>
+          <div class="bg-white p-5">
+            <dt class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.14em] mb-1">Documents</dt>
+            <dd class="font-mono text-2xl font-bold text-slate-900">21</dd>
+          </div>
+        </dl>
+
+      </div>
+
+      <!-- Timeline -->
+      <div class="lg:col-span-8">
+
+        <ol class="xp-list">
+
+          <!-- Kyo Conseil -->
+          <li class="xp xp--now">
+            <div class="xp__head">
+              <div>
+                <h3 class="xp__role">Assistante Chef de Projet</h3>
+                <p class="xp__org">SARL Kyo Conseil</p>
+              </div>
+              <span class="xp__date xp__date--now">August 2026 — Present</span>
+            </div>
+            <p class="xp__desc">
+              Turning client requirements into specifications, running agile sprint cycles, coordinating
+              cross-functional engineering teams and tracking deliverables to the release date.
+            </p>
+            <ul class="pf-chips">
+              <li class="pf-chip">Agile &amp; Scrum</li>
+              <li class="pf-chip">Team leadership</li>
+              <li class="pf-chip">Client relations</li>
+            </ul>
+          </li>
+
+          <!-- Olten Agency -->
+          <li class="xp xp--now">
+            <div class="xp__head">
+              <div>
+                <h3 class="xp__role">UI/UX Freelancer</h3>
+                <p class="xp__org">Olten Agency</p>
+              </div>
+              <span class="xp__date xp__date--now">November 2025 — Present</span>
+            </div>
+            <p class="xp__desc">
+              Interface design for the agency's products — an ERP dashboard and a rental and carpooling
+              marketplace — from wireframes and data-visualisation layouts through to build-ready Figma files.
+            </p>
+            <ul class="pf-chips">
+              <li class="pf-chip">Figma</li>
+              <li class="pf-chip">Design systems</li>
+              <li class="pf-chip">Dashboards</li>
+              <li class="pf-chip">Data viz</li>
+            </ul>
+            <a class="xp__link" href="projects.html">
+              See the Olten work <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </a>
+          </li>
+
+          <!-- Techitaway -->
+          <li class="xp">
+            <div class="xp__head">
+              <div>
+                <h3 class="xp__role">Web Developer</h3>
+                <p class="xp__org">Techitaway</p>
+              </div>
+              <span class="xp__date">July 2024 — July 2026</span>
+            </div>
+            <p class="xp__desc">
+              Full-stack development on Laravel and PostgreSQL: responsive interfaces, backend query
+              optimisation and the core enterprise features the product was sold on.
+            </p>
+            <ul class="pf-chips">
+              <li class="pf-chip">Laravel</li>
+              <li class="pf-chip">PostgreSQL</li>
+              <li class="pf-chip">Performance tuning</li>
+            </ul>
+          </li>
+
+          <!-- Art Promotion -->
+          <li class="xp">
+            <div class="xp__head">
+              <div>
+                <h3 class="xp__role">MERN Stack Intern</h3>
+                <p class="xp__org">SARL Art Promotion</p>
+              </div>
+              <span class="xp__date">2024</span>
+            </div>
+            <p class="xp__desc">
+              Built a catering management platform end to end with React, Express and MongoDB, and took
+              responsibility for the frontend architecture and task assignment.
+            </p>
+            <ul class="pf-chips">
+              <li class="pf-chip">React</li>
+              <li class="pf-chip">Node.js</li>
+              <li class="pf-chip">MongoDB</li>
+            </ul>
+          </li>
+
+          <!-- Freelance -->
+          <li class="xp">
+            <div class="xp__head">
+              <div>
+                <h3 class="xp__role">Freelance Web Developer</h3>
+                <p class="xp__org">Independent clients</p>
+              </div>
+              <span class="xp__date">2021 — Present</span>
+            </div>
+            <p class="xp__desc">
+              The long tail behind this portfolio: corporate sites, storefronts, dashboards and full
+              applications, with the stack evolving from hand-written HTML and CSS to React and Laravel.
+            </p>
+            <ul class="pf-chips">
+              <li class="pf-chip">Full-stack</li>
+              <li class="pf-chip">UI/UX</li>
+              <li class="pf-chip">Client delivery</li>
+            </ul>
+          </li>
+
+        </ol>
+
+        <!-- Education -->
+        <div class="mt-8 rounded-[24px] border border-[#EAE4E7] bg-white overflow-hidden">
+          <div class="px-7 py-5 border-b border-[#EAE4E7] flex items-center gap-3">
+            <i class="bi bi-mortarboard text-primary" aria-hidden="true"></i>
+            <p class="pf-eyebrow">Education</p>
+          </div>
+          <dl class="divide-y divide-[#F3EFF1]">
+            <div class="px-7 py-4 flex items-start justify-between gap-4">
+              <div>
+                <dt class="text-[15px] font-bold text-slate-900">Master's Degree — Computer Systems</dt>
+                <dd class="text-xs text-slate-500 mt-0.5">Université Mouloud Mammeri</dd>
+              </div>
+              <dd class="font-mono text-xs font-bold text-primary shrink-0 pt-1">2023–2024</dd>
+            </div>
+            <div class="px-7 py-4 flex items-start justify-between gap-4">
+              <div>
+                <dt class="text-[15px] font-bold text-slate-900">Bachelor's Degree — Computer Systems</dt>
+                <dd class="text-xs text-slate-500 mt-0.5">Université Mouloud Mammeri</dd>
+              </div>
+              <dd class="font-mono text-xs font-bold text-primary shrink-0 pt-1">2021–2022</dd>
+            </div>
+            <div class="px-7 py-4 flex items-start justify-between gap-4">
+              <div>
+                <dt class="text-[15px] font-bold text-slate-900">Baccalaureate — Mathematical Techniques</dt>
+                <dd class="text-xs text-slate-500 mt-0.5">Lycée Zamoum Med, Boghni</dd>
+              </div>
+              <dd class="font-mono text-xs font-bold text-primary shrink-0 pt-1">2018–2019</dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SKILLS -->
+<!-- ============================================================ -->
+<section id="skills" class="py-28 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-6 lg:px-12 relative z-10">
+
+    <!-- Header -->
+    <div class="grid lg:grid-cols-12 gap-10 items-end mb-14">
+      <div class="lg:col-span-7">
+        <p class="pf-eyebrow mb-4">Stack</p>
+        <h2 class="text-3xl lg:text-[2.6rem] font-extrabold tracking-tight text-slate-900 leading-[1.12]"
+          style="text-wrap: balance">
+          The toolkit behind
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-600">the
+            <span data-pf-count="all">57</span> projects.</span>
+        </h2>
+      </div>
+      <div class="lg:col-span-5">
+        <p class="text-slate-600 leading-[1.85] text-[15px] lg:text-right">
+          Five disciplines rather than one long list — because a project needs all of them, and the handoffs
+          between them are where most of them go wrong.
+        </p>
+      </div>
+    </div>
+
+    <!-- Discipline panels -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- Front-end -->
+      <article class="sk">
+        <div class="sk__head">
+          <span class="sk__icon"><i class="bi bi-window" aria-hidden="true"></i></span>
+          <div>
+            <h3 class="sk__title">Front-End</h3>
+            <p class="sk__role">What the user actually touches</p>
+          </div>
+        </div>
+        <ul class="pf-chips sk__chips">
+          <li class="pf-chip">React JS</li>
+          <li class="pf-chip">Vue JS</li>
+          <li class="pf-chip">Tailwind CSS</li>
+          <li class="pf-chip">JavaScript (ES6+)</li>
+          <li class="pf-chip">HTML5 / CSS3</li>
+          <li class="pf-chip">SCSS / SASS</li>
+          <li class="pf-chip">Bootstrap 5</li>
+        </ul>
+      </article>
+
+      <!-- Back-end -->
+      <article class="sk">
+        <div class="sk__head">
+          <span class="sk__icon"><i class="bi bi-hdd-stack" aria-hidden="true"></i></span>
+          <div>
+            <h3 class="sk__title">Back-End &amp; Desktop</h3>
+            <p class="sk__role">The part that has to stay up</p>
+          </div>
+        </div>
+        <ul class="pf-chips sk__chips">
+          <li class="pf-chip">Laravel / PHP</li>
+          <li class="pf-chip">Node.js / Express</li>
+          <li class="pf-chip">Python (Flask)</li>
+          <li class="pf-chip">ASP.NET Core</li>
+          <li class="pf-chip">WinForms (C#)</li>
+          <li class="pf-chip">Python (Tkinter / PyQt6)</li>
+          <li class="pf-chip">RESTful APIs</li>
+        </ul>
+      </article>
+
+      <!-- Design -->
+      <article class="sk">
+        <div class="sk__head">
+          <span class="sk__icon"><i class="bi bi-palette" aria-hidden="true"></i></span>
+          <div>
+            <h3 class="sk__title">Design &amp; UX</h3>
+            <p class="sk__role">Decided before a line is written</p>
+          </div>
+        </div>
+        <ul class="pf-chips sk__chips">
+          <li class="pf-chip">Figma</li>
+          <li class="pf-chip">Adobe XD</li>
+          <li class="pf-chip">Illustrator</li>
+          <li class="pf-chip">Wireframing</li>
+          <li class="pf-chip">Prototyping</li>
+          <li class="pf-chip">Design systems</li>
+        </ul>
+      </article>
+
+      <!-- Data & QA -->
+      <article class="sk">
+        <div class="sk__head">
+          <span class="sk__icon"><i class="bi bi-shield-check" aria-hidden="true"></i></span>
+          <div>
+            <h3 class="sk__title">Data &amp; QA</h3>
+            <p class="sk__role">Proof that it works</p>
+          </div>
+        </div>
+        <ul class="pf-chips sk__chips">
+          <li class="pf-chip">PostgreSQL</li>
+          <li class="pf-chip">MySQL</li>
+          <li class="pf-chip">MongoDB</li>
+          <li class="pf-chip">Redis</li>
+          <li class="pf-chip">Postman</li>
+          <li class="pf-chip">TestRail</li>
+          <li class="pf-chip">Locust</li>
+        </ul>
+      </article>
+
+      <!-- Delivery -->
+      <article class="sk md:col-span-2">
+        <div class="sk__head">
+          <span class="sk__icon"><i class="bi bi-kanban" aria-hidden="true"></i></span>
+          <div>
+            <h3 class="sk__title">Delivery &amp; Operations</h3>
+            <p class="sk__role">Turning a brief into a release date</p>
+          </div>
+        </div>
+        <ul class="pf-chips sk__chips">
+          <li class="pf-chip">Agile</li>
+          <li class="pf-chip">Scrum</li>
+          <li class="pf-chip">Product ownership</li>
+          <li class="pf-chip">Sprint planning</li>
+          <li class="pf-chip">Retrospectives</li>
+          <li class="pf-chip">Jira</li>
+          <li class="pf-chip">Trello</li>
+          <li class="pf-chip">Asana</li>
+          <li class="pf-chip">Monday.com</li>
+          <li class="pf-chip">Confluence</li>
+          <li class="pf-chip">Slack</li>
+          <li class="pf-chip">Neatro</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <!-- Evidence strip -->
+    <div
+      class="mt-4 rounded-[24px] border border-[#EAE4E7] bg-[#FBFAFB] px-7 py-6 flex flex-wrap items-center gap-x-8 gap-y-4">
+      <p class="text-[13px] text-slate-600 leading-relaxed flex-1 min-w-[240px] m-0">
+        Every tool listed here appears in work you can open — a case study, a live deployment, a Figma file or a
+        test report.
+      </p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="projects.html"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary text-white text-[10px] font-bold uppercase tracking-widest no-underline hover:bg-[#5E2E45] transition-colors">
+          Browse the work <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a href="docs.html"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-[#EAE4E7] bg-white text-[10px] font-bold uppercase tracking-widest text-slate-900 no-underline hover:border-primary hover:text-primary transition-colors">
+          Read the documentation
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- ============================================================ -->
+  <!-- PROJECTS -->
+  <!-- ============================================================ -->
+  <section id="projects" class="py-24 relative overflow-hidden bg-slate-50/50">
+    <div class="absolute inset-0 grid-bg -z-10"></div>
+
+    <div class="container mx-auto px-4 lg:px-12">
+
+      <!-- Projects Header -->
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-end mb-10">
+
+        <!-- Intro -->
+        <div class="lg:col-span-6 fade-up">
+
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4">
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span class="text-primary font-mono text-xs font-bold uppercase tracking-wider">Selected Work</span>
+          </div>
+
+          <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.08]">
+            Projects built to
+            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-600">
+              create real impact.
+            </span>
+          </h2>
+
+          <p class="text-slate-500 leading-relaxed text-sm lg:text-base max-w-xl mt-6">
+            A selection of software products, digital experiences, and technical
+            solutions designed to solve real problems and deliver measurable value.
+          </p>
+
+        </div>
+
+        <!-- Navigation -->
+        <div class="lg:col-span-6 fade-up">
+
+          <div class="flex flex-col items-start lg:items-end gap-4">
+
+            <!-- Section label -->
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                Explore projects
+              </span>
+              <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+              <span class="text-[10px] font-mono font-bold text-primary">
+                <span id="filtered-count">00</span> <span id="filtered-label">selected</span>
+              </span>
+            </div>
+
+            <!-- Split, stated once -->
+            <div class="flex items-center gap-6 text-[10px] text-slate-400 uppercase tracking-widest">
+              <span><b class="font-mono text-primary text-xs" data-pf-count="dev">0</b> Development</span>
+              <div class="w-px h-3 bg-slate-200"></div>
+              <span><b class="font-mono text-primary text-xs" data-pf-count="design">0</b> UI / UX design</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Generated by tools/build-cards.js — edit assets/data/projects.js instead -->
+      <!-- PF:PROJECTS:START -->
+      <div data-pf-panel="all" data-pf-label="projects" data-pf-step="9">
+        <div class="pf-filterbar" role="tablist" aria-label="Project category">
+          <button class="pf-filter" type="button" role="tab" data-pf-filter="all" aria-pressed="true" aria-selected="true"><i class="bi bi-grid" aria-hidden="true"></i> All <span class="pf-filter__n"></span></button>
+          <button class="pf-filter" type="button" role="tab" data-pf-filter="webapp" aria-pressed="false" aria-selected="false"><i class="bi bi-window-stack" aria-hidden="true"></i> Web apps <span class="pf-filter__n"></span></button>
+          <button class="pf-filter" type="button" role="tab" data-pf-filter="website" aria-pressed="false" aria-selected="false"><i class="bi bi-globe2" aria-hidden="true"></i> Websites <span class="pf-filter__n"></span></button>
+          <button class="pf-filter" type="button" role="tab" data-pf-filter="desktop" aria-pressed="false" aria-selected="false"><i class="bi bi-pc-display" aria-hidden="true"></i> Desktop <span class="pf-filter__n"></span></button>
+          <button class="pf-filter" type="button" role="tab" data-pf-filter="mobile" aria-pressed="false" aria-selected="false"><i class="bi bi-phone" aria-hidden="true"></i> Mobile <span class="pf-filter__n"></span></button>
+          <button class="pf-filter" type="button" role="tab" data-pf-filter="backend" aria-pressed="false" aria-selected="false"><i class="bi bi-hdd-network" aria-hidden="true"></i> Backend & QA <span class="pf-filter__n"></span></button>
+          <button class="pf-filter" type="button" role="tab" data-pf-filter="uiux" aria-pressed="false" aria-selected="false"><i class="bi bi-palette" aria-hidden="true"></i> UI / UX Design <span class="pf-filter__n"></span></button>
+        </div>
+        <article class="pf-featured" data-cat="webapp" data-search="healthmath web application medical practice management — patient records, appointments, prescriptions and clinical workflows for a private cabinet. 2026 laravel postgresql blade tailwind">
+          <div class="pf-featured__media">
+            <img src="assets/img/docteur/doc1.png"
+                 alt="HealthMath — Web Application interface"
+                 loading="lazy" decoding="async">
+            <button class="pf-card__zoom" type="button"
+                    data-pf-zoom="assets/img/docteur/doc1.png"
+                    data-pf-caption="HealthMath"
+                    aria-label="Preview HealthMath screenshot">
+              <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+            </button>
+            <span class="pf-card__badge pf-card__badge--case">Case study</span>
+          </div>
+          <div class="pf-featured__body">
+            <p class="pf-eyebrow">Web Application &middot; 2026</p>
+            <h3 class="pf-featured__title"><a class="pf-card__link" href="details/docteur.html">HealthMath</a></h3>
+            <p class="pf-featured__desc">A complete management system for a medical practice: patient files, appointment scheduling, prescriptions and the day-to-day clinical workflow, backed by a full test and bug-tracking cycle.</p>
+            <ul class="pf-chips">
+              <li class="pf-chip">Laravel</li>
+              <li class="pf-chip">PostgreSQL</li>
+              <li class="pf-chip">Blade</li>
+              <li class="pf-chip">Tailwind</li>
+            </ul>
+            <ul class="pf-metrics">
+              <li><b>v1.0</b><span>Released</span></li>
+              <li><b>2</b><span>QA reports</span></li>
+            </ul>
+            <div class="pf-featured__foot">
+              <a class="pf-action pf-action--primary" href="details/docteur.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pf-featured" data-cat="desktop" data-search="orbiserp desktop application desktop erp covering invoicing, stock and fiscal compliance on a single centralised client database. 2025 react node.js express sql">
+          <div class="pf-featured__media">
+            <img src="assets/img/desk/asset/a1.png"
+                 alt="OrbisERP — Desktop Application interface"
+                 loading="lazy" decoding="async">
+            <button class="pf-card__zoom" type="button"
+                    data-pf-zoom="assets/img/desk/asset/a1.png"
+                    data-pf-caption="OrbisERP"
+                    aria-label="Preview OrbisERP screenshot">
+              <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+            </button>
+            <span class="pf-card__badge pf-card__badge--live">Live</span>
+          </div>
+          <div class="pf-featured__body">
+            <p class="pf-eyebrow">Desktop Application &middot; 2025</p>
+            <h3 class="pf-featured__title"><a class="pf-card__link" href="details/erplog.html">OrbisERP</a></h3>
+            <p class="pf-featured__desc">A desktop ERP built for small businesses that need real compliance without enterprise overhead — centralised invoicing, stock control and integrated TVA / J50 handling, installed and run locally.</p>
+            <ul class="pf-chips">
+              <li class="pf-chip">React</li>
+              <li class="pf-chip">Node.js</li>
+              <li class="pf-chip">Express</li>
+              <li class="pf-chip">SQL</li>
+            </ul>
+            <ul class="pf-metrics">
+              <li><b>9</b><span>Demo steps</span></li>
+              <li><b>TVA</b><span>Compliance</span></li>
+            </ul>
+            <div class="pf-featured__foot">
+              <a class="pf-action pf-action--primary" href="details/erplog.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+              <a class="pf-action" href="https://demoorbiserp.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pf-featured" data-cat="uiux" data-search="healthmate mobile ui — figma health companion app: onboarding, authentication, specialist browsing and appointment tracking. 2025 figma mobile design system">
+          <div class="pf-featured__media">
+            <img src="assets/img/mobil/1.png"
+                 alt="HealthMate — Mobile UI — Figma interface"
+                 loading="lazy" decoding="async">
+            <button class="pf-card__zoom" type="button"
+                    data-pf-zoom="assets/img/mobil/1.png"
+                    data-pf-caption="HealthMate"
+                    aria-label="Preview HealthMate screenshot">
+              <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+            </button>
+            <span class="pf-card__badge ">Figma</span>
+          </div>
+          <div class="pf-featured__body">
+            <p class="pf-eyebrow">Mobile UI — Figma &middot; 2025</p>
+            <h3 class="pf-featured__title"><a class="pf-card__link" href="https://www.figma.com/design/qIYmEI9gl8CmpXqgMrC3V8/deisgn-mobile?node-id=40-104&amp;t=cO62Acn3pJyyLHWn-1" target="_blank" rel="noopener">HealthMate</a></h3>
+            <p class="pf-featured__desc">A full mobile flow for a health companion app — from onboarding and account creation through browsing doctors by specialty to the upcoming-appointment dashboard and on-call emergency path.</p>
+            <ul class="pf-chips">
+              <li class="pf-chip">Figma</li>
+              <li class="pf-chip">Mobile</li>
+              <li class="pf-chip">Design System</li>
+            </ul>
+            <ul class="pf-metrics">
+              <li><b>4+</b><span>Screens</span></li>
+              <li><b>iOS</b><span>Target</span></li>
+            </ul>
+            <div class="pf-featured__foot">
+              <a class="pf-action pf-action--primary" href="https://www.figma.com/design/qIYmEI9gl8CmpXqgMrC3V8/deisgn-mobile?node-id=40-104&amp;t=cO62Acn3pJyyLHWn-1" target="_blank" rel="noopener">Open in Figma <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </article>
+        <div class="pf-grid">
+          <article class="pf-card" data-cat="website" data-search="astias travel dynamic website travel agency platform — destination catalogue, booking flow, customer accounts and a full back-office. 2024 php jquery sql javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/as1.png"
+                   alt="Astias Travel — Dynamic Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/as1.png"
+                      data-pf-caption="Astias Travel"
+                      aria-label="Preview Astias Travel screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Dynamic Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/portfolio-details.html">Astias Travel</a></h3>
+              <p class="pf-card__desc">Travel agency platform — destination catalogue, booking flow, customer accounts and a full back-office.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">PHP</li>
+                <li class="pf-chip">jQuery</li>
+                <li class="pf-chip">SQL</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/portfolio-details.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="uniplan web application intelligent exam planning that generates conflict-free timetables for a full university session. 2026 flask postgresql javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/uniplan/2.png"
+                   alt="UniPlan — Web Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/uniplan/2.png"
+                      data-pf-caption="UniPlan"
+                      aria-label="Preview UniPlan screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge ">Source</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://github.com/safiamassaid/shedule_exam" target="_blank" rel="noopener">UniPlan</a></h3>
+              <p class="pf-card__desc">Intelligent exam planning that generates conflict-free timetables for a full university session.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Flask</li>
+                <li class="pf-chip">PostgreSQL</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://github.com/safiamassaid/shedule_exam" target="_blank" rel="noopener">Source <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="mobile" data-search="noor mobile application islamic habits companion — prayer times, dhikr counter, habit streaks and daily reminders. 2026 react native expo sdk 51 typescript">
+            <div class="pf-card__media">
+              <img src="assets/img/noor/n1.png"
+                   alt="Noor — Mobile Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/noor/n1.png"
+                      data-pf-caption="Noor"
+                      aria-label="Preview Noor screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Mobile Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/noor.html">Noor</a></h3>
+              <p class="pf-card__desc">Islamic habits companion — prayer times, dhikr counter, habit streaks and daily reminders.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">React Native</li>
+                <li class="pf-chip">Expo SDK 51</li>
+                <li class="pf-chip">TypeScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/noor.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="catering management web application menu planning, supplier orders and service tracking for a catering operation. 2025 react node.js express sql">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/acceuil.png"
+                   alt="Catering Management — Web Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/acceuil.png"
+                      data-pf-caption="Catering Management"
+                      aria-label="Preview Catering Management screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/erp.html">Catering Management</a></h3>
+              <p class="pf-card__desc">Menu planning, supplier orders and service tracking for a catering operation.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">React</li>
+                <li class="pf-chip">Node.js</li>
+                <li class="pf-chip">Express</li>
+                <li class="pf-chip">SQL</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/erp.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="kitchen management web application menu creation, stock tracking and real-time order management for a professional kitchen. 2025 react node.js express sql">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/acceuilcuisin.png"
+                   alt="Kitchen Management — Web Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/acceuilcuisin.png"
+                      data-pf-caption="Kitchen Management"
+                      aria-label="Preview Kitchen Management screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/cuisine.html">Kitchen Management</a></h3>
+              <p class="pf-card__desc">Menu creation, stock tracking and real-time order management for a professional kitchen.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">React</li>
+                <li class="pf-chip">Node.js</li>
+                <li class="pf-chip">Express</li>
+                <li class="pf-chip">SQL</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/cuisine.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="supply management web application supplier catalogue, purchase orders and replenishment thresholds in one dashboard. 2025 react node.js express sql">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/acceuilstk.png"
+                   alt="Supply Management — Web Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/acceuilstk.png"
+                      data-pf-caption="Supply Management"
+                      aria-label="Preview Supply Management screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/stock.html">Supply Management</a></h3>
+              <p class="pf-card__desc">Supplier catalogue, purchase orders and replenishment thresholds in one dashboard.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">React</li>
+                <li class="pf-chip">Node.js</li>
+                <li class="pf-chip">Express</li>
+                <li class="pf-chip">SQL</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/stock.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="delivery management web application dispatch, driver assignment and delivery status tracking from order to doorstep. 2025 react node.js express sql">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/livraison.png"
+                   alt="Delivery Management — Web Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/livraison.png"
+                      data-pf-caption="Delivery Management"
+                      aria-label="Preview Delivery Management screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/liv.html">Delivery Management</a></h3>
+              <p class="pf-card__desc">Dispatch, driver assignment and delivery status tracking from order to doorstep.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">React</li>
+                <li class="pf-chip">Node.js</li>
+                <li class="pf-chip">Express</li>
+                <li class="pf-chip">SQL</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/liv.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="inventory management web application stock movements, reorder points and multi-warehouse inventory built on laravel. 2024 laravel php jquery sql">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/dynamique/laravel/a.png"
+                   alt="Inventory Management — Web Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/dynamique/laravel/a.png"
+                      data-pf-caption="Inventory Management"
+                      aria-label="Preview Inventory Management screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/laravel.html">Inventory Management</a></h3>
+              <p class="pf-card__desc">Stock movements, reorder points and multi-warehouse inventory built on Laravel.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Laravel</li>
+                <li class="pf-chip">PHP</li>
+                <li class="pf-chip">jQuery</li>
+                <li class="pf-chip">SQL</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/laravel.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="desktop" data-search="solufact desktop application offline invoicing desktop application with a local database and printable documents. 2024 python tkinter sqlite">
+            <div class="pf-card__media">
+              <img src="assets/img/deskt/aaz.png"
+                   alt="Solufact — Desktop Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/deskt/aaz.png"
+                      data-pf-caption="Solufact"
+                      aria-label="Preview Solufact screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Desktop Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/solufact.html">Solufact</a></h3>
+              <p class="pf-card__desc">Offline invoicing desktop application with a local database and printable documents.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Python</li>
+                <li class="pf-chip">Tkinter</li>
+                <li class="pf-chip">SQLite</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/solufact.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="backend" data-search="flask auth + redis backend &amp; qa token authentication service benchmarked under load with locust to find its breaking point. 2026 flask redis locust">
+            <div class="pf-card__media">
+              <img src="assets/img/charge/1.png"
+                   alt="Flask Auth + Redis — Backend &amp; QA interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/charge/1.png"
+                      data-pf-caption="Flask Auth + Redis"
+                      aria-label="Preview Flask Auth + Redis screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Backend &amp; QA</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/flask-redis.html">Flask Auth + Redis</a></h3>
+              <p class="pf-card__desc">Token authentication service benchmarked under load with Locust to find its breaking point.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Flask</li>
+                <li class="pf-chip">Redis</li>
+                <li class="pf-chip">Locust</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/flask-redis.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="c'est mon choix dynamic website e-commerce storefront with product catalogue, cart and order handling over a pdo data layer. 2024 php pdo jquery sql">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/ecom.png"
+                   alt="C'est Mon Choix — Dynamic Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/ecom.png"
+                      data-pf-caption="C'est Mon Choix"
+                      aria-label="Preview C'est Mon Choix screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Dynamic Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/commdet.html">C'est Mon Choix</a></h3>
+              <p class="pf-card__desc">E-commerce storefront with product catalogue, cart and order handling over a PDO data layer.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">PHP</li>
+                <li class="pf-chip">PDO</li>
+                <li class="pf-chip">jQuery</li>
+                <li class="pf-chip">SQL</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/commdet.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="astias travel — back office admin dashboard administration dashboard for reservations, destinations, customers and inbound messages. 2024 php jquery sql">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/admin.png"
+                   alt="Astias Travel — Back Office — Admin Dashboard interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/admin.png"
+                      data-pf-caption="Astias Travel — Back Office"
+                      aria-label="Preview Astias Travel — Back Office screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Admin Dashboard</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/dashtrav.html">Astias Travel — Back Office</a></h3>
+              <p class="pf-card__desc">Administration dashboard for reservations, destinations, customers and inbound messages.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">PHP</li>
+                <li class="pf-chip">jQuery</li>
+                <li class="pf-chip">SQL</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/dashtrav.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="littlejardin dynamic website gardening shop and advice site with an ajax-driven catalogue and customer area. 2023 php ajax jquery sql">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/jrd1.png"
+                   alt="littleJardin — Dynamic Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/jrd1.png"
+                      data-pf-caption="littleJardin"
+                      aria-label="Preview littleJardin screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Dynamic Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/jard.html">littleJardin</a></h3>
+              <p class="pf-card__desc">Gardening shop and advice site with an Ajax-driven catalogue and customer area.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">PHP</li>
+                <li class="pf-chip">Ajax</li>
+                <li class="pf-chip">jQuery</li>
+                <li class="pf-chip">SQL</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/jard.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="online learning platform web application course delivery with lesson progression, enrolments and an instructor back office. 2025 flask mongodb css">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/design%20cours%20flasck/cours1.png"
+                   alt="Online Learning Platform — Web Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/design%20cours%20flasck/cours1.png"
+                      data-pf-caption="Online Learning Platform"
+                      aria-label="Preview Online Learning Platform screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/cours.html">Online Learning Platform</a></h3>
+              <p class="pf-card__desc">Course delivery with lesson progression, enrolments and an instructor back office.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Flask</li>
+                <li class="pf-chip">MongoDB</li>
+                <li class="pf-chip">CSS</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/cours.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="myapp — social feed web application social network with a news feed, stories, friend graph and publication management. 2025 node.js express ejs mongodb">
+            <div class="pf-card__media">
+              <img src="assets/img/ejs/ejs1.png"
+                   alt="MyApp — Social Feed — Web Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/ejs/ejs1.png"
+                      data-pf-caption="MyApp — Social Feed"
+                      aria-label="Preview MyApp — Social Feed screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/ejs.html">MyApp — Social Feed</a></h3>
+              <p class="pf-card__desc">Social network with a news feed, stories, friend graph and publication management.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Node.js</li>
+                <li class="pf-chip">Express</li>
+                <li class="pf-chip">EJS</li>
+                <li class="pf-chip">MongoDB</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/ejs.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="coachfit website fitness coaching site presenting programmes, coaches and session booking. 2025 bootstrap html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/coachdes/c1.png"
+                   alt="CoachFit — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/coachdes/c1.png"
+                      data-pf-caption="CoachFit"
+                      aria-label="Preview CoachFit screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/coch.html">CoachFit</a></h3>
+              <p class="pf-card__desc">Fitness coaching site presenting programmes, coaches and session booking.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Bootstrap</li>
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/coch.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="webapp" data-search="sociénet web application social network prototype with profiles, a photo feed, reactions and comments. 2023 php sql javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/res.png"
+                   alt="SociéNet — Web Application interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/res.png"
+                      data-pf-caption="SociéNet"
+                      aria-label="Preview SociéNet screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge ">Source</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web Application</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://github.com/safiamassaid/reseau" target="_blank" rel="noopener">SociéNet</a></h3>
+              <p class="pf-card__desc">Social network prototype with profiles, a photo feed, reactions and comments.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">PHP</li>
+                <li class="pf-chip">SQL</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://github.com/safiamassaid/reseau" target="_blank" rel="noopener">Source <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="orbiserp — guided demo website web demo of the orbiserp desktop app — a nine-step walkthrough that sells it without an install. 2025 javascript netlify">
+            <div class="pf-card__media">
+              <img src="assets/img/dem.png"
+                   alt="OrbisERP — Guided Demo — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/dem.png"
+                      data-pf-caption="OrbisERP — Guided Demo"
+                      aria-label="Preview OrbisERP — Guided Demo screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://demoorbiserp.netlify.app/" target="_blank" rel="noopener">OrbisERP — Guided Demo</a></h3>
+              <p class="pf-card__desc">Web demo of the OrbisERP desktop app — a nine-step walkthrough that sells it without an install.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">JavaScript</li>
+                <li class="pf-chip">Netlify</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://demoorbiserp.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="hbt hotel website boutique hotel landing page built around room photography and a single booking call to action. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/hotel.png"
+                   alt="HBT Hotel — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/hotel.png"
+                      data-pf-caption="HBT Hotel"
+                      aria-label="Preview HBT Hotel screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://incandescent-kringle-c60f7b.netlify.app" target="_blank" rel="noopener">HBT Hotel</a></h3>
+              <p class="pf-card__desc">Boutique hotel landing page built around room photography and a single booking call to action.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://incandescent-kringle-c60f7b.netlify.app" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="edgeledger website corporate finance landing page with a full-bleed skyline hero and service sections. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/vert.png"
+                   alt="EdgeLedger — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/vert.png"
+                      data-pf-caption="EdgeLedger"
+                      aria-label="Preview EdgeLedger screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://zesty-rugelach-1ea57a.netlify.app" target="_blank" rel="noopener">EdgeLedger</a></h3>
+              <p class="pf-card__desc">Corporate finance landing page with a full-bleed skyline hero and service sections.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://zesty-rugelach-1ea57a.netlify.app" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="travel agency website tailor-made trip site presenting circuits, destinations and an enquiry flow. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/travel.png"
+                   alt="Travel Agency — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/travel.png"
+                      data-pf-caption="Travel Agency"
+                      aria-label="Preview Travel Agency screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://jolly-gaufre-21f80b.netlify.app" target="_blank" rel="noopener">Travel Agency</a></h3>
+              <p class="pf-card__desc">Tailor-made trip site presenting circuits, destinations and an enquiry flow.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://jolly-gaufre-21f80b.netlify.app" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="parallax landing page website scroll-driven landing page exploring layered parallax backgrounds and type transitions. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/menu.png"
+                   alt="Parallax Landing Page — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/menu.png"
+                      data-pf-caption="Parallax Landing Page"
+                      aria-label="Preview Parallax Landing Page screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://gleeful-crumble-745058.netlify.app" target="_blank" rel="noopener">Parallax Landing Page</a></h3>
+              <p class="pf-card__desc">Scroll-driven landing page exploring layered parallax backgrounds and type transitions.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://gleeful-crumble-745058.netlify.app" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="my to-do list static site task list that survives a refresh — add, complete and delete tasks persisted in local storage. 2023 javascript localstorage">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/todo.png"
+                   alt="My To-Do List — Static Site interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/todo.png"
+                      data-pf-caption="My To-Do List"
+                      aria-label="Preview My To-Do List screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Static Site</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://celadon-bubblegum-529501.netlify.app/" target="_blank" rel="noopener">My To-Do List</a></h3>
+              <p class="pf-card__desc">Task list that survives a refresh — add, complete and delete tasks persisted in local storage.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">JavaScript</li>
+                <li class="pf-chip">LocalStorage</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://celadon-bubblegum-529501.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="mahdi massaid — artist site website first edition of an artist site for a songwriter and author, built around album and press sections. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/md.png"
+                   alt="Mahdi Massaid — Artist Site — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/md.png"
+                      data-pf-caption="Mahdi Massaid — Artist Site"
+                      aria-label="Preview Mahdi Massaid — Artist Site screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge ">Preview</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><button class="pf-card__link" type="button" data-pf-zoom="assets/img/portfolio/md.png" data-pf-caption="Mahdi Massaid — Artist Site">Mahdi Massaid — Artist Site</button></h3>
+              <p class="pf-card__desc">First edition of an artist site for a songwriter and author, built around album and press sections.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <button class="pf-action pf-action--primary" type="button" data-pf-zoom="assets/img/portfolio/md.png" data-pf-caption="Mahdi Massaid — Artist Site">Preview <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i></button>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="massaid mahdi — poetry &amp; music website artist site for a poet and musician, pairing written work with musical performances. 2024 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/mah.png"
+                   alt="Massaid Mahdi — Poetry &amp; Music — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/mah.png"
+                      data-pf-caption="Massaid Mahdi — Poetry &amp; Music"
+                      aria-label="Preview Massaid Mahdi — Poetry &amp; Music screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://fantastic-puppy-22e0c6.netlify.app/" target="_blank" rel="noopener">Massaid Mahdi — Poetry &amp; Music</a></h3>
+              <p class="pf-card__desc">Artist site for a poet and musician, pairing written work with musical performances.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://fantastic-puppy-22e0c6.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="my-drow static site browser drawing tool with brush thickness, colour picker and a magic eraser, drawn on canvas. 2023 canvas api javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/dessin.png"
+                   alt="My-Drow — Static Site interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/dessin.png"
+                      data-pf-caption="My-Drow"
+                      aria-label="Preview My-Drow screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Static Site</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://friendly-panda-6cfbdf.netlify.app" target="_blank" rel="noopener">My-Drow</a></h3>
+              <p class="pf-card__desc">Browser drawing tool with brush thickness, colour picker and a magic eraser, drawn on canvas.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Canvas API</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://friendly-panda-6cfbdf.netlify.app" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="salon beauté website beauty salon site presenting treatments, pricing and booking contact. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/bt.png"
+                   alt="Salon Beauté — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/bt.png"
+                      data-pf-caption="Salon Beauté"
+                      aria-label="Preview Salon Beauté screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://leafy-cat-0a64b6.netlify.app/" target="_blank" rel="noopener">Salon Beauté</a></h3>
+              <p class="pf-card__desc">Beauty salon site presenting treatments, pricing and booking contact.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://leafy-cat-0a64b6.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="greeny website at-home garden maintenance service with a service list and appointment request flow. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/jrd.png"
+                   alt="Greeny — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/jrd.png"
+                      data-pf-caption="Greeny"
+                      aria-label="Preview Greeny screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://timely-syrniki-cf7619.netlify.app" target="_blank" rel="noopener">Greeny</a></h3>
+              <p class="pf-card__desc">At-home garden maintenance service with a service list and appointment request flow.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://timely-syrniki-cf7619.netlify.app" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="dev info website web development training site with course listings, projects and a member login. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/dev.png"
+                   alt="DEV INFO — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/dev.png"
+                      data-pf-caption="DEV INFO"
+                      aria-label="Preview DEV INFO screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://golden-capybara-7ae159.netlify.app" target="_blank" rel="noopener">DEV INFO</a></h3>
+              <p class="pf-card__desc">Web development training site with course listings, projects and a member login.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://golden-capybara-7ae159.netlify.app" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="terra voyage website travel site opening on a full-screen coastline with a low-cost discovery pitch. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/trav.png"
+                   alt="Terra Voyage — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/trav.png"
+                      data-pf-caption="Terra Voyage"
+                      aria-label="Preview Terra Voyage screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://idyllic-frangollo-62812b.netlify.app/" target="_blank" rel="noopener">Terra Voyage</a></h3>
+              <p class="pf-card__desc">Travel site opening on a full-screen coastline with a low-cost discovery pitch.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://idyllic-frangollo-62812b.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="cabinet d'avocats website law firm site covering areas of expertise, the practice, appointments and a blog. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/avocat.png"
+                   alt="Cabinet d'Avocats — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/avocat.png"
+                      data-pf-caption="Cabinet d'Avocats"
+                      aria-label="Preview Cabinet d'Avocats screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://sunny-haupia-02cbf9.netlify.app/" target="_blank" rel="noopener">Cabinet d'Avocats</a></h3>
+              <p class="pf-card__desc">Law firm site covering areas of expertise, the practice, appointments and a blog.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://sunny-haupia-02cbf9.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="crèche da advocacia website nursery site presenting the team, services and an online pre-registration form. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/crech.png"
+                   alt="Crèche Da Advocacia — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/crech.png"
+                      data-pf-caption="Crèche Da Advocacia"
+                      aria-label="Preview Crèche Da Advocacia screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://regal-belekoy-6e60cc.netlify.app/" target="_blank" rel="noopener">Crèche Da Advocacia</a></h3>
+              <p class="pf-card__desc">Nursery site presenting the team, services and an online pre-registration form.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://regal-belekoy-6e60cc.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="sa-ma portfolio website earlier edition of this portfolio, built as an illustrated single-page site. 2023 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/porta.png"
+                   alt="SA-MA Portfolio — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/porta.png"
+                      data-pf-caption="SA-MA Portfolio"
+                      aria-label="Preview SA-MA Portfolio screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://safiamassaid.netlify.app/" target="_blank" rel="noopener">SA-MA Portfolio</a></h3>
+              <p class="pf-card__desc">Earlier edition of this portfolio, built as an illustrated single-page site.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://safiamassaid.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="firstboot website social platform landing page with an inline sign-up form, built on the bootstrap grid. 2023 bootstrap html css">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/boot.png"
+                   alt="FirstBoot — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/boot.png"
+                      data-pf-caption="FirstBoot"
+                      aria-label="Preview FirstBoot screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://thunderous-frangollo-4a1970.netlify.app/" target="_blank" rel="noopener">FirstBoot</a></h3>
+              <p class="pf-card__desc">Social platform landing page with an inline sign-up form, built on the Bootstrap grid.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Bootstrap</li>
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://thunderous-frangollo-4a1970.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="boottwo website editorial landing page for a poster studio, exploring bootstrap typography and layout. 2023 bootstrap html css">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/boota.png"
+                   alt="BootTwo — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/boota.png"
+                      data-pf-caption="BootTwo"
+                      aria-label="Preview BootTwo screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://vocal-kitsune-f6846e.netlify.app/" target="_blank" rel="noopener">BootTwo</a></h3>
+              <p class="pf-card__desc">Editorial landing page for a poster studio, exploring Bootstrap typography and layout.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Bootstrap</li>
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://vocal-kitsune-f6846e.netlify.app/" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="jacinto design website interior architecture studio site covering modern architecture, interiors and outdoor spaces. 2024 html css javascript">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/hotmel.png"
+                   alt="Jacinto Design — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/hotmel.png"
+                      data-pf-caption="Jacinto Design"
+                      aria-label="Preview Jacinto Design screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://lovely-tarsier-41d327.netlify.app" target="_blank" rel="noopener">Jacinto Design</a></h3>
+              <p class="pf-card__desc">Interior architecture studio site covering modern architecture, interiors and outdoor spaces.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">HTML</li>
+                <li class="pf-chip">CSS</li>
+                <li class="pf-chip">JavaScript</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://lovely-tarsier-41d327.netlify.app" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="recherche de repas static site recipe finder that queries a meal api by keyword and returns a random dish on demand. 2024 javascript rest api">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/helkich.png"
+                   alt="Recherche de Repas — Static Site interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/helkich.png"
+                      data-pf-caption="Recherche de Repas"
+                      aria-label="Preview Recherche de Repas screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--live">Live</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Static Site</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://preeminent-tanuki-1e0b83.netlify.app" target="_blank" rel="noopener">Recherche de Repas</a></h3>
+              <p class="pf-card__desc">Recipe finder that queries a meal API by keyword and returns a random dish on demand.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">JavaScript</li>
+                <li class="pf-chip">REST API</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://preeminent-tanuki-1e0b83.netlify.app" target="_blank" rel="noopener">Live demo <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="creative portfolio website vue landing page for an artist showcase, with services, faq and subscription sections. 2024 vue.js vite css">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/vu1.png"
+                   alt="Creative Portfolio — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/vu1.png"
+                      data-pf-caption="Creative Portfolio"
+                      aria-label="Preview Creative Portfolio screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge ">Source</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://gitlab.com/safia1704832/vueportfolio.git" target="_blank" rel="noopener">Creative Portfolio</a></h3>
+              <p class="pf-card__desc">Vue landing page for an artist showcase, with services, FAQ and subscription sections.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Vue.js</li>
+                <li class="pf-chip">Vite</li>
+                <li class="pf-chip">CSS</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://gitlab.com/safia1704832/vueportfolio.git" target="_blank" rel="noopener">Source <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="website" data-search="personal portfolio website illustrated vue portfolio with a work section and a warm single-colour identity. 2024 vue.js css">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/vu2.png"
+                   alt="Personal Portfolio — Website interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/vu2.png"
+                      data-pf-caption="Personal Portfolio"
+                      aria-label="Preview Personal Portfolio screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge ">Source</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Website</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://gitlab.com/safia1704832/illustartion-vue-js-portofolio.git" target="_blank" rel="noopener">Personal Portfolio</a></h3>
+              <p class="pf-card__desc">Illustrated Vue portfolio with a work section and a warm single-colour identity.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Vue.js</li>
+                <li class="pf-chip">CSS</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://gitlab.com/safia1704832/illustartion-vue-js-portofolio.git" target="_blank" rel="noopener">Source <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="catering management desktop ui — figma desktop interface for a catering back office — dashboard, stock, orders and service planning. 2025 figma desktop dashboard">
+            <div class="pf-card__media">
+              <img src="assets/img/dsk/acc.png"
+                   alt="Catering Management — Desktop UI — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/dsk/acc.png"
+                      data-pf-caption="Catering Management"
+                      aria-label="Preview Catering Management screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Desktop UI — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/stock.html">Catering Management</a></h3>
+              <p class="pf-card__desc">Desktop interface for a catering back office — dashboard, stock, orders and service planning.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Desktop</li>
+                <li class="pf-chip">Dashboard</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/stock.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+              <a class="pf-action" href="https://www.figma.com/design/KLGvIYweTvfZYbEHY5Im93/gestion-de-stock?t=b3zgIkrdY6uABW38-1" target="_blank" rel="noopener">Figma <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="transactions d'argent ui / ux — figma money transfer interface covering balance, transfer flow and transaction history. 2025 figma fintech">
+            <div class="pf-card__media">
+              <img src="assets/img/ts/ts1.png"
+                   alt="Transactions d'argent — UI / UX — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/ts/ts1.png"
+                      data-pf-caption="Transactions d'argent"
+                      aria-label="Preview Transactions d'argent screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">UI / UX — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/transact.html">Transactions d'argent</a></h3>
+              <p class="pf-card__desc">Money transfer interface covering balance, transfer flow and transaction history.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Fintech</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/transact.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="event reservation ui / ux — figma event discovery and seat reservation interface, from listing through to confirmation. 2025 figma booking">
+            <div class="pf-card__media">
+              <img src="assets/img/ed/ed1.png"
+                   alt="Event Reservation — UI / UX — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/ed/ed1.png"
+                      data-pf-caption="Event Reservation"
+                      aria-label="Preview Event Reservation screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">UI / UX — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/evvent.html">Event Reservation</a></h3>
+              <p class="pf-card__desc">Event discovery and seat reservation interface, from listing through to confirmation.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Booking</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/evvent.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="life coach ui / ux — figma coaching platform interface pairing programme browsing with session scheduling. 2025 figma web">
+            <div class="pf-card__media">
+              <img src="assets/img/life%20ceach/asd.png"
+                   alt="Life Coach — UI / UX — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/life%20ceach/asd.png"
+                      data-pf-caption="Life Coach"
+                      aria-label="Preview Life Coach screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">UI / UX — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/life.html">Life Coach</a></h3>
+              <p class="pf-card__desc">Coaching platform interface pairing programme browsing with session scheduling.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Web</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/life.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="match master pro ui / ux — figma sports match management interface for fixtures, teams and live score tracking. 2025 figma dashboard">
+            <div class="pf-card__media">
+              <img src="assets/img/macht%20master%20pro/as.png"
+                   alt="Match Master Pro — UI / UX — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/macht%20master%20pro/as.png"
+                      data-pf-caption="Match Master Pro"
+                      aria-label="Preview Match Master Pro screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">UI / UX — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/match.html">Match Master Pro</a></h3>
+              <p class="pf-card__desc">Sports match management interface for fixtures, teams and live score tracking.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Dashboard</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/match.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="production management web app + ui mockup manufacturing production tracking — work orders, line status and output reporting. 2025 laravel postgresql figma">
+            <div class="pf-card__media">
+              <img src="assets/img/portfolio/gp/gp1.png"
+                   alt="Production Management — Web App + UI Mockup interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/portfolio/gp/gp1.png"
+                      data-pf-caption="Production Management"
+                      aria-label="Preview Production Management screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web App + UI Mockup</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="details/peoduction.html">Production Management</a></h3>
+              <p class="pf-card__desc">Manufacturing production tracking — work orders, line status and output reporting.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Laravel</li>
+                <li class="pf-chip">PostgreSQL</li>
+                <li class="pf-chip">Figma</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="details/peoduction.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="digital bullet journal ui / ux mockup planner interface translating the analogue bullet-journal system into a digital layout. 2025 figma productivity">
+            <div class="pf-card__media">
+              <img src="assets/img/bullet/de.png"
+                   alt="Digital Bullet Journal — UI / UX Mockup interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/bullet/de.png"
+                      data-pf-caption="Digital Bullet Journal"
+                      aria-label="Preview Digital Bullet Journal screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">UI / UX Mockup</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/sullet.html">Digital Bullet Journal</a></h3>
+              <p class="pf-card__desc">Planner interface translating the analogue bullet-journal system into a digital layout.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Productivity</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/sullet.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="e-commerce shoes ui / ux — figma footwear storefront design — product grid, detail page and checkout flow. 2025 figma e-commerce">
+            <div class="pf-card__media">
+              <img src="assets/img/chose/ind.png"
+                   alt="E-commerce Shoes — UI / UX — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/chose/ind.png"
+                      data-pf-caption="E-commerce Shoes"
+                      aria-label="Preview E-commerce Shoes screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">UI / UX — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/ecomm.html">E-commerce Shoes</a></h3>
+              <p class="pf-card__desc">Footwear storefront design — product grid, detail page and checkout flow.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">E-commerce</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/ecomm.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="gynecology clinic ui / ux — figma clinic site design covering practitioners, services and appointment booking. 2025 figma healthcare">
+            <div class="pf-card__media">
+              <img src="assets/img/genyc/gn1.png"
+                   alt="Gynecology Clinic — UI / UX — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/genyc/gn1.png"
+                      data-pf-caption="Gynecology Clinic"
+                      aria-label="Preview Gynecology Clinic screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">UI / UX — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/gen.html">Gynecology Clinic</a></h3>
+              <p class="pf-card__desc">Clinic site design covering practitioners, services and appointment booking.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Healthcare</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/gen.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="restaurant table booking ui / ux — figma table reservation interface with floor plan selection and sitting-time picker. 2025 figma booking">
+            <div class="pf-card__media">
+              <img src="assets/img/resrest/rr1.png"
+                   alt="Restaurant Table Booking — UI / UX — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/resrest/rr1.png"
+                      data-pf-caption="Restaurant Table Booking"
+                      aria-label="Preview Restaurant Table Booking screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">UI / UX — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/rest.html">Restaurant Table Booking</a></h3>
+              <p class="pf-card__desc">Table reservation interface with floor plan selection and sitting-time picker.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Booking</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/rest.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="train ticket booking ui / ux — figma rail booking flow from route search through seat selection to ticket issue. 2025 figma booking">
+            <div class="pf-card__media">
+              <img src="assets/img/traon/tr7.png"
+                   alt="Train Ticket Booking — UI / UX — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/traon/tr7.png"
+                      data-pf-caption="Train Ticket Booking"
+                      aria-label="Preview Train Ticket Booking screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge pf-card__badge--case">Case study</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">UI / UX — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="designdetail/train.html">Train Ticket Booking</a></h3>
+              <p class="pf-card__desc">Rail booking flow from route search through seat selection to ticket issue.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Booking</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="designdetail/train.html">Case study <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="odyssée travel web ui — figma travel agency website design — hero, trip planning narrative and destination cards. 2025 figma web">
+            <div class="pf-card__media">
+              <img src="assets/img/travelalic.png"
+                   alt="Odyssée Travel — Web UI — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/travelalic.png"
+                      data-pf-caption="Odyssée Travel"
+                      aria-label="Preview Odyssée Travel screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge ">Figma</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web UI — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://www.figma.com/design/j285OnHxISNRTHwrkVQT4A/site-alicia?node-id=0-1&amp;t=cO62Acn3pJyyLHWn-1" target="_blank" rel="noopener">Odyssée Travel</a></h3>
+              <p class="pf-card__desc">Travel agency website design — hero, trip planning narrative and destination cards.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Web</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://www.figma.com/design/j285OnHxISNRTHwrkVQT4A/site-alicia?node-id=0-1&amp;t=cO62Acn3pJyyLHWn-1" target="_blank" rel="noopener">Open in Figma <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="odyssée — agency dashboard dashboard ui — figma agency back office showing reservations by destination and booking status distribution. 2025 figma dashboard data viz">
+            <div class="pf-card__media">
+              <img src="assets/img/dash.png"
+                   alt="Odyssée — Agency Dashboard — Dashboard UI — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/dash.png"
+                      data-pf-caption="Odyssée — Agency Dashboard"
+                      aria-label="Preview Odyssée — Agency Dashboard screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge ">Figma</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Dashboard UI — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://www.figma.com/design/j285OnHxISNRTHwrkVQT4A/site-alicia?node-id=0-1&amp;t=cO62Acn3pJyyLHWn-1" target="_blank" rel="noopener">Odyssée — Agency Dashboard</a></h3>
+              <p class="pf-card__desc">Agency back office showing reservations by destination and booking status distribution.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Dashboard</li>
+                <li class="pf-chip">Data viz</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://www.figma.com/design/j285OnHxISNRTHwrkVQT4A/site-alicia?node-id=0-1&amp;t=cO62Acn3pJyyLHWn-1" target="_blank" rel="noopener">Open in Figma <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="olten erp dashboard ui — figma erp dashboard design — order volume, top products, shipment stats and country mapping. 2026 figma dashboard data viz">
+            <div class="pf-card__media">
+              <img src="assets/img/erpsoft.jpg"
+                   alt="Olten ERP — Dashboard UI — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/erpsoft.jpg"
+                      data-pf-caption="Olten ERP"
+                      aria-label="Preview Olten ERP screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge ">Figma</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Dashboard UI — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://www.figma.com/design/VT9JOA2dnDrOPoF3ON8Xh4/Sans-titre?node-id=0-1&amp;t=HkYxd1kBSGB6rHkD-1" target="_blank" rel="noopener">Olten ERP</a></h3>
+              <p class="pf-card__desc">ERP dashboard design — order volume, top products, shipment stats and country mapping.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Dashboard</li>
+                <li class="pf-chip">Data viz</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://www.figma.com/design/VT9JOA2dnDrOPoF3ON8Xh4/Sans-titre?node-id=0-1&amp;t=HkYxd1kBSGB6rHkD-1" target="_blank" rel="noopener">Open in Figma <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="pf-card" data-cat="uiux" data-search="olten marketplace web ui — figma marketplace landing design for rental, resale, carpooling and delivery in one interface. 2026 figma marketplace">
+            <div class="pf-card__media">
+              <img src="assets/img/locat.jpg"
+                   alt="Olten Marketplace — Web UI — Figma interface"
+                   loading="lazy" decoding="async">
+              <button class="pf-card__zoom" type="button"
+                      data-pf-zoom="assets/img/locat.jpg"
+                      data-pf-caption="Olten Marketplace"
+                      aria-label="Preview Olten Marketplace screenshot">
+                <i class="bi bi-arrows-angle-expand" aria-hidden="true"></i>
+              </button>
+              <span class="pf-card__badge ">Figma</span>
+            </div>
+            <div class="pf-card__body">
+              <p class="pf-eyebrow">Web UI — Figma</p>
+              <h3 class="pf-card__title"><a class="pf-card__link" href="https://www.figma.com/design/7EVHg2vq74UpBR7tn6KYvy/Sans-titre?t=HkYxd1kBSGB6rHkD-1" target="_blank" rel="noopener">Olten Marketplace</a></h3>
+              <p class="pf-card__desc">Marketplace landing design for rental, resale, carpooling and delivery in one interface.</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Marketplace</li>
+              </ul>
+            </div>
+            <div class="pf-card__foot">
+              <a class="pf-action pf-action--primary" href="https://www.figma.com/design/7EVHg2vq74UpBR7tn6KYvy/Sans-titre?t=HkYxd1kBSGB6rHkD-1" target="_blank" rel="noopener">Open in Figma <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+        </div>
+        <div class="pf-empty" data-pf-empty>
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <p>No project matches that filter yet. Try another category or clear the search.</p>
+        </div>
+        <div class="pf-more-wrap" data-pf-more-wrap>
+          <button class="pf-more" type="button" data-pf-more>
+            Show <span data-pf-more-count></span> more <i class="bi bi-arrow-down" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+<!-- PF:PROJECTS:END -->
+
+      <!-- Archive link -->
+      <div class="pf-more-wrap">
+        <a class="pf-more" href="projects.html">
+          View full archive
+          <span class="font-mono text-primary">(<span data-pf-count="all">0</span>)</span>
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+  <!-- ============================================================ -->
+  <!-- DOCUMENTATION -->
+  <!-- ============================================================ -->
+  <section id="docs" class="py-24 relative overflow-hidden bg-slate-50/50">
+    <div class="container mx-auto px-4 lg:px-12">
+
+      <!-- Documentation Header -->
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-end mb-10">
+
+        <!-- Intro -->
+        <div class="lg:col-span-7 fade-up">
+
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-4">
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span class="text-primary font-mono text-xs font-bold uppercase tracking-wider">Beyond Code</span>
+          </div>
+
+          <h2 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            Documentation &amp;
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-600">
+              Reports.
+            </span>
+          </h2>
+
+          <p class="text-slate-500 leading-relaxed text-sm lg:text-base max-w-xl mt-5">
+            Shipping software is only half the work. Every project is backed by written
+            evidence — specifications and delivery plans, architecture and API references,
+            test campaigns and the bugs they found.
+          </p>
+
+        </div>
+
+        <!-- Label -->
+        <div class="lg:col-span-5 fade-up">
+          <div class="flex flex-col items-start lg:items-end gap-4">
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                Explore documentation
+              </span>
+              <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+              <span class="text-[10px] font-mono font-bold text-primary">21 documents</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Generated by tools/build-cards.js — edit assets/data/docs.js instead -->
+      <!-- PF:DOCS:START -->
+        <div class="pf-filterbar" role="tablist" aria-label="Document category">
+          <button class="pf-filter" type="button" role="tab" data-pf-doctab="pm" aria-selected="true"><i class="bi bi-kanban" aria-hidden="true"></i> Project Management <span class="pf-filter__n">10</span></button>
+          <button class="pf-filter" type="button" role="tab" data-pf-doctab="tech" aria-selected="false"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> Technical <span class="pf-filter__n">5</span></button>
+          <button class="pf-filter" type="button" role="tab" data-pf-doctab="qa" aria-selected="false"><i class="bi bi-shield-check" aria-hidden="true"></i> Testing & QA <span class="pf-filter__n">6</span></button>
+        </div>
+
+        <div data-pf-docpanel="pm">
+          <div class="pf-doc-grid">
+            <article class="pf-doc-wrap" data-cat="pm" data-search="catering management master's thesis full dissertation: market study, feasibility analysis, functional specification and delivery plan for a catering management platform. 2025 mern stack feasibility thesis">
+              <a class="pf-doc" href="doc/gp/m%C3%A9moire.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Master's Thesis</span>
+                  <h3 class="pf-doc__title">Catering Management</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">MERN Stack</li>
+                    <li class="pf-chip">Feasibility</li>
+                    <li class="pf-chip">Thesis</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 8.0 MB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="details/erp.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="pm" data-search="industrial management platform enterprise application project plan for an industrial production platform — scope, work breakdown, gantt schedule and resource allocation. 2025 laravel gantt wbs">
+              <a class="pf-doc" href="doc/gp/erp.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Enterprise Application</span>
+                  <h3 class="pf-doc__title">Industrial Management Platform</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Laravel</li>
+                    <li class="pf-chip">Gantt</li>
+                    <li class="pf-chip">WBS</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 1.6 MB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="details/peoduction.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="pm" data-search="bullet journal app productivity tool agile delivery plan with sprint breakdown, raci matrix and acceptance criteria for a digital bullet journal. 2025 agile raci sprints">
+              <a class="pf-doc" href="doc/gp/bg.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Productivity Tool</span>
+                  <h3 class="pf-doc__title">Bullet Journal App</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Agile</li>
+                    <li class="pf-chip">RACI</li>
+                    <li class="pf-chip">Sprints</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 512 KB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="designdetail/sullet.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="pm" data-search="train ticket reservation booking system requirements and uml modelling for a rail reservation system — use cases, sequence diagrams and planning. 2025 uml planning booking">
+              <a class="pf-doc" href="doc/gp/traingestion-6.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Booking System</span>
+                  <h3 class="pf-doc__title">Train Ticket Reservation</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">UML</li>
+                    <li class="pf-chip">Planning</li>
+                    <li class="pf-chip">Booking</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 4.4 MB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="designdetail/train.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="pm" data-search="collaborative project management web platform scrum-based delivery documentation with backlog, sprint reviews and a risk register for a team collaboration platform. 2025 scrum risk register backlog">
+              <a class="pf-doc" href="doc/gp/gp.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Web Platform</span>
+                  <h3 class="pf-doc__title">Collaborative Project Management</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Scrum</li>
+                    <li class="pf-chip">Risk register</li>
+                    <li class="pf-chip">Backlog</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 487 KB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="pm" data-search="language coaching app edtech functional specification and agile plan for a language coaching application, covering lesson flow and coach matching. 2025 agile specification edtech">
+              <a class="pf-doc" href="doc/gp/coachlobgue.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">EdTech</span>
+                  <h3 class="pf-doc__title">Language Coaching App</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Agile</li>
+                    <li class="pf-chip">Specification</li>
+                    <li class="pf-chip">EdTech</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 682 KB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="pm" data-search="volunteer management platform social impact workflow design and delivery plan for matching volunteers to missions, including coordination and reporting flows. 2025 workflow collaboration">
+              <a class="pf-doc" href="doc/gp/b%C3%A9n%C3%A9volat.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Social Impact</span>
+                  <h3 class="pf-doc__title">Volunteer Management Platform</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Workflow</li>
+                    <li class="pf-chip">Collaboration</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 548 KB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="pm" data-search="book exchange platform community app peer-to-peer book swapping platform: user journeys, trust model and phased delivery plan. 2025 p2p planning community">
+              <a class="pf-doc" href="doc/gp/bookswap.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Community App</span>
+                  <h3 class="pf-doc__title">Book Exchange Platform</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">P2P</li>
+                    <li class="pf-chip">Planning</li>
+                    <li class="pf-chip">Community</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 466 KB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="pm" data-search="school canteen management institution platform saas canteen management for schools — meal planning, subscriptions, billing and a gantt-scheduled rollout. 2025 saas gantt billing">
+              <a class="pf-doc" href="doc/gp/cantine.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Institution Platform</span>
+                  <h3 class="pf-doc__title">School Canteen Management</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">SaaS</li>
+                    <li class="pf-chip">Gantt</li>
+                    <li class="pf-chip">Billing</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 3.8 MB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="pm" data-search="erp léger — woocommerce back office desktop app · winforms (.net 8) project documentation for a desktop back office syncing a woocommerce store with a local postgresql database. 2026 .net 8 postgresql woocommerce api">
+              <a class="pf-doc" href="doc/gp/gestion_projet_woocommerce_winforms.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--spec">
+                  <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Desktop App · WinForms (.NET 8)</span>
+                  <h3 class="pf-doc__title">ERP Léger — WooCommerce Back Office</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">.NET 8</li>
+                    <li class="pf-chip">PostgreSQL</li>
+                    <li class="pf-chip">WooCommerce API</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 1.3 MB &middot; 2026</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+          </div>
+          <div class="pf-empty" data-pf-empty>
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <p>No document matches that search.</p>
+          </div>
+        </div>
+
+        <div data-pf-docpanel="tech" hidden>
+          <div class="pf-doc-grid">
+            <article class="pf-doc-wrap" data-cat="tech" data-search="technical report — medical app web application architecture, data model and api surface of the medical practice management application. 2026 architecture api data model">
+              <a class="pf-doc" href="doc/gp/rapport_tech.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--tech">
+                  <i class="bi bi-file-earmark-code-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Web Application</span>
+                  <h3 class="pf-doc__title">Technical Report — Medical App</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Architecture</li>
+                    <li class="pf-chip">API</li>
+                    <li class="pf-chip">Data model</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 136 KB &middot; 2026</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="details/docteur.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="tech" data-search="technical report — medical api api documentation graphql schema and endpoint reference for the medical application, including query and mutation contracts. 2026 graphql endpoints schema">
+              <a class="pf-doc" href="doc/gp/graphe_api.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--tech">
+                  <i class="bi bi-file-earmark-code-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">API Documentation</span>
+                  <h3 class="pf-doc__title">Technical Report — Medical API</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">GraphQL</li>
+                    <li class="pf-chip">Endpoints</li>
+                    <li class="pf-chip">Schema</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 340 KB &middot; 2026</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="details/docteur.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="tech" data-search="technical report — uniplan intelligent exam planning system design of the exam-planning engine: scheduling constraints, data model and postgresql structure. 2026 flask postgresql scheduling">
+              <a class="pf-doc" href="doc/gp/uniplan.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--tech">
+                  <i class="bi bi-file-earmark-code-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Intelligent Exam Planning</span>
+                  <h3 class="pf-doc__title">Technical Report — UniPlan</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Flask</li>
+                    <li class="pf-chip">PostgreSQL</li>
+                    <li class="pf-chip">Scheduling</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 4.5 MB &middot; 2026</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="tech" data-search="noor — technical documentation mobile app · react native build and architecture documentation for the noor habits app, from expo configuration to release packaging. 2026 expo sdk 51 typescript react native">
+              <a class="pf-doc" href="doc/gp/noor_documentation_safiamassaid.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--tech">
+                  <i class="bi bi-file-earmark-code-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Mobile App · React Native</span>
+                  <h3 class="pf-doc__title">Noor — Technical Documentation</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Expo SDK 51</li>
+                    <li class="pf-chip">TypeScript</li>
+                    <li class="pf-chip">React Native</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 28 KB &middot; 2026</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="details/noor.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="tech" data-search="security audit report audit &amp; analysis security review covering authentication, access control, input handling and the remediation plan that followed. 2025 security audit remediation">
+              <a class="pf-doc" href="doc/gp/rapport_securit%C3%A9.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--sec">
+                  <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Audit &amp; Analysis</span>
+                  <h3 class="pf-doc__title">Security Audit Report</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Security</li>
+                    <li class="pf-chip">Audit</li>
+                    <li class="pf-chip">Remediation</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 120 KB &middot; 2025</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+          </div>
+          <div class="pf-empty" data-pf-empty>
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <p>No document matches that search.</p>
+          </div>
+        </div>
+
+        <div data-pf-docpanel="qa" hidden>
+          <div class="pf-doc-grid">
+            <article class="pf-doc-wrap" data-cat="qa" data-search="test report — astias travel functional testing test plan covering user journeys, booking validation, payment processing and cross-browser compatibility. 2024 postman testrail manual qa">
+              <a class="pf-doc" href="doc/test/rapport-de-bug.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--qa">
+                  <i class="bi bi-clipboard2-check-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Functional Testing</span>
+                  <h3 class="pf-doc__title">Test Report — Astias Travel</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Postman</li>
+                    <li class="pf-chip">TestRail</li>
+                    <li class="pf-chip">Manual QA</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 226 KB &middot; 2024</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="details/portfolio-details.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="qa" data-search="bug report — astias travel bug tracking defects with severity levels, reproduction steps, expected versus actual behaviour, screenshots and resolution status. 2024 critical major minor">
+              <a class="pf-doc" href="doc/test/rapport-de-bug-1.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--bug">
+                  <i class="bi bi-bug-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Bug Tracking</span>
+                  <h3 class="pf-doc__title">Bug Report — Astias Travel</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Critical</li>
+                    <li class="pf-chip">Major</li>
+                    <li class="pf-chip">Minor</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 348 KB &middot; 2024</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="details/portfolio-details.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="qa" data-search="bug report — healthmath medical web application defects found across patient records, appointments and clinical workflows during the v1.0 test campaign. 2026 bug tracking functional v1.0">
+              <a class="pf-doc" href="doc/test/rapport_bugs_healthmath.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--bug">
+                  <i class="bi bi-bug-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Medical Web Application</span>
+                  <h3 class="pf-doc__title">Bug Report — HealthMath</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Bug tracking</li>
+                    <li class="pf-chip">Functional</li>
+                    <li class="pf-chip">v1.0</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 210 KB &middot; 2026</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="details/docteur.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="qa" data-search="test &amp; acceptance report — healthmath medical web application functional testing and user acceptance for the practice management system, with stability checks and release readiness. 2026 test plan uat release">
+              <a class="pf-doc" href="doc/test/rapport_tests_healthmath%202.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--qa">
+                  <i class="bi bi-clipboard2-check-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Medical Web Application</span>
+                  <h3 class="pf-doc__title">Test &amp; Acceptance Report — HealthMath</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Test plan</li>
+                    <li class="pf-chip">UAT</li>
+                    <li class="pf-chip">Release</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 212 KB &middot; 2026</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+                <div class="pf-doc__foot">
+                  <a class="pf-doc__rel" href="details/docteur.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+                </div>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="qa" data-search="bug report — uniplan exam planning web application anomalies detected during the uniplan test phases, referenced by module and severity. 2026 bug report flask postgresql">
+              <a class="pf-doc" href="doc/test/rapport_bug_uniplan-1.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--bug">
+                  <i class="bi bi-bug-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Exam Planning Web Application</span>
+                  <h3 class="pf-doc__title">Bug Report — UniPlan</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Bug report</li>
+                    <li class="pf-chip">Flask</li>
+                    <li class="pf-chip">PostgreSQL</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 7 KB &middot; 2026</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="pf-doc-wrap" data-cat="qa" data-search="test report — uniplan intelligent exam planning functional, non-functional and integration validation of the exam-planning application. 2026 functional integration non-functional">
+              <a class="pf-doc" href="doc/test/rapport_test_uniplan.pdf" target="_blank" rel="noopener">
+                <span class="pf-doc__icon pf-doc__icon--qa">
+                  <i class="bi bi-clipboard2-check-fill" aria-hidden="true"></i>
+                </span>
+                <span class="pf-doc__body">
+                  <span class="pf-eyebrow pf-eyebrow--muted">Intelligent Exam Planning</span>
+                  <h3 class="pf-doc__title">Test Report — UniPlan</h3>
+                  <ul class="pf-chips">
+                    <li class="pf-chip">Functional</li>
+                    <li class="pf-chip">Integration</li>
+                    <li class="pf-chip">Non-functional</li>
+                  </ul>
+                  <span class="pf-doc__meta">PDF &middot; 15 KB &middot; 2026</span>
+                </span>
+                <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+              </a>
+            </article>
+            <div class="pf-qa-card">
+              <div>
+                <div class="pf-qa-card__head">
+                  <i class="bi bi-shield-check" aria-hidden="true"></i>
+                  <h3>My QA approach</h3>
+                </div>
+                <ul class="pf-qa-card__list">
+                  <li>Functional &amp; regression testing</li>
+                  <li>API testing with Postman collections</li>
+                  <li>Test case management in TestRail</li>
+                  <li>Bug severity classification &amp; tracking</li>
+                  <li>Cross-browser &amp; responsive validation</li>
+                </ul>
+              </div>
+              <div class="pf-qa-card__foot">
+                <span>Postman</span><span>TestRail</span><span>DevTools</span>
+              </div>
+            </div>
+          </div>
+          <div class="pf-empty" data-pf-empty>
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <p>No document matches that search.</p>
+          </div>
+        </div>
+<!-- PF:DOCS:END -->
+
+      <!-- Library link -->
+      <div class="pf-more-wrap">
+        <a class="pf-more" href="docs.html">
+          Open the documentation library
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PF:FOOTER:START -->
+  <footer class="pf-footer">
+    <div class="pf-footer__inner">
+      <div class="pf-footer__top">
+
+        <div class="pf-footer__brand">
+          <h3>Safia Massaid</h3>
+          <p>Full-stack developer and project delivery specialist. I build web, desktop and
+            mobile products end to end — from specification and architecture through to
+            testing, documentation and release.</p>
+          <div class="pf-footer__social">
+            <a href="https://github.com/safiamassaid" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://gitlab.com/safia1704832" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab" aria-hidden="true"></i></a>
+            <a href="mailto:massaidsafia2@gmail.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Work</h4>
+          <ul>
+            <li><a href="projects.html">All projects</a></li>
+            <li><a href="projects.html#design">UI / UX design</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="service/qovoltis.html">Qovoltis case study</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="service/service-details.html">Web development</a></li>
+            <li><a href="service/servicedes.html">UI / UX design</a></li>
+            <li><a href="service/servicegest.html">Project management</a></li>
+            <li><a href="index.html#contact">Start a project</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Profile</h4>
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pf-footer__bottom">
+        <p>&copy; 2026 Safia Massaid — All rights reserved.</p>
+        <span class="pf-footer__status">Available for new projects</span>
+      </div>
+    </div>
+  </footer>
+<!-- PF:FOOTER:END -->
+
+  <!-- PF:LIGHTBOX:START -->
+  <div class="pf-lightbox" id="pf-lightbox" role="dialog" aria-modal="true"
+       aria-label="Project screenshot" aria-hidden="true">
+    <div class="pf-lightbox__frame">
+      <button class="pf-lightbox__btn pf-lightbox__close" type="button"
+              data-pf-lightbox-close aria-label="Close preview">
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+      <img class="pf-lightbox__img" data-pf-lightbox-img src="" alt="">
+      <div class="pf-lightbox__bar">
+        <p class="pf-lightbox__caption" data-pf-lightbox-caption></p>
+        <div class="pf-lightbox__nav" data-pf-lightbox-nav>
+          <span class="pf-lightbox__count" data-pf-lightbox-count></span>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-prev aria-label="Previous project">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-next aria-label="Next project">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- PF:LIGHTBOX:END -->
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/data/projects.js"></script>
+  <script src="assets/js/portfolio.js"></script>
+
+</body>
+
+</html>

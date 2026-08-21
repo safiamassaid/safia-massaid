@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Documentation Library — Safia Massaid</title>
+
+  <meta name="description" content="Project management plans, technical reports and QA documentation supporting every delivered project — specifications, architecture, test plans and bug reports.">
+  <meta name="author" content="Safia Massaid">
+  <link rel="canonical" href="https://massaid-safia.netlify.app/docs.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Safia Massaid">
+  <meta property="og:url" content="https://massaid-safia.netlify.app/docs.html">
+  <meta property="og:title" content="Documentation Library — Safia Massaid">
+  <meta property="og:description" content="Project management plans, technical reports and QA documentation supporting every delivered project — specifications, architecture, test plans and bug reports.">
+  <meta property="og:image" content="https://massaid-safia.netlify.app/images/portfolio.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Documentation Library — Safia Massaid">
+  <meta name="twitter:description" content="Project management plans, technical reports and QA documentation supporting every delivered project — specifications, architecture, test plans and bug reports.">
+  <meta name="twitter:image" content="https://massaid-safia.netlify.app/images/portfolio.png">
+
+  <link rel="icon" type="image/png" href="./images/favicon.ico">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#8C4A6B', dark: '#1a1a1a' } } }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
+
+  <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/portfolio.css">
+</head>
+
+<body class="text-slate-900 overflow-x-hidden bg-white">
+
+  <!-- Header -->
+  <div class="fixed top-4 left-0 right-0 z-50">
+    <!-- Same container as every section, so the bar's edges land on the content column -->
+    <div class="container mx-auto px-6 lg:px-12">
+      <header id="main-header"
+        class="glass-header w-full py-2.5 pl-4 pr-2.5 sm:pl-5 sm:pr-3 rounded-2xl flex items-center justify-between gap-6 transition-all duration-300">
+
+        <!-- Brand — also the link home, so the nav doesn't repeat it -->
+        <a href="index.html#home" class="flex items-center gap-2.5 group shrink-0" aria-label="Safia Massaid — home">
+          <span class="relative flex items-center justify-center">
+            <span
+              class="absolute inset-0 bg-primary/20 hexa-logo group-hover:bg-primary transition-all duration-500 scale-125 group-hover:rotate-[30deg]"></span>
+            <span
+              class="relative w-8 h-8 bg-white hexa-logo flex items-center justify-center group-hover:scale-90 transition-transform duration-500">
+              <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </span>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="brand-name">Safia <span class="brand-name__last">Massaid</span></span>
+            <span class="brand-role">Full-Stack Engineer</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Main">
+          <a href="index.html#about" class="nav-link nav-item">About</a>
+          <a href="index.html#services" class="nav-link nav-item">Services</a>
+          <a href="index.html#experience" class="nav-link nav-item">Experience</a>
+          <a href="index.html#skills" class="nav-link nav-item">Skills</a>
+          <a href="projects.html" class="nav-link nav-item">Work</a>
+          <a href="docs.html" class="nav-link nav-item is-current" aria-current="page">Docs</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-1 shrink-0">
+          <a href="index.html#contact" class="header-cta hidden sm:inline-flex">Contact</a>
+
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+            class="menu-toggle lg:hidden p-2 rounded-lg focus:outline-none">
+            <span class="pf-sr">Menu</span>
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile menu — hidden in the markup too, so it can't flash before main.js runs -->
+      <div id="mobile-menu" hidden class="w-full mt-2 p-3 glass-header rounded-2xl lg:hidden shadow-2xl">
+        <nav class="flex flex-col" aria-label="Main (mobile)">
+          <a href="index.html#about" class="mobile-nav-link nav-item py-3 px-2">About</a>
+          <a href="index.html#services" class="mobile-nav-link nav-item py-3 px-2">Services</a>
+          <a href="index.html#experience" class="mobile-nav-link nav-item py-3 px-2">Experience</a>
+          <a href="index.html#skills" class="mobile-nav-link nav-item py-3 px-2">Skills</a>
+          <a href="projects.html" class="mobile-nav-link nav-item py-3 px-2">Work</a>
+          <a href="docs.html" class="mobile-nav-link nav-item is-current py-3 px-2">Docs</a>
+          <a href="index.html#contact" class="mobile-nav-link header-cta header-cta--block mt-2">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <section class="pf-page-head">
+      <div class="pf-page-head__inner">
+        <nav class="pf-crumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          <span aria-current="page">Documentation</span>
+        </nav>
+        <p class="pf-eyebrow">Beyond code</p>
+        <h1>Documentation &amp; reports.</h1>
+        <p>Shipping software is only half the work. Every project here is backed by written
+          evidence &mdash; specifications and delivery plans, architecture and API references,
+          test campaigns and the bugs they found.</p>
+        <ul class="pf-page-head__stats">
+          <li><b>21</b><span>Documents</span></li>
+          <li><b>10</b><span>Project management</span></li>
+          <li><b>5</b><span>Technical</span></li>
+          <li><b>6</b><span>Testing &amp; QA</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="py-14 bg-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+
+        <!-- Generated by tools/build-cards.js - edit assets/data/docs.js instead -->
+        <!-- PF:DOCSARCHIVE:START -->
+      <div class="pf-filterbar" role="tablist" aria-label="Document category">
+        <button class="pf-filter" type="button" role="tab" data-pf-doctab="pm" aria-selected="true"><i class="bi bi-kanban" aria-hidden="true"></i> Project Management <span class="pf-filter__n">10</span></button>
+        <button class="pf-filter" type="button" role="tab" data-pf-doctab="tech" aria-selected="false"><i class="bi bi-file-earmark-code" aria-hidden="true"></i> Technical <span class="pf-filter__n">5</span></button>
+        <button class="pf-filter" type="button" role="tab" data-pf-doctab="qa" aria-selected="false"><i class="bi bi-shield-check" aria-hidden="true"></i> Testing & QA <span class="pf-filter__n">6</span></button>
+        <div class="pf-search">
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <label class="pf-sr" for="pf-doc-search">Search documents</label>
+          <input id="pf-doc-search" type="search" data-pf-docsearch placeholder="Search documents, tech, year…">
+        </div>
+      </div>
+
+      <div data-pf-docpanel="pm">
+        <div class="pf-doc-grid">
+          <article class="pf-doc-wrap" data-cat="pm" data-search="catering management master's thesis full dissertation: market study, feasibility analysis, functional specification and delivery plan for a catering management platform. 2025 mern stack feasibility thesis">
+            <a class="pf-doc" href="doc/gp/m%C3%A9moire.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Master's Thesis</span>
+                <h3 class="pf-doc__title">Catering Management</h3>
+                <span class="pf-doc__desc">Full dissertation: market study, feasibility analysis, functional specification and delivery plan for a catering management platform.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">MERN Stack</li>
+                  <li class="pf-chip">Feasibility</li>
+                  <li class="pf-chip">Thesis</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 8.0 MB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="details/erp.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="pm" data-search="industrial management platform enterprise application project plan for an industrial production platform — scope, work breakdown, gantt schedule and resource allocation. 2025 laravel gantt wbs">
+            <a class="pf-doc" href="doc/gp/erp.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Enterprise Application</span>
+                <h3 class="pf-doc__title">Industrial Management Platform</h3>
+                <span class="pf-doc__desc">Project plan for an industrial production platform — scope, work breakdown, Gantt schedule and resource allocation.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Laravel</li>
+                  <li class="pf-chip">Gantt</li>
+                  <li class="pf-chip">WBS</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 1.6 MB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="details/peoduction.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="pm" data-search="bullet journal app productivity tool agile delivery plan with sprint breakdown, raci matrix and acceptance criteria for a digital bullet journal. 2025 agile raci sprints">
+            <a class="pf-doc" href="doc/gp/bg.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Productivity Tool</span>
+                <h3 class="pf-doc__title">Bullet Journal App</h3>
+                <span class="pf-doc__desc">Agile delivery plan with sprint breakdown, RACI matrix and acceptance criteria for a digital bullet journal.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Agile</li>
+                  <li class="pf-chip">RACI</li>
+                  <li class="pf-chip">Sprints</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 512 KB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="designdetail/sullet.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="pm" data-search="train ticket reservation booking system requirements and uml modelling for a rail reservation system — use cases, sequence diagrams and planning. 2025 uml planning booking">
+            <a class="pf-doc" href="doc/gp/traingestion-6.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Booking System</span>
+                <h3 class="pf-doc__title">Train Ticket Reservation</h3>
+                <span class="pf-doc__desc">Requirements and UML modelling for a rail reservation system — use cases, sequence diagrams and planning.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">UML</li>
+                  <li class="pf-chip">Planning</li>
+                  <li class="pf-chip">Booking</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 4.4 MB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="designdetail/train.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="pm" data-search="collaborative project management web platform scrum-based delivery documentation with backlog, sprint reviews and a risk register for a team collaboration platform. 2025 scrum risk register backlog">
+            <a class="pf-doc" href="doc/gp/gp.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Web Platform</span>
+                <h3 class="pf-doc__title">Collaborative Project Management</h3>
+                <span class="pf-doc__desc">Scrum-based delivery documentation with backlog, sprint reviews and a risk register for a team collaboration platform.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Scrum</li>
+                  <li class="pf-chip">Risk register</li>
+                  <li class="pf-chip">Backlog</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 487 KB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="pm" data-search="language coaching app edtech functional specification and agile plan for a language coaching application, covering lesson flow and coach matching. 2025 agile specification edtech">
+            <a class="pf-doc" href="doc/gp/coachlobgue.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">EdTech</span>
+                <h3 class="pf-doc__title">Language Coaching App</h3>
+                <span class="pf-doc__desc">Functional specification and agile plan for a language coaching application, covering lesson flow and coach matching.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Agile</li>
+                  <li class="pf-chip">Specification</li>
+                  <li class="pf-chip">EdTech</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 682 KB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="pm" data-search="volunteer management platform social impact workflow design and delivery plan for matching volunteers to missions, including coordination and reporting flows. 2025 workflow collaboration">
+            <a class="pf-doc" href="doc/gp/b%C3%A9n%C3%A9volat.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Social Impact</span>
+                <h3 class="pf-doc__title">Volunteer Management Platform</h3>
+                <span class="pf-doc__desc">Workflow design and delivery plan for matching volunteers to missions, including coordination and reporting flows.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Workflow</li>
+                  <li class="pf-chip">Collaboration</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 548 KB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="pm" data-search="book exchange platform community app peer-to-peer book swapping platform: user journeys, trust model and phased delivery plan. 2025 p2p planning community">
+            <a class="pf-doc" href="doc/gp/bookswap.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Community App</span>
+                <h3 class="pf-doc__title">Book Exchange Platform</h3>
+                <span class="pf-doc__desc">Peer-to-peer book swapping platform: user journeys, trust model and phased delivery plan.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">P2P</li>
+                  <li class="pf-chip">Planning</li>
+                  <li class="pf-chip">Community</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 466 KB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="pm" data-search="school canteen management institution platform saas canteen management for schools — meal planning, subscriptions, billing and a gantt-scheduled rollout. 2025 saas gantt billing">
+            <a class="pf-doc" href="doc/gp/cantine.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Institution Platform</span>
+                <h3 class="pf-doc__title">School Canteen Management</h3>
+                <span class="pf-doc__desc">SaaS canteen management for schools — meal planning, subscriptions, billing and a Gantt-scheduled rollout.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">SaaS</li>
+                  <li class="pf-chip">Gantt</li>
+                  <li class="pf-chip">Billing</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 3.8 MB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="pm" data-search="erp léger — woocommerce back office desktop app · winforms (.net 8) project documentation for a desktop back office syncing a woocommerce store with a local postgresql database. 2026 .net 8 postgresql woocommerce api">
+            <a class="pf-doc" href="doc/gp/gestion_projet_woocommerce_winforms.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--spec">
+                <i class="bi bi-file-earmark-text-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Desktop App · WinForms (.NET 8)</span>
+                <h3 class="pf-doc__title">ERP Léger — WooCommerce Back Office</h3>
+                <span class="pf-doc__desc">Project documentation for a desktop back office syncing a WooCommerce store with a local PostgreSQL database.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">.NET 8</li>
+                  <li class="pf-chip">PostgreSQL</li>
+                  <li class="pf-chip">WooCommerce API</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 1.3 MB &middot; 2026</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+        <div class="pf-empty" data-pf-empty>
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <p>No document matches that search.</p>
+        </div>
+      </div>
+
+      <div data-pf-docpanel="tech" hidden>
+        <div class="pf-doc-grid">
+          <article class="pf-doc-wrap" data-cat="tech" data-search="technical report — medical app web application architecture, data model and api surface of the medical practice management application. 2026 architecture api data model">
+            <a class="pf-doc" href="doc/gp/rapport_tech.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--tech">
+                <i class="bi bi-file-earmark-code-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Web Application</span>
+                <h3 class="pf-doc__title">Technical Report — Medical App</h3>
+                <span class="pf-doc__desc">Architecture, data model and API surface of the medical practice management application.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Architecture</li>
+                  <li class="pf-chip">API</li>
+                  <li class="pf-chip">Data model</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 136 KB &middot; 2026</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="details/docteur.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="tech" data-search="technical report — medical api api documentation graphql schema and endpoint reference for the medical application, including query and mutation contracts. 2026 graphql endpoints schema">
+            <a class="pf-doc" href="doc/gp/graphe_api.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--tech">
+                <i class="bi bi-file-earmark-code-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">API Documentation</span>
+                <h3 class="pf-doc__title">Technical Report — Medical API</h3>
+                <span class="pf-doc__desc">GraphQL schema and endpoint reference for the medical application, including query and mutation contracts.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">GraphQL</li>
+                  <li class="pf-chip">Endpoints</li>
+                  <li class="pf-chip">Schema</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 340 KB &middot; 2026</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="details/docteur.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="tech" data-search="technical report — uniplan intelligent exam planning system design of the exam-planning engine: scheduling constraints, data model and postgresql structure. 2026 flask postgresql scheduling">
+            <a class="pf-doc" href="doc/gp/uniplan.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--tech">
+                <i class="bi bi-file-earmark-code-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Intelligent Exam Planning</span>
+                <h3 class="pf-doc__title">Technical Report — UniPlan</h3>
+                <span class="pf-doc__desc">System design of the exam-planning engine: scheduling constraints, data model and PostgreSQL structure.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Flask</li>
+                  <li class="pf-chip">PostgreSQL</li>
+                  <li class="pf-chip">Scheduling</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 4.5 MB &middot; 2026</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="tech" data-search="noor — technical documentation mobile app · react native build and architecture documentation for the noor habits app, from expo configuration to release packaging. 2026 expo sdk 51 typescript react native">
+            <a class="pf-doc" href="doc/gp/noor_documentation_safiamassaid.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--tech">
+                <i class="bi bi-file-earmark-code-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Mobile App · React Native</span>
+                <h3 class="pf-doc__title">Noor — Technical Documentation</h3>
+                <span class="pf-doc__desc">Build and architecture documentation for the Noor habits app, from Expo configuration to release packaging.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Expo SDK 51</li>
+                  <li class="pf-chip">TypeScript</li>
+                  <li class="pf-chip">React Native</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 28 KB &middot; 2026</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="details/noor.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="tech" data-search="security audit report audit &amp; analysis security review covering authentication, access control, input handling and the remediation plan that followed. 2025 security audit remediation">
+            <a class="pf-doc" href="doc/gp/rapport_securit%C3%A9.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--sec">
+                <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Audit &amp; Analysis</span>
+                <h3 class="pf-doc__title">Security Audit Report</h3>
+                <span class="pf-doc__desc">Security review covering authentication, access control, input handling and the remediation plan that followed.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Security</li>
+                  <li class="pf-chip">Audit</li>
+                  <li class="pf-chip">Remediation</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 120 KB &middot; 2025</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+        </div>
+        <div class="pf-empty" data-pf-empty>
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <p>No document matches that search.</p>
+        </div>
+      </div>
+
+      <div data-pf-docpanel="qa" hidden>
+        <div class="pf-doc-grid">
+          <article class="pf-doc-wrap" data-cat="qa" data-search="test report — astias travel functional testing test plan covering user journeys, booking validation, payment processing and cross-browser compatibility. 2024 postman testrail manual qa">
+            <a class="pf-doc" href="doc/test/rapport-de-bug.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--qa">
+                <i class="bi bi-clipboard2-check-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Functional Testing</span>
+                <h3 class="pf-doc__title">Test Report — Astias Travel</h3>
+                <span class="pf-doc__desc">Test plan covering user journeys, booking validation, payment processing and cross-browser compatibility.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Postman</li>
+                  <li class="pf-chip">TestRail</li>
+                  <li class="pf-chip">Manual QA</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 226 KB &middot; 2024</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="details/portfolio-details.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="qa" data-search="bug report — astias travel bug tracking defects with severity levels, reproduction steps, expected versus actual behaviour, screenshots and resolution status. 2024 critical major minor">
+            <a class="pf-doc" href="doc/test/rapport-de-bug-1.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--bug">
+                <i class="bi bi-bug-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Bug Tracking</span>
+                <h3 class="pf-doc__title">Bug Report — Astias Travel</h3>
+                <span class="pf-doc__desc">Defects with severity levels, reproduction steps, expected versus actual behaviour, screenshots and resolution status.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Critical</li>
+                  <li class="pf-chip">Major</li>
+                  <li class="pf-chip">Minor</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 348 KB &middot; 2024</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="details/portfolio-details.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="qa" data-search="bug report — healthmath medical web application defects found across patient records, appointments and clinical workflows during the v1.0 test campaign. 2026 bug tracking functional v1.0">
+            <a class="pf-doc" href="doc/test/rapport_bugs_healthmath.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--bug">
+                <i class="bi bi-bug-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Medical Web Application</span>
+                <h3 class="pf-doc__title">Bug Report — HealthMath</h3>
+                <span class="pf-doc__desc">Defects found across patient records, appointments and clinical workflows during the v1.0 test campaign.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Bug tracking</li>
+                  <li class="pf-chip">Functional</li>
+                  <li class="pf-chip">v1.0</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 210 KB &middot; 2026</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="details/docteur.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="qa" data-search="test &amp; acceptance report — healthmath medical web application functional testing and user acceptance for the practice management system, with stability checks and release readiness. 2026 test plan uat release">
+            <a class="pf-doc" href="doc/test/rapport_tests_healthmath%202.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--qa">
+                <i class="bi bi-clipboard2-check-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Medical Web Application</span>
+                <h3 class="pf-doc__title">Test &amp; Acceptance Report — HealthMath</h3>
+                <span class="pf-doc__desc">Functional testing and user acceptance for the practice management system, with stability checks and release readiness.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Test plan</li>
+                  <li class="pf-chip">UAT</li>
+                  <li class="pf-chip">Release</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 212 KB &middot; 2026</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+              <div class="pf-doc__foot">
+                <a class="pf-doc__rel" href="details/docteur.html"><i class="bi bi-link-45deg" aria-hidden="true"></i> View the project</a>
+              </div>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="qa" data-search="bug report — uniplan exam planning web application anomalies detected during the uniplan test phases, referenced by module and severity. 2026 bug report flask postgresql">
+            <a class="pf-doc" href="doc/test/rapport_bug_uniplan-1.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--bug">
+                <i class="bi bi-bug-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Exam Planning Web Application</span>
+                <h3 class="pf-doc__title">Bug Report — UniPlan</h3>
+                <span class="pf-doc__desc">Anomalies detected during the UniPlan test phases, referenced by module and severity.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Bug report</li>
+                  <li class="pf-chip">Flask</li>
+                  <li class="pf-chip">PostgreSQL</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 7 KB &middot; 2026</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+
+          <article class="pf-doc-wrap" data-cat="qa" data-search="test report — uniplan intelligent exam planning functional, non-functional and integration validation of the exam-planning application. 2026 functional integration non-functional">
+            <a class="pf-doc" href="doc/test/rapport_test_uniplan.pdf" target="_blank" rel="noopener">
+              <span class="pf-doc__icon pf-doc__icon--qa">
+                <i class="bi bi-clipboard2-check-fill" aria-hidden="true"></i>
+              </span>
+              <span class="pf-doc__body">
+                <span class="pf-eyebrow pf-eyebrow--muted">Intelligent Exam Planning</span>
+                <h3 class="pf-doc__title">Test Report — UniPlan</h3>
+                <span class="pf-doc__desc">Functional, non-functional and integration validation of the exam-planning application.</span>
+                <ul class="pf-chips">
+                  <li class="pf-chip">Functional</li>
+                  <li class="pf-chip">Integration</li>
+                  <li class="pf-chip">Non-functional</li>
+                </ul>
+                <span class="pf-doc__meta">PDF &middot; 15 KB &middot; 2026</span>
+              </span>
+              <i class="bi bi-download pf-doc__dl" aria-hidden="true"></i>
+            </a>
+          </article>
+          <div class="pf-qa-card">
+            <div>
+              <div class="pf-qa-card__head">
+                <i class="bi bi-shield-check" aria-hidden="true"></i>
+                <h3>My QA approach</h3>
+              </div>
+              <ul class="pf-qa-card__list">
+                <li>Functional &amp; regression testing</li>
+                <li>API testing with Postman collections</li>
+                <li>Test case management in TestRail</li>
+                <li>Bug severity classification &amp; tracking</li>
+                <li>Cross-browser &amp; responsive validation</li>
+              </ul>
+            </div>
+            <div class="pf-qa-card__foot">
+              <span>Postman</span><span>TestRail</span><span>DevTools</span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-empty" data-pf-empty>
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <p>No document matches that search.</p>
+        </div>
+      </div>
+<!-- PF:DOCSARCHIVE:END -->
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PF:FOOTER:START -->
+  <footer class="pf-footer">
+    <div class="pf-footer__inner">
+      <div class="pf-footer__top">
+
+        <div class="pf-footer__brand">
+          <h3>Safia Massaid</h3>
+          <p>Full-stack developer and project delivery specialist. I build web, desktop and
+            mobile products end to end — from specification and architecture through to
+            testing, documentation and release.</p>
+          <div class="pf-footer__social">
+            <a href="https://github.com/safiamassaid" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://gitlab.com/safia1704832" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab" aria-hidden="true"></i></a>
+            <a href="mailto:massaidsafia2@gmail.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Work</h4>
+          <ul>
+            <li><a href="projects.html">All projects</a></li>
+            <li><a href="projects.html#design">UI / UX design</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="service/qovoltis.html">Qovoltis case study</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="service/service-details.html">Web development</a></li>
+            <li><a href="service/servicedes.html">UI / UX design</a></li>
+            <li><a href="service/servicegest.html">Project management</a></li>
+            <li><a href="index.html#contact">Start a project</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Profile</h4>
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pf-footer__bottom">
+        <p>&copy; 2026 Safia Massaid — All rights reserved.</p>
+        <span class="pf-footer__status">Available for new projects</span>
+      </div>
+    </div>
+  </footer>
+<!-- PF:FOOTER:END -->
+
+  <!-- PF:LIGHTBOX:START -->
+  <div class="pf-lightbox" id="pf-lightbox" role="dialog" aria-modal="true"
+       aria-label="Project screenshot" aria-hidden="true">
+    <div class="pf-lightbox__frame">
+      <button class="pf-lightbox__btn pf-lightbox__close" type="button"
+              data-pf-lightbox-close aria-label="Close preview">
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+      <img class="pf-lightbox__img" data-pf-lightbox-img src="" alt="">
+      <div class="pf-lightbox__bar">
+        <p class="pf-lightbox__caption" data-pf-lightbox-caption></p>
+        <div class="pf-lightbox__nav" data-pf-lightbox-nav>
+          <span class="pf-lightbox__count" data-pf-lightbox-count></span>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-prev aria-label="Previous project">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-next aria-label="Next project">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- PF:LIGHTBOX:END -->
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/data/projects.js"></script>
+  <script src="assets/js/portfolio.js"></script>
+
+</body>
+
+</html>

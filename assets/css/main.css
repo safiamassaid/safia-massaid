@@ -1,0 +1,535 @@
+/* ============================================================
+   MAIN STYLES
+   Site chrome and the hero / about / services / experience /
+   skills sections.
+
+   Project, document, lightbox and footer components live in
+   assets/css/portfolio.css.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+}
+
+.code-font {
+  font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.glass-header {
+  background: rgba(252, 250, 251, 0.72);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  /* A white border is invisible on a white page — use the palette's line. */
+  border: 1px solid var(--pf-line-soft);
+  box-shadow: 0 2px 8px -4px rgba(28, 20, 24, .08);
+}
+
+/* Firms up once the page scrolls under it */
+#main-header.is-scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(234, 228, 231, 0.9);
+  box-shadow: 0 10px 30px -12px rgba(28, 20, 24, 0.16);
+}
+
+#mobile-menu[hidden] {
+  display: none;
+}
+
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* One class for every nav entry, so desktop and mobile can't drift apart */
+.nav-item {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6B5C63;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.nav-item:hover {
+  color: #8C4A6B;
+}
+
+.nav-item.is-current {
+  color: #8C4A6B;
+}
+
+.nav-item.is-current::after {
+  width: 100%;
+}
+
+.nav-link:focus-visible,
+.nav-item:focus-visible {
+  outline: 2px solid #8C4A6B;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #8C4A6B;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hexagon logo mark */
+.hexa-logo {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+/* --- Brand lockup ------------------------------------------- */
+
+.brand-name {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--pf-ink);
+}
+
+.brand-name__last {
+  font-weight: 300;
+  color: var(--pf-muted);
+}
+
+.brand-role {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--pf-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--pf-accent);
+}
+
+/* --- Header call to action ----------------------------------- */
+
+.header-cta {
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--pf-accent);
+  color: #fff;
+  font-family: var(--pf-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .25s ease, transform .12s ease;
+}
+
+.header-cta:hover {
+  background: var(--pf-accent-deep);
+  color: #fff;
+}
+
+.header-cta:active {
+  transform: scale(.97);
+}
+
+/* Full-width variant used by the mobile menu */
+.header-cta--block {
+  display: flex;
+  justify-content: center;
+  padding: 14px 16px;
+}
+
+.header-cta:focus-visible,
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 3px;
+}
+
+.menu-toggle {
+  color: var(--pf-muted);
+  transition: color .25s ease;
+}
+
+.menu-toggle:hover {
+  color: var(--pf-accent);
+}
+
+/* "Available" indicator next to the logo */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+.status-dot {
+  animation: blink 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   HERO
+   Layout stays in Tailwind utilities on the markup; colour and
+   type come from the portfolio.css tokens so the hero reads as
+   the same palette as the cards further down the page.
+   ============================================================ */
+
+/* --- Availability pill --------------------------------------- */
+
+.hero-badge {
+  border: 1px solid var(--pf-line);
+  background: rgba(255, 255, 255, .9);
+  box-shadow: var(--pf-shadow);
+}
+
+.hero-badge__dot {
+  background: var(--pf-live);
+}
+
+.hero-badge__label {
+  color: var(--pf-ink);
+}
+
+.hero-badge__meta {
+  color: var(--pf-accent);
+}
+
+.hero-badge__sep {
+  background: var(--pf-line);
+}
+
+/* --- Headline ------------------------------------------------- */
+
+.hero-title {
+  color: var(--pf-ink);
+  text-wrap: balance;
+}
+
+/* Plum to deep plum — the page has one accent, and this is it */
+.hero-title__accent {
+  background: linear-gradient(100deg, var(--pf-accent) 10%, var(--pf-accent-deep) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-lede {
+  color: var(--pf-muted);
+}
+
+.hero-lede strong {
+  font-weight: 600;
+  color: var(--pf-ink);
+}
+
+/* --- Calls to action ------------------------------------------ */
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 22px;
+  border: 1px solid transparent;
+  border-radius: var(--pf-r-md);
+  background: var(--pf-accent);
+  color: #fff;
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .25s var(--pf-ease), border-color .25s ease, color .25s ease, transform .12s ease;
+}
+
+.hero-cta:hover {
+  background: var(--pf-accent-deep);
+  color: #fff;
+}
+
+.hero-cta:active {
+  transform: translateY(1px);
+}
+
+.hero-cta:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 3px;
+}
+
+.hero-cta i {
+  font-size: 13px;
+  transition: transform .3s var(--pf-ease);
+}
+
+.hero-cta:hover i {
+  transform: translateX(3px);
+}
+
+.hero-cta--ghost {
+  background: var(--pf-surface);
+  border-color: var(--pf-line);
+  color: var(--pf-ink);
+}
+
+.hero-cta--ghost:hover {
+  background: var(--pf-surface);
+  border-color: var(--pf-accent);
+  color: var(--pf-accent);
+}
+
+/* Tertiary — a link that keeps the button rhythm without the weight */
+.hero-cta--quiet {
+  padding-left: 12px;
+  padding-right: 12px;
+  background: transparent;
+  color: var(--pf-muted);
+  letter-spacing: .08em;
+}
+
+.hero-cta--quiet:hover {
+  background: transparent;
+  color: var(--pf-accent);
+}
+
+.hero-cta--quiet:hover i {
+  transform: none;
+}
+
+/* --- Fact strip ------------------------------------------------
+   The 1px gaps are the parent's background showing through. */
+
+.hero-stats {
+  background: var(--pf-line);
+  border: 1px solid var(--pf-line);
+}
+
+.hero-stat {
+  background: var(--pf-surface);
+  padding: 20px 24px;
+}
+
+/* Two columns on a phone — the labels need the width back */
+@media (max-width: 640px) {
+  .hero-stat {
+    padding: 16px 14px;
+  }
+}
+
+.hero-stat__num {
+  margin: 0;
+  font-family: var(--pf-mono);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--pf-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-stat__num--accent {
+  color: var(--pf-accent);
+}
+
+.hero-stat__plus {
+  font-size: 18px;
+  color: var(--pf-accent);
+}
+
+.hero-stat__label {
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--pf-muted);
+}
+
+/* ============================================================
+   BACKGROUNDS
+   ============================================================ */
+
+/* Faded at the edges so the grid doesn't stop on a hard line */
+.hero-pattern {
+  background-image: radial-gradient(var(--pf-accent-line) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: .55;
+  -webkit-mask-image: radial-gradient(115% 85% at 50% 0%, #000 25%, transparent 76%);
+  mask-image: radial-gradient(115% 85% at 50% 0%, #000 25%, transparent 76%);
+}
+
+/* Fills the open right-hand side of the hero */
+.hero-glow {
+  background: radial-gradient(52% 46% at 76% 34%, rgba(140, 74, 107, .11), transparent 70%);
+}
+
+.grid-bg {
+  background-image: radial-gradient(rgba(140, 74, 107, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+
+/* Animated proficiency bar */
+.jauge-fill {
+  transition: width 1.5s cubic-bezier(0.17, 0.55, 0.55, 1);
+}
+
+.skill,
+.skill-primary {
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  color: #8C4A6B;
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+.skill {
+  font-weight: 500;
+}
+
+.skill-primary {
+  font-weight: 700;
+}
+
+.skill:hover,
+.skill-primary:hover {
+  border-color: #8C4A6B;
+  background: rgba(140, 74, 107, 0.05);
+}
+
+/* Language proficiency rows */
+.lang-item {
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.lang-item span:first-child {
+  font-size: 14px;
+  font-weight: 700;
+  color: #8C4A6B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lang-item span:last-child {
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #8C4A6B;
+  font-family: ui-monospace, monospace;
+}
+
+/* ============================================================
+   EXPERIENCE TIMELINE
+   ============================================================ */
+
+.resume-item {
+  position: relative;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  border-left: 1px solid #e2e8f0;
+}
+
+.resume-item::before {
+  content: "";
+  position: absolute;
+  left: -4.5px;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8C4A6B;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 3px rgba(140, 74, 107, 0.1);
+}
+
+.resume-item h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.resume-item h5 {
+  font-size: 0.85rem;
+  background: rgba(140, 74, 107, 0.1);
+  padding: 4px 12px;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #8C4A6B;
+  font-weight: 700;
+}
+
+/* Checkbox-driven accordion — no JS needed */
+.exp-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.exp-checkbox:checked ~ .exp-details {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.exp-checkbox:checked ~ label .chevron {
+  transform: rotate(180deg);
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+}
+
+/* ============================================================
+   MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .status-dot,
+  .jauge-fill,
+  .chevron,
+  .nav-link,
+  .nav-link::after,
+  .hero-cta,
+  .hero-cta i,
+  .header-cta,
+  .exp-details {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

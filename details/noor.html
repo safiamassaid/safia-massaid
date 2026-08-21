@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safia Massaid – Noor App</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8C4A6B',
+                        dark: '#1a1a1a',
+                        noor: '#1A6B4A',
+                        noorGold: '#B8852A',
+                    },
+                    animation: {
+                        'fade-in-down': 'fadeInDown .8s ease-out'
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: 0, transform: 'translateY(-15px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .swiper-pagination-progressbar {
+            background: rgba(255, 255, 255, .2) !important;
+            height: 4px !important;
+        }
+
+        .swiper-pagination-progressbar-fill {
+            background: #1A6B4A !important;
+        }
+
+        .swiper-slide img {
+            height: 500px;
+            width: 100%;
+            object-fit: contain;
+            background: #FAFAF8;
+        }
+
+        #mobile-menu {
+            background-color: white;
+        }
+
+        .feature-pill {
+            background: linear-gradient(135deg, #f0faf5, #e6f7ef);
+            border: 1px solid #b6e2cc;
+        }
+
+        .noor-badge {
+            background: linear-gradient(135deg, #1A6B4A, #0d4a31);
+        }
+    </style>
+
+  <!-- Shared chrome -->
+  <link rel="icon" type="image/png" href="../images/favicon.ico">
+  <link rel="canonical" href="https://massaid-safia.netlify.app/details/noor.html">
+  <meta name="description" content="Islamic habits companion — prayer times, dhikr counter, habit streaks and daily reminders.">
+  <meta name="author" content="Safia Massaid">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Safia Massaid">
+  <meta property="og:url" content="https://massaid-safia.netlify.app/details/noor.html">
+  <meta property="og:title" content="Noor — Safia Massaid">
+  <meta property="og:description" content="Islamic habits companion — prayer times, dhikr counter, habit streaks and daily reminders.">
+  <meta property="og:image" content="https://massaid-safia.netlify.app/assets/img/noor/n1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Noor — Safia Massaid">
+  <meta name="twitter:description" content="Islamic habits companion — prayer times, dhikr counter, habit streaks and daily reminders.">
+  <meta name="twitter:image" content="https://massaid-safia.netlify.app/assets/img/noor/n1.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/portfolio.css">
+</head>
+
+<body class="bg-white text-slate-900 overflow-x-hidden">
+
+    <!-- ===== HEADER ===== -->
+  <!-- Header -->
+  <div class="fixed top-4 left-0 right-0 z-50">
+    <!-- Same container as every section, so the bar's edges land on the content column -->
+    <div class="container mx-auto px-6 lg:px-12">
+      <header id="main-header"
+        class="glass-header w-full py-2.5 pl-4 pr-2.5 sm:pl-5 sm:pr-3 rounded-2xl flex items-center justify-between gap-6 transition-all duration-300">
+
+        <!-- Brand — also the link home, so the nav doesn't repeat it -->
+        <a href="../index.html#home" class="flex items-center gap-2.5 group shrink-0" aria-label="Safia Massaid — home">
+          <span class="relative flex items-center justify-center">
+            <span
+              class="absolute inset-0 bg-primary/20 hexa-logo group-hover:bg-primary transition-all duration-500 scale-125 group-hover:rotate-[30deg]"></span>
+            <span
+              class="relative w-8 h-8 bg-white hexa-logo flex items-center justify-center group-hover:scale-90 transition-transform duration-500">
+              <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </span>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="brand-name">Safia <span class="brand-name__last">Massaid</span></span>
+            <span class="brand-role">Full-Stack Engineer</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Main">
+          <a href="../index.html#about" class="nav-link nav-item">About</a>
+          <a href="../index.html#services" class="nav-link nav-item">Services</a>
+          <a href="../index.html#experience" class="nav-link nav-item">Experience</a>
+          <a href="../index.html#skills" class="nav-link nav-item">Skills</a>
+          <a href="../projects.html" class="nav-link nav-item is-current" aria-current="page">Work</a>
+          <a href="../docs.html" class="nav-link nav-item">Docs</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-1 shrink-0">
+          <a href="../index.html#contact" class="header-cta hidden sm:inline-flex">Contact</a>
+
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+            class="menu-toggle lg:hidden p-2 rounded-lg focus:outline-none">
+            <span class="pf-sr">Menu</span>
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile menu — hidden in the markup too, so it can't flash before main.js runs -->
+      <div id="mobile-menu" hidden class="w-full mt-2 p-3 glass-header rounded-2xl lg:hidden shadow-2xl">
+        <nav class="flex flex-col" aria-label="Main (mobile)">
+          <a href="../index.html#about" class="mobile-nav-link nav-item py-3 px-2">About</a>
+          <a href="../index.html#services" class="mobile-nav-link nav-item py-3 px-2">Services</a>
+          <a href="../index.html#experience" class="mobile-nav-link nav-item py-3 px-2">Experience</a>
+          <a href="../index.html#skills" class="mobile-nav-link nav-item py-3 px-2">Skills</a>
+          <a href="../projects.html" class="mobile-nav-link nav-item is-current py-3 px-2">Work</a>
+          <a href="../docs.html" class="mobile-nav-link nav-item py-3 px-2">Docs</a>
+          <a href="../index.html#contact" class="mobile-nav-link header-cta header-cta--block mt-2">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+    <!-- ===== MAIN ===== -->
+    <main class="pt-32 pb-20 bg-slate-50/50">
+        <section class="px-4">
+            <div class="max-w-7xl mx-auto">
+              <nav class="pf-crumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                <a href="../projects.html">Projects</a>
+                <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">Noor</span>
+              </nav>
+
+                <!-- Breadcrumb -->
+                <div class="flex items-center gap-3 mb-8 animate-fade-in-down">
+                    <span
+                        class="px-4 py-1.5 bg-[#1A6B4A]/10 text-[#1A6B4A] text-[10px] font-bold uppercase tracking-widest rounded-full border border-[#1A6B4A]/20">
+                        Case Study
+                    </span>
+                    <div class="h-px w-12 bg-slate-200"></div>
+                    <span class="text-slate-400 text-[10px] font-mono uppercase tracking-widest">
+                        Mobile App · React Native
+                    </span>
+                </div>
+
+                <!-- Hero grid: Slider + Info -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:h-[520px] mb-12">
+
+                    <!-- SLIDER -->
+                    <div class="lg:col-span-8 h-[420px] lg:h-full">
+                        <div class="relative overflow-hidden rounded-[2.5rem] bg-[#FAFAF8] shadow-2xl h-full border border-slate-100">
+                            <div class="swiper mySwiper h-full group">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n1.png" alt="Noor - Home"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n2.png" alt="Noor - Habits"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n3.png" alt="Noor - Prayer Times"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n4.png" alt="Noor - Statistics"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n5.png" alt="Noor - Calendar"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n6.png" alt="Noor - Explore"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n7.png" alt="Noor - Qibla"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n8.png" alt="Noor - Du'as"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n9.png" alt="Noor - Settings"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n10.png" alt="Noor - Dark Mode"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n11.png" alt="Noor - Onboarding"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/noor/n12.png" alt="Noor - Mobile View"></div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                                <div
+                                    class="absolute inset-0 flex items-center justify-between px-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                    <div
+                                        class="swiper-button-prev-custom pointer-events-auto w-10 h-10 rounded-full bg-white/80 backdrop-blur-md text-slate-800 flex items-center justify-center hover:bg-[#1A6B4A] hover:text-white shadow-lg border border-white/60 transition-all">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </div>
+                                    <div
+                                        class="swiper-button-next-custom pointer-events-auto w-10 h-10 rounded-full bg-white/80 backdrop-blur-md text-slate-800 flex items-center justify-center hover:bg-[#1A6B4A] hover:text-white shadow-lg border border-white/60 transition-all">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INFO SIDEBAR -->
+                    <div class="lg:col-span-4 flex flex-col gap-4">
+                        <div class="bg-white/90 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-xl flex-grow border border-slate-100">
+
+                            <!-- Noor title badge -->
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="noor-badge w-10 h-10 rounded-xl flex items-center justify-center shrink-0">
+                                    <i class="bi bi-moon-stars-fill text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-xl font-black text-slate-900">Noor</h2>
+                                    <p class="text-[10px] text-[#1A6B4A] font-bold uppercase tracking-widest">نور — Light</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5">
+                                <div class="flex gap-4">
+                                    <i class="bi bi-phone text-[#1A6B4A] text-xl shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="text-[9px] uppercase text-slate-400 font-bold mb-0.5">Category</p>
+                                        <p class="font-bold text-sm text-slate-800">Islamic Mobile Application</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <i class="bi bi-code-slash text-[#1A6B4A] text-xl shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="text-[9px] uppercase text-slate-400 font-bold mb-0.5">Stack</p>
+                                        <p class="font-bold text-sm text-slate-800">React Native · Expo SDK 51 · TypeScript</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <i class="bi bi-layers text-[#1A6B4A] text-xl shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="text-[9px] uppercase text-slate-400 font-bold mb-0.5">Platforms</p>
+                                        <p class="font-bold text-sm text-slate-800">iOS · Android · Web</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <i class="bi bi-calendar3 text-[#1A6B4A] text-xl shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="text-[9px] uppercase text-slate-400 font-bold mb-0.5">Date</p>
+                                        <p class="font-bold text-sm text-slate-800">June 2026 · v3.4.0</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <i class="bi bi-shield-lock text-[#1A6B4A] text-xl shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="text-[9px] uppercase text-slate-400 font-bold mb-0.5">Privacy</p>
+                                        <p class="font-bold text-sm text-slate-800">100% Local · No data sent</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA doc -->
+                        <a href="../doc/gp/noor_documentation_safiamassaid.pdf" target="_blank"
+                            class="p-5 bg-[#1A6B4A] rounded-[1.5rem] text-white flex items-center justify-between shadow-xl hover:bg-[#155a3d] transition-colors group">
+                            <div>
+                                <p class="text-[9px] font-bold uppercase tracking-widest text-white/60 mb-1">Full Documentation</p>
+                                <span class="text-sm font-bold">View Technical Report</span>
+                            </div>
+                            <i class="bi bi-file-earmark-pdf-fill text-2xl text-white/80 group-hover:text-white transition-colors"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- ===== DESCRIPTION ===== -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
+
+                    <!-- About the project -->
+                    <div class="lg:col-span-7 bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100">
+                        <h3 class="text-xl font-black text-slate-900 mb-2">About the Project</h3>
+                        <div class="w-10 h-1 bg-[#1A6B4A] rounded-full mb-6"></div>
+                        <p class="text-slate-500 leading-relaxed mb-4">
+                            <strong class="text-slate-800">Noor</strong> (نور — "light" in Arabic) is my first mobile application built with React Native. Designed to support Muslim practitioners in their daily life, it brings together spiritual habit tracking, GPS-calculated prayer times, a Qibla compass, and an authentic du'as library.
+                        </p>
+                        <p class="text-slate-500 leading-relaxed">
+                            The interface adopts a <em>premium white</em> aesthetic: ivory tones, golden accents, soft shadows. The dark mode draws inspiration from nighttime mosques with a deep night green. The app is entirely local — no account, no network connection required.
+                        </p>
+                    </div>
+
+                    <!-- Key numbers -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                        <div class="bg-white rounded-[1.5rem] p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
+                            <i class="bi bi-file-code text-[#1A6B4A] text-2xl mb-4"></i>
+                            <div>
+                                <p class="text-3xl font-black text-slate-900">4 300<span class="text-[#1A6B4A] text-xl">+</span></p>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">TypeScript Lines</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-[1.5rem] p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
+                            <i class="bi bi-collection text-[#B8852A] text-2xl mb-4"></i>
+                            <div>
+                                <p class="text-3xl font-black text-slate-900">14<span class="text-[#B8852A] text-xl">+</span></p>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Authentic Du'as</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-[1.5rem] p-6 shadow-sm border border-slate-100 flex flex-col justify-between">
+                            <i class="bi bi-layers text-primary text-2xl mb-4"></i>
+                            <div>
+                                <p class="text-3xl font-black text-slate-900">4</p>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Main Screens</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#1A6B4A] rounded-[1.5rem] p-6 shadow-xl flex flex-col justify-between">
+                            <i class="bi bi-phone-fill text-white/70 text-2xl mb-4"></i>
+                            <div>
+                                <p class="text-3xl font-black text-white">3</p>
+                                <p class="text-[10px] font-bold text-white/60 uppercase tracking-widest mt-1">Supported Platforms</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ===== FEATURES ===== -->
+                <div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 mb-12">
+                    <h3 class="text-xl font-black text-slate-900 mb-2">Key Features</h3>
+                    <div class="w-10 h-1 bg-[#1A6B4A] rounded-full mb-8"></div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                        <div class="feature-pill rounded-2xl p-5 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-[#1A6B4A] flex items-center justify-center shrink-0">
+                                <i class="bi bi-check2-all text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-slate-800 mb-1">Habit Tracking</p>
+                                <p class="text-[11px] text-slate-500">Check off daily spiritual acts with a confetti animation when the goal is reached.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-pill rounded-2xl p-5 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-[#1A6B4A] flex items-center justify-center shrink-0">
+                                <i class="bi bi-clock text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-slate-800 mb-1">Prayer Times</p>
+                                <p class="text-[11px] text-slate-500">Astronomical GPS calculation (UOIF, MWL, ISNA). Real-time countdown.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-pill rounded-2xl p-5 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-[#B8852A] flex items-center justify-center shrink-0">
+                                <i class="bi bi-bar-chart-line text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-slate-800 mb-1">Statistiques & Streaks</p>
+                                <p class="text-[11px] text-slate-500">Calendar heatmap, consecutive days, per-habit progress over 30 days.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-pill rounded-2xl p-5 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-[#1A6B4A] flex items-center justify-center shrink-0">
+                                <i class="bi bi-compass text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-slate-800 mb-1">Qibla Compass</p>
+                                <p class="text-[11px] text-slate-500">Interactive SVG ring with an "Aligned ✓" badge within ±6° of Mecca.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-pill rounded-2xl p-5 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-[#B8852A] flex items-center justify-center shrink-0">
+                                <i class="bi bi-book text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-slate-800 mb-1">Fortress of the Muslim</p>
+                                <p class="text-[11px] text-slate-500">14 authentic du'as (Bukhari, Muslim…) with Arabic text and English translation.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-pill rounded-2xl p-5 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-[#1A6B4A] flex items-center justify-center shrink-0">
+                                <i class="bi bi-moon-stars text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-slate-800 mb-1">Auto Dark Mode</p>
+                                <p class="text-[11px] text-slate-500">Automatically switches at Maghrib time. Night green theme inspired by mosques.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ===== TECH STACK ===== -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+
+                    <div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100">
+                        <h3 class="text-xl font-black text-slate-900 mb-2">Tech Stack</h3>
+                        <div class="w-10 h-1 bg-[#1A6B4A] rounded-full mb-6"></div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-[#1A6B4A] text-white rounded-lg text-[10px] font-black">React Native 0.74</span>
+                            <span class="px-3 py-1.5 bg-[#1A6B4A] text-white rounded-lg text-[10px] font-black">Expo SDK 51</span>
+                            <span class="px-3 py-1.5 bg-slate-900 text-white rounded-lg text-[10px] font-black">TypeScript 5.3</span>
+                            <span class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-[10px] font-bold">React Navigation 6</span>
+                            <span class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-[10px] font-bold">AsyncStorage</span>
+                            <span class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-[10px] font-bold">react-native-svg</span>
+                            <span class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-[10px] font-bold">expo-notifications</span>
+                            <span class="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-[10px] font-bold">expo-location</span>
+                            <span class="px-3 py-1.5 bg-[#B8852A] text-white rounded-lg text-[10px] font-black">PrayTimes Algorithm</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-[2rem] p-8 text-white">
+                        <h3 class="text-xl font-black mb-2">Architecture</h3>
+                        <div class="w-10 h-1 bg-[#1A6B4A] rounded-full mb-6"></div>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 rounded-full bg-[#1A6B4A] shrink-0"></span>
+                                <span class="text-slate-300">100% local — no external server</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 rounded-full bg-[#1A6B4A] shrink-0"></span>
+                                <span class="text-slate-300">React ThemeContext for global dark/light mode</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 rounded-full bg-[#1A6B4A] shrink-0"></span>
+                                <span class="text-slate-300">AsyncStorage — encrypted key/value persistence</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 rounded-full bg-[#B8852A] shrink-0"></span>
+                                <span class="text-slate-300">Integrated astronomical algorithm (Julian Day)</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-sm">
+                                <span class="w-2 h-2 rounded-full bg-[#B8852A] shrink-0"></span>
+                                <span class="text-slate-300">Metro stubs for full web compatibility</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ===== BACK LINK ===== -->
+                <div class="flex items-center justify-between">
+                    <a href="../index.html#projects"
+                        class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-[#1A6B4A] transition-colors">
+                        <i class="bi bi-arrow-left"></i> Back to Projects
+                    </a>
+                    <a href="../doc/gp/noor_documentation_safiamassaid.pdf" target="_blank"
+                        class="flex items-center gap-2 px-6 py-3 bg-[#1A6B4A] text-white rounded-xl font-bold text-sm hover:bg-[#155a3d] transition-colors shadow-lg">
+                        <i class="bi bi-file-earmark-pdf"></i> Documentation PDF
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+  <!-- Continue browsing -->
+  <section class="px-4 pb-20 bg-slate-50/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="pf-prevnext" data-pf-casenav="noor" data-pf-base="../"></div>
+      <div class="pf-more-wrap">
+        <a class="pf-more" href="../projects.html">
+          Back to all projects <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PF:FOOTER:START -->
+  <footer class="pf-footer">
+    <div class="pf-footer__inner">
+      <div class="pf-footer__top">
+
+        <div class="pf-footer__brand">
+          <h3>Safia Massaid</h3>
+          <p>Full-stack developer and project delivery specialist. I build web, desktop and
+            mobile products end to end — from specification and architecture through to
+            testing, documentation and release.</p>
+          <div class="pf-footer__social">
+            <a href="https://github.com/safiamassaid" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://gitlab.com/safia1704832" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab" aria-hidden="true"></i></a>
+            <a href="mailto:massaidsafia2@gmail.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Work</h4>
+          <ul>
+            <li><a href="../projects.html">All projects</a></li>
+            <li><a href="../projects.html#design">UI / UX design</a></li>
+            <li><a href="../docs.html">Documentation</a></li>
+            
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="../service/service-details.html">Web development</a></li>
+            <li><a href="../service/servicedes.html">UI / UX design</a></li>
+            <li><a href="../service/servicegest.html">Project management</a></li>
+            <li><a href="../index.html#contact">Start a project</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Profile</h4>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#skills">Skills</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pf-footer__bottom">
+        <p>&copy; 2026 Safia Massaid — All rights reserved.</p>
+        <span class="pf-footer__status">Available for new projects</span>
+      </div>
+    </div>
+  </footer>
+<!-- PF:FOOTER:END -->
+
+  <!-- PF:LIGHTBOX:START -->
+  <div class="pf-lightbox" id="pf-lightbox" role="dialog" aria-modal="true"
+       aria-label="Project screenshot" aria-hidden="true">
+    <div class="pf-lightbox__frame">
+      <button class="pf-lightbox__btn pf-lightbox__close" type="button"
+              data-pf-lightbox-close aria-label="Close preview">
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+      <img class="pf-lightbox__img" data-pf-lightbox-img src="" alt="">
+      <div class="pf-lightbox__bar">
+        <p class="pf-lightbox__caption" data-pf-lightbox-caption></p>
+        <div class="pf-lightbox__nav" data-pf-lightbox-nav>
+          <span class="pf-lightbox__count" data-pf-lightbox-count></span>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-prev aria-label="Previous project">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-next aria-label="Next project">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- PF:LIGHTBOX:END -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper(".mySwiper", {
+            loop: true,
+            speed: 800,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            effect: "fade",
+            fadeEffect: { crossFade: true },
+            pagination: { el: ".swiper-pagination", type: "progressbar" },
+            navigation: {
+                nextEl: ".swiper-button-next-custom",
+                prevEl: ".swiper-button-prev-custom",
+            },
+        });
+
+        document.getElementById('menu-toggle').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+    <script src="../assets/js/main.js"></script>
+  <script src="../assets/data/projects.js"></script>
+  <script src="../assets/js/portfolio.js"></script>
+</body>
+
+</html>

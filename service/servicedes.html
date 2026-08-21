@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>UI/UX Design — Safia Massaid</title>
+
+  <meta name="description" content="Merging aesthetics and functionality with modern tools. UI/UX design with Figma for modern and user-friendly interfaces.">
+  <meta name="author" content="Safia Massaid">
+  <link rel="canonical" href="https://massaid-safia.netlify.app/service/servicedes.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Safia Massaid">
+  <meta property="og:url" content="https://massaid-safia.netlify.app/service/servicedes.html">
+  <meta property="og:title" content="UI/UX Design — Safia Massaid">
+  <meta property="og:description" content="Merging aesthetics and functionality with modern tools. UI/UX design with Figma for modern and user-friendly interfaces.">
+  <meta property="og:image" content="https://massaid-safia.netlify.app/assets/img/graphe.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UI/UX Design — Safia Massaid">
+  <meta name="twitter:description" content="Merging aesthetics and functionality with modern tools. UI/UX design with Figma for modern and user-friendly interfaces.">
+  <meta name="twitter:image" content="https://massaid-safia.netlify.app/assets/img/graphe.jpg">
+
+  <link rel="icon" type="image/png" href="../images/favicon.ico">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#8C4A6B', dark: '#1a1a1a' } } }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/portfolio.css">
+</head>
+
+<body class="text-slate-900 overflow-x-hidden bg-white">
+
+  <!-- Header -->
+  <div class="fixed top-4 left-0 right-0 z-50">
+    <!-- Same container as every section, so the bar's edges land on the content column -->
+    <div class="container mx-auto px-6 lg:px-12">
+      <header id="main-header"
+        class="glass-header w-full py-2.5 pl-4 pr-2.5 sm:pl-5 sm:pr-3 rounded-2xl flex items-center justify-between gap-6 transition-all duration-300">
+
+        <!-- Brand — also the link home, so the nav doesn't repeat it -->
+        <a href="../index.html#home" class="flex items-center gap-2.5 group shrink-0" aria-label="Safia Massaid — home">
+          <span class="relative flex items-center justify-center">
+            <span
+              class="absolute inset-0 bg-primary/20 hexa-logo group-hover:bg-primary transition-all duration-500 scale-125 group-hover:rotate-[30deg]"></span>
+            <span
+              class="relative w-8 h-8 bg-white hexa-logo flex items-center justify-center group-hover:scale-90 transition-transform duration-500">
+              <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </span>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="brand-name">Safia <span class="brand-name__last">Massaid</span></span>
+            <span class="brand-role">Full-Stack Engineer</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Main">
+          <a href="../index.html#about" class="nav-link nav-item">About</a>
+          <a href="../index.html#services" class="nav-link nav-item is-current" aria-current="page">Services</a>
+          <a href="../index.html#experience" class="nav-link nav-item">Experience</a>
+          <a href="../index.html#skills" class="nav-link nav-item">Skills</a>
+          <a href="../projects.html" class="nav-link nav-item">Work</a>
+          <a href="../docs.html" class="nav-link nav-item">Docs</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-1 shrink-0">
+          <a href="../index.html#contact" class="header-cta hidden sm:inline-flex">Contact</a>
+
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+            class="menu-toggle lg:hidden p-2 rounded-lg focus:outline-none">
+            <span class="pf-sr">Menu</span>
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile menu — hidden in the markup too, so it can't flash before main.js runs -->
+      <div id="mobile-menu" hidden class="w-full mt-2 p-3 glass-header rounded-2xl lg:hidden shadow-2xl">
+        <nav class="flex flex-col" aria-label="Main (mobile)">
+          <a href="../index.html#about" class="mobile-nav-link nav-item py-3 px-2">About</a>
+          <a href="../index.html#services" class="mobile-nav-link nav-item is-current py-3 px-2">Services</a>
+          <a href="../index.html#experience" class="mobile-nav-link nav-item py-3 px-2">Experience</a>
+          <a href="../index.html#skills" class="mobile-nav-link nav-item py-3 px-2">Skills</a>
+          <a href="../projects.html" class="mobile-nav-link nav-item py-3 px-2">Work</a>
+          <a href="../docs.html" class="mobile-nav-link nav-item py-3 px-2">Docs</a>
+          <a href="../index.html#contact" class="mobile-nav-link header-cta header-cta--block mt-2">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <section class="pf-page-head">
+      <div class="pf-page-head__inner">
+        <nav class="pf-crumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          <a href="../index.html#services">Services</a>
+          <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          <span aria-current="page">UI/UX Design</span>
+        </nav>
+        <p class="pf-eyebrow">02 / Creative</p>
+        <h1>UI/UX Design</h1>
+        <p>Merging aesthetics and functionality with modern tools.</p>
+      </div>
+    </section>
+
+    <section class="py-14 bg-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+
+          <!-- Narrative -->
+          <div class="lg:col-span-8">
+
+            <div class="rounded-[20px] overflow-hidden border border-[#EAE4E7] mb-8">
+              <img src="../assets/img/graphe.jpg" alt="UI/UX Design — working context"
+                class="w-full h-[320px] object-cover"
+                width="1200" height="320" fetchpriority="high" decoding="async">
+            </div>
+
+            <p class="text-[14px] leading-[1.85] text-[#6B5C63] mb-5 max-w-[68ch]">As a web designer, I combine creativity and technology to create visually appealing and intuitive interfaces. I use tools like Figma for UI/UX design, ensuring that each design is not only beautiful but also functional and user-centered. My design process is supported by an agile methodology, allowing me to collaborate closely with clients and development teams to create engaging digital experiences.</p>
+            <p class="text-[14px] leading-[1.85] text-[#6B5C63] mb-5 max-w-[68ch]">By integrating tools like Figma and collaboration platforms such as Miro, I create interactive prototypes that allow for real-time visualization and refinement of concepts. The Scrum methodology ensures continuous iteration, enabling adjustments to designs based on user feedback and project needs.</p>
+            <p class="text-[14px] leading-[1.85] text-[#6B5C63] mb-5 max-w-[68ch]">My goal is to create designs that not only capture attention but also enhance the user experience, turning each project into a visual and functional success.</p>
+
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="lg:col-span-4 flex flex-col gap-4">
+
+            <div class="rounded-[20px] border border-[#EAE4E7] bg-white p-6">
+              <p class="pf-eyebrow mb-4">What's included</p>
+              <ul class="flex flex-col gap-3 list-none p-0 m-0">
+                <li class="flex gap-2.5 text-[12.5px] leading-[1.6] text-[#3A2E34]">
+                  <i class="bi bi-check-circle-fill text-[#0F9D76] text-[13px] mt-0.5 shrink-0" aria-hidden="true"></i>
+                  <span>UI/UX design with Figma for modern and user-friendly interfaces.</span>
+                </li>
+                <li class="flex gap-2.5 text-[12.5px] leading-[1.6] text-[#3A2E34]">
+                  <i class="bi bi-check-circle-fill text-[#0F9D76] text-[13px] mt-0.5 shrink-0" aria-hidden="true"></i>
+                  <span>Application of Scrum methodology for an iterative and collaborative design process.</span>
+                </li>
+                <li class="flex gap-2.5 text-[12.5px] leading-[1.6] text-[#3A2E34]">
+                  <i class="bi bi-check-circle-fill text-[#0F9D76] text-[13px] mt-0.5 shrink-0" aria-hidden="true"></i>
+                  <span>Interactive prototyping to test and refine designs before development.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="rounded-[20px] border border-[#EAE4E7] bg-white p-6">
+              <p class="pf-eyebrow mb-4">Tools</p>
+              <ul class="pf-chips">
+                <li class="pf-chip">Figma</li>
+                <li class="pf-chip">Miro</li>
+                <li class="pf-chip">Prototyping</li>
+                <li class="pf-chip">Design systems</li>
+                <li class="pf-chip">Scrum</li>
+              </ul>
+            </div>
+
+            <a href="../projects.html#design"
+              class="rounded-[20px] border border-[#EAE4E7] bg-white p-6 flex items-center justify-between gap-4 no-underline hover:border-[rgba(140,74,107,.22)] transition-colors">
+              <span class="text-[13px] font-bold text-[#1C1418]">See the design work</span>
+              <i class="bi bi-arrow-right text-primary" aria-hidden="true"></i>
+            </a>
+
+            <div class="rounded-[20px] p-6 text-white"
+              style="background: linear-gradient(155deg, #1C1418 0%, #2B2126 100%)">
+              <p class="pf-eyebrow mb-3" style="color: rgba(255,255,255,.45)">Next step</p>
+              <p class="text-[13px] leading-[1.7] mb-5" style="color: rgba(255,255,255,.7)">
+                Tell me what you're building and I'll come back with a scope, a timeline and a price.
+              </p>
+              <a href="../index.html#contact"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white text-[10px] font-bold uppercase tracking-widest no-underline hover:opacity-90 transition-opacity">
+                Start a project <i class="bi bi-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PF:FOOTER:START -->
+  <footer class="pf-footer">
+    <div class="pf-footer__inner">
+      <div class="pf-footer__top">
+
+        <div class="pf-footer__brand">
+          <h3>Safia Massaid</h3>
+          <p>Full-stack developer and project delivery specialist. I build web, desktop and
+            mobile products end to end — from specification and architecture through to
+            testing, documentation and release.</p>
+          <div class="pf-footer__social">
+            <a href="https://github.com/safiamassaid" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://gitlab.com/safia1704832" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab" aria-hidden="true"></i></a>
+            <a href="mailto:massaidsafia2@gmail.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Work</h4>
+          <ul>
+            <li><a href="../projects.html">All projects</a></li>
+            <li><a href="../projects.html#design">UI / UX design</a></li>
+            <li><a href="../docs.html">Documentation</a></li>
+            
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="../service/service-details.html">Web development</a></li>
+            <li><a href="../service/servicedes.html">UI / UX design</a></li>
+            <li><a href="../service/servicegest.html">Project management</a></li>
+            <li><a href="../index.html#contact">Start a project</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Profile</h4>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#skills">Skills</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pf-footer__bottom">
+        <p>&copy; 2026 Safia Massaid — All rights reserved.</p>
+        <span class="pf-footer__status">Available for new projects</span>
+      </div>
+    </div>
+  </footer>
+<!-- PF:FOOTER:END -->
+
+  <!-- PF:LIGHTBOX:START -->
+  <div class="pf-lightbox" id="pf-lightbox" role="dialog" aria-modal="true"
+       aria-label="Project screenshot" aria-hidden="true">
+    <div class="pf-lightbox__frame">
+      <button class="pf-lightbox__btn pf-lightbox__close" type="button"
+              data-pf-lightbox-close aria-label="Close preview">
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+      <img class="pf-lightbox__img" data-pf-lightbox-img src="" alt="">
+      <div class="pf-lightbox__bar">
+        <p class="pf-lightbox__caption" data-pf-lightbox-caption></p>
+        <div class="pf-lightbox__nav" data-pf-lightbox-nav>
+          <span class="pf-lightbox__count" data-pf-lightbox-count></span>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-prev aria-label="Previous project">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-next aria-label="Next project">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- PF:LIGHTBOX:END -->
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/data/projects.js"></script>
+  <script src="../assets/js/portfolio.js"></script>
+
+</body>
+
+</html>

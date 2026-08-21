@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massaid Safia – Project</title>
+
+    <!-- Icons & Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8C4A6B',
+                        dark: '#1a1a1a'
+                    },
+                    animation: {
+                        'fade-in-down': 'fadeInDown .8s ease-out'
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: 0, transform: 'translateY(-15px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .swiper-pagination-progressbar {
+            background: rgba(255, 255, 255, .2) !important;
+            height: 4px !important;
+        }
+
+        .swiper-pagination-progressbar-fill {
+            background: #8C4A6B !important;
+        }
+
+        .swiper-slide img {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        #mobile-menu {
+            background-color: white;
+        }
+    </style>
+
+  <!-- Shared chrome -->
+  <link rel="icon" type="image/png" href="../images/favicon.ico">
+  <link rel="canonical" href="https://massaid-safia.netlify.app/designdetail/gen.html">
+  <meta name="description" content="Clinic site design covering practitioners, services and appointment booking.">
+  <meta name="author" content="Safia Massaid">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Safia Massaid">
+  <meta property="og:url" content="https://massaid-safia.netlify.app/designdetail/gen.html">
+  <meta property="og:title" content="Gynecology Clinic — Safia Massaid">
+  <meta property="og:description" content="Clinic site design covering practitioners, services and appointment booking.">
+  <meta property="og:image" content="https://massaid-safia.netlify.app/assets/img/genyc/gn1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gynecology Clinic — Safia Massaid">
+  <meta name="twitter:description" content="Clinic site design covering practitioners, services and appointment booking.">
+  <meta name="twitter:image" content="https://massaid-safia.netlify.app/assets/img/genyc/gn1.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/portfolio.css">
+</head>
+
+<body class="bg-white text-slate-900 overflow-x-hidden">
+
+  <!-- Header -->
+  <div class="fixed top-4 left-0 right-0 z-50">
+    <!-- Same container as every section, so the bar's edges land on the content column -->
+    <div class="container mx-auto px-6 lg:px-12">
+      <header id="main-header"
+        class="glass-header w-full py-2.5 pl-4 pr-2.5 sm:pl-5 sm:pr-3 rounded-2xl flex items-center justify-between gap-6 transition-all duration-300">
+
+        <!-- Brand — also the link home, so the nav doesn't repeat it -->
+        <a href="../index.html#home" class="flex items-center gap-2.5 group shrink-0" aria-label="Safia Massaid — home">
+          <span class="relative flex items-center justify-center">
+            <span
+              class="absolute inset-0 bg-primary/20 hexa-logo group-hover:bg-primary transition-all duration-500 scale-125 group-hover:rotate-[30deg]"></span>
+            <span
+              class="relative w-8 h-8 bg-white hexa-logo flex items-center justify-center group-hover:scale-90 transition-transform duration-500">
+              <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </span>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="brand-name">Safia <span class="brand-name__last">Massaid</span></span>
+            <span class="brand-role">Full-Stack Engineer</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Main">
+          <a href="../index.html#about" class="nav-link nav-item">About</a>
+          <a href="../index.html#services" class="nav-link nav-item">Services</a>
+          <a href="../index.html#experience" class="nav-link nav-item">Experience</a>
+          <a href="../index.html#skills" class="nav-link nav-item">Skills</a>
+          <a href="../projects.html" class="nav-link nav-item is-current" aria-current="page">Work</a>
+          <a href="../docs.html" class="nav-link nav-item">Docs</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-1 shrink-0">
+          <a href="../index.html#contact" class="header-cta hidden sm:inline-flex">Contact</a>
+
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+            class="menu-toggle lg:hidden p-2 rounded-lg focus:outline-none">
+            <span class="pf-sr">Menu</span>
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile menu — hidden in the markup too, so it can't flash before main.js runs -->
+      <div id="mobile-menu" hidden class="w-full mt-2 p-3 glass-header rounded-2xl lg:hidden shadow-2xl">
+        <nav class="flex flex-col" aria-label="Main (mobile)">
+          <a href="../index.html#about" class="mobile-nav-link nav-item py-3 px-2">About</a>
+          <a href="../index.html#services" class="mobile-nav-link nav-item py-3 px-2">Services</a>
+          <a href="../index.html#experience" class="mobile-nav-link nav-item py-3 px-2">Experience</a>
+          <a href="../index.html#skills" class="mobile-nav-link nav-item py-3 px-2">Skills</a>
+          <a href="../projects.html" class="mobile-nav-link nav-item is-current py-3 px-2">Work</a>
+          <a href="../docs.html" class="mobile-nav-link nav-item py-3 px-2">Docs</a>
+          <a href="../index.html#contact" class="mobile-nav-link header-cta header-cta--block mt-2">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+    <!-- ================= CONTENT ================= -->
+    <main class="pt-32 pb-20 bg-slate-50/50">
+        <section class="px-4">
+            <div class="max-w-7xl mx-auto">
+              <nav class="pf-crumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                <a href="../projects.html">Projects</a>
+                <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">Gynecology Clinic</span>
+              </nav>
+
+                <!-- Title -->
+                <div class="flex items-center gap-3 mb-8 animate-fade-in-down">
+                    <span
+                        class="px-4 py-1.5 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full border border-primary/20">
+                        Case Study
+                    </span>
+                    <div class="h-px w-12 bg-slate-200"></div>
+                    <span class="text-slate-400 text-[10px] font-mono uppercase tracking-widest">
+                        Project Details
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:h-[400px]">
+
+                    <!-- SLIDER -->
+                    <div class="lg:col-span-8 h-[300px] lg:h-full">
+                        <div class="relative overflow-hidden rounded-[2.5rem] bg-white shadow-2xl h-full">
+                            <div class="swiper mySwiper h-full group">
+
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="../assets/img/genyc/gn1.png"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/genyc/gn2.png"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/genyc/gn3.png"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/genyc/gn4.png"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/genyc/gn5.png"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/genyc/gn6.png"></div>
+                                    <div class="swiper-slide"><img src="../assets/img/genyc/gn7.png"></div>
+                                </div>
+
+                                <div class="swiper-pagination"></div>
+
+                                <!-- Arrows -->
+                                <div
+                                    class="absolute inset-0 flex items-center justify-between px-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                    <div
+                                        class="swiper-button-prev-custom pointer-events-auto w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-primary shadow-lg border border-white/30">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </div>
+                                    <div
+                                        class="swiper-button-next-custom pointer-events-auto w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-primary shadow-lg border border-white/30">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INFO -->
+                    <div class="lg:col-span-4 flex flex-col gap-4">
+                        <div class="bg-white/80 backdrop-blur-xl p-8 rounded-[2.5rem] shadow-xl flex-grow">
+                            <h2 class="text-2xl font-black mb-6">
+                                Informations<span class="text-primary">.</span>
+                            </h2>
+
+                            <div class="space-y-6">
+                                <div class="flex gap-4">
+                                    <i class="bi bi-hospital text-primary text-xl"></i>
+                                    <div>
+                                        <p class="text-[9px] uppercase text-slate-400 font-bold">Project Name</p>
+                                        <h4 class="font-bold uppercase text-sm">Gynecology Clinic</h4>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <i class="bi bi-tag text-primary text-xl"></i>
+                                    <div>
+                                        <p class="text-[9px] uppercase text-slate-400 font-bold">Category</p>
+                                        <h4 class="font-bold uppercase text-sm">UI / UX Design (Figma)</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="https://www.figma.com/design/697yHbYxW4RBSLKRSlN0Jh/cabinet-gynechologue?t=b3zgIkrdY6uABW38-1"
+                                class="mt-8 flex justify-center items-center gap-2 w-full py-3 bg-primary text-white text-xs font-bold rounded-xl uppercase tracking-widest hover:shadow-lg hover:shadow-primary/30 transition-all">
+                                View Project <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div
+                            class="p-4 bg-slate-900 rounded-[1.5rem] text-white flex items-center justify-between shadow-xl">
+                            <span class="text-[10px] font-bold uppercase">Project Verified</span>
+                            <i class="bi bi-patch-check-fill text-primary text-xl"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+  <!-- Continue browsing -->
+  <section class="px-4 pb-20 bg-slate-50/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="pf-prevnext" data-pf-casenav="gynecology-clinic" data-pf-base="../"></div>
+      <div class="pf-more-wrap">
+        <a class="pf-more" href="../projects.html">
+          Back to all projects <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PF:FOOTER:START -->
+  <footer class="pf-footer">
+    <div class="pf-footer__inner">
+      <div class="pf-footer__top">
+
+        <div class="pf-footer__brand">
+          <h3>Safia Massaid</h3>
+          <p>Full-stack developer and project delivery specialist. I build web, desktop and
+            mobile products end to end — from specification and architecture through to
+            testing, documentation and release.</p>
+          <div class="pf-footer__social">
+            <a href="https://github.com/safiamassaid" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://gitlab.com/safia1704832" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab" aria-hidden="true"></i></a>
+            <a href="mailto:massaidsafia2@gmail.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Work</h4>
+          <ul>
+            <li><a href="../projects.html">All projects</a></li>
+            <li><a href="../projects.html#design">UI / UX design</a></li>
+            <li><a href="../docs.html">Documentation</a></li>
+            
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="../service/service-details.html">Web development</a></li>
+            <li><a href="../service/servicedes.html">UI / UX design</a></li>
+            <li><a href="../service/servicegest.html">Project management</a></li>
+            <li><a href="../index.html#contact">Start a project</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Profile</h4>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#skills">Skills</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pf-footer__bottom">
+        <p>&copy; 2026 Safia Massaid — All rights reserved.</p>
+        <span class="pf-footer__status">Available for new projects</span>
+      </div>
+    </div>
+  </footer>
+<!-- PF:FOOTER:END -->
+
+  <!-- PF:LIGHTBOX:START -->
+  <div class="pf-lightbox" id="pf-lightbox" role="dialog" aria-modal="true"
+       aria-label="Project screenshot" aria-hidden="true">
+    <div class="pf-lightbox__frame">
+      <button class="pf-lightbox__btn pf-lightbox__close" type="button"
+              data-pf-lightbox-close aria-label="Close preview">
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+      <img class="pf-lightbox__img" data-pf-lightbox-img src="" alt="">
+      <div class="pf-lightbox__bar">
+        <p class="pf-lightbox__caption" data-pf-lightbox-caption></p>
+        <div class="pf-lightbox__nav" data-pf-lightbox-nav>
+          <span class="pf-lightbox__count" data-pf-lightbox-count></span>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-prev aria-label="Previous project">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-next aria-label="Next project">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- PF:LIGHTBOX:END -->
+
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper(".mySwiper", {
+            loop: true,
+            speed: 1000,
+            autoplay: { delay: 3500, disableOnInteraction: false },
+            effect: "fade",
+            fadeEffect: { crossFade: true },
+            pagination: { el: ".swiper-pagination", type: "progressbar" },
+            navigation: {
+                nextEl: ".swiper-button-next-custom",
+                prevEl: ".swiper-button-prev-custom",
+            },
+        });
+    </script>
+    <script src="../assets/js/main.js"></script>
+
+  <script src="../assets/data/projects.js"></script>
+  <script src="../assets/js/portfolio.js"></script>
+</body>
+
+</html>

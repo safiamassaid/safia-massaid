@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node tools/sync-header.js)",
+      "Bash(node tools/build-detail-pages.js)",
+      "Bash(node tools/build-cards.js)",
+      "Bash(node tools/build-sitemap.js)",
+      "Bash(node tools/check-links.js)"
+    ]
+  }
+}

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massaid Safia – Flask Auth + Redis Load Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8C4A6B',
+            'primary-light': 'rgba(140,74,107,0.08)',
+            'primary-mid': 'rgba(140,74,107,0.2)',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Space Grotesk"', 'sans-serif'],
+          },
+          animation: {
+            blink: 'blink 1.5s infinite',
+            'fade-up': 'fadeUp 0.55s ease both',
+          },
+          keyframes: {
+            blink: { '0%,100%': { opacity: 1 }, '50%': { opacity: 0.3 } },
+            fadeUp: { from: { opacity: 0, transform: 'translateY(18px)' }, to: { opacity: 1, transform: 'none' } },
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .55s, transform .55s;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #8C4A6B;
+      border-radius: 2px;
+    }
+  </style>
+
+  <!-- Shared chrome -->
+  <link rel="icon" type="image/png" href="../images/favicon.ico">
+  <link rel="canonical" href="https://massaid-safia.netlify.app/details/flask-redis.html">
+  <meta name="description" content="Token authentication service benchmarked under load with Locust to find its breaking point.">
+  <meta name="author" content="Safia Massaid">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Safia Massaid">
+  <meta property="og:url" content="https://massaid-safia.netlify.app/details/flask-redis.html">
+  <meta property="og:title" content="Flask Auth + Redis — Safia Massaid">
+  <meta property="og:description" content="Token authentication service benchmarked under load with Locust to find its breaking point.">
+  <meta property="og:image" content="https://massaid-safia.netlify.app/assets/img/charge/1.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Flask Auth + Redis — Safia Massaid">
+  <meta name="twitter:description" content="Token authentication service benchmarked under load with Locust to find its breaking point.">
+  <meta name="twitter:image" content="https://massaid-safia.netlify.app/assets/img/charge/1.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/portfolio.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="font-sans bg-white text-gray-900 overflow-x-hidden">
+
+  <!-- Header -->
+  <div class="fixed top-4 left-0 right-0 z-50">
+    <!-- Same container as every section, so the bar's edges land on the content column -->
+    <div class="container mx-auto px-6 lg:px-12">
+      <header id="main-header"
+        class="glass-header w-full py-2.5 pl-4 pr-2.5 sm:pl-5 sm:pr-3 rounded-2xl flex items-center justify-between gap-6 transition-all duration-300">
+
+        <!-- Brand — also the link home, so the nav doesn't repeat it -->
+        <a href="../index.html#home" class="flex items-center gap-2.5 group shrink-0" aria-label="Safia Massaid — home">
+          <span class="relative flex items-center justify-center">
+            <span
+              class="absolute inset-0 bg-primary/20 hexa-logo group-hover:bg-primary transition-all duration-500 scale-125 group-hover:rotate-[30deg]"></span>
+            <span
+              class="relative w-8 h-8 bg-white hexa-logo flex items-center justify-center group-hover:scale-90 transition-transform duration-500">
+              <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </span>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="brand-name">Safia <span class="brand-name__last">Massaid</span></span>
+            <span class="brand-role">Full-Stack Engineer</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Main">
+          <a href="../index.html#about" class="nav-link nav-item">About</a>
+          <a href="../index.html#services" class="nav-link nav-item">Services</a>
+          <a href="../index.html#experience" class="nav-link nav-item">Experience</a>
+          <a href="../index.html#skills" class="nav-link nav-item">Skills</a>
+          <a href="../projects.html" class="nav-link nav-item is-current" aria-current="page">Work</a>
+          <a href="../docs.html" class="nav-link nav-item">Docs</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-1 shrink-0">
+          <a href="../index.html#contact" class="header-cta hidden sm:inline-flex">Contact</a>
+
+          <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+            class="menu-toggle lg:hidden p-2 rounded-lg focus:outline-none">
+            <span class="pf-sr">Menu</span>
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile menu — hidden in the markup too, so it can't flash before main.js runs -->
+      <div id="mobile-menu" hidden class="w-full mt-2 p-3 glass-header rounded-2xl lg:hidden shadow-2xl">
+        <nav class="flex flex-col" aria-label="Main (mobile)">
+          <a href="../index.html#about" class="mobile-nav-link nav-item py-3 px-2">About</a>
+          <a href="../index.html#services" class="mobile-nav-link nav-item py-3 px-2">Services</a>
+          <a href="../index.html#experience" class="mobile-nav-link nav-item py-3 px-2">Experience</a>
+          <a href="../index.html#skills" class="mobile-nav-link nav-item py-3 px-2">Skills</a>
+          <a href="../projects.html" class="mobile-nav-link nav-item is-current py-3 px-2">Work</a>
+          <a href="../docs.html" class="mobile-nav-link nav-item py-3 px-2">Docs</a>
+          <a href="../index.html#contact" class="mobile-nav-link header-cta header-cta--block mt-2">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="pt-28 pb-16 px-4 bg-white border-b border-black/5">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <!-- Left -->
+      <div>
+        <nav class="pf-crumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          <a href="../projects.html">Projects</a>
+          <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          <span aria-current="page">Flask Auth + Redis</span>
+        </nav>
+
+        <div
+          class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[.12em] uppercase text-primary bg-[rgba(140,74,107,0.07)] border border-[rgba(140,74,107,0.2)] px-3 py-1.5 rounded-full mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-blink"></span>
+          Backend — Load Testing
+        </div>
+
+        <h1 class="text-4xl lg:text-5xl font-bold tracking-tight leading-[1.05] mb-5">
+          Flask Auth + <span class="text-primary">Redis</span><br>Load Test
+        </h1>
+
+        <p class="text-sm text-gray-500 leading-[1.8] mb-8 max-w-md">
+          Simulation of 100 concurrent users on a Flask authentication API with Redis session management.
+          Diagnosis of a Python ABI conflict, clean resolution, and full validation under Locust.
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          <div class="bg-gray-50 border border-black/5 rounded-xl p-3.5">
+            <div class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 mb-1">Category</div>
+            <div class="text-sm font-semibold">Backend / QA</div>
+          </div>
+          <div class="bg-gray-50 border border-black/5 rounded-xl p-3.5">
+            <div class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 mb-1">Type</div>
+            <div class="text-sm font-semibold">Personal Project</div>
+          </div>
+          <div class="bg-gray-50 border border-black/5 rounded-xl p-3.5">
+            <div class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 mb-1">Stack</div>
+            <div class="text-sm font-semibold">Flask · Redis · Locust</div>
+          </div>
+          <div class="bg-gray-50 border border-black/5 rounded-xl p-3.5">
+            <div class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 mb-1">Result</div>
+            <div class="text-sm font-semibold text-green-600">100 users · 0 errors</div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <span
+            class="font-mono text-[11px] px-3 py-1.5 rounded border border-[rgba(140,74,107,0.3)] text-primary bg-[rgba(140,74,107,0.05)]">Flask</span>
+          <span
+            class="font-mono text-[11px] px-3 py-1.5 rounded border border-[rgba(140,74,107,0.3)] text-primary bg-[rgba(140,74,107,0.05)]">Redis</span>
+          <span
+            class="font-mono text-[11px] px-3 py-1.5 rounded border border-[rgba(140,74,107,0.3)] text-primary bg-[rgba(140,74,107,0.05)]">Locust</span>
+          <span class="font-mono text-[11px] px-3 py-1.5 rounded border border-black/10 text-gray-500 bg-gray-50">Python
+            3.10</span>
+          <span
+            class="font-mono text-[11px] px-3 py-1.5 rounded border border-black/10 text-gray-500 bg-gray-50">gevent</span>
+          <span class="font-mono text-[11px] px-3 py-1.5 rounded border border-black/10 text-gray-500 bg-gray-50">Ubuntu
+            22.04</span>
+        </div>
+
+        <!-- GitHub link -->
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a href="https://github.com/safiamassaid/chargesim" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 font-mono text-[12px] px-4 py-2 rounded-lg border border-black/10 text-gray-700 bg-gray-50 hover:bg-gray-100 transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Code Card -->
+      <div class="hidden lg:block">
+        <div class="bg-gray-50 border border-black/10 rounded-2xl overflow-hidden shadow-[0_4px_40px_rgba(0,0,0,0.08)]">
+          <div class="bg-gray-100 px-4 py-3 flex items-center gap-2 border-b border-black/5">
+            <span class="w-3 h-3 rounded-full bg-red-400"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400"></span>
+            <span class="font-mono text-[11px] text-gray-400 ml-2">locustfile.py</span>
+          </div>
+          <div class="p-6 font-mono text-[13px] leading-[2] text-gray-800">
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">1</span><span
+                class="text-purple-500">from</span> <span class="text-blue-400">locust</span> <span
+                class="text-purple-500">import</span> <span class="text-gray-700">HttpUser, task, between</span></div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">2</span>&nbsp;</div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">3</span><span
+                class="text-purple-500">class</span> <span class="text-blue-400">UserBehavior</span><span
+                class="text-gray-700">(HttpUser):</span></div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">4</span>&nbsp;&nbsp;<span
+                class="text-gray-700">wait_time = </span><span class="text-primary">between</span><span
+                class="text-gray-700">(1, 2)</span></div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">5</span>&nbsp;</div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">6</span>&nbsp;&nbsp;<span
+                class="text-purple-500">def</span> <span class="text-primary">on_start</span><span
+                class="text-gray-700">(self):</span></div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="text-gray-700">response = self.client.</span><span class="text-primary">post</span><span
+                class="text-gray-700">(</span><span class="text-orange-400">"/login"</span><span class="text-gray-700">,
+                json={</span></div>
+            <div><span
+                class="text-gray-300 text-[11px] mr-4 select-none">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="text-orange-400">"email"</span><span class="text-gray-700">: </span><span
+                class="text-orange-400">"admin@test.com"</span><span class="text-gray-700">,</span></div>
+            <div><span
+                class="text-gray-300 text-[11px] mr-4 select-none">9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="text-orange-400">"password"</span><span class="text-gray-700">: </span><span
+                class="text-orange-400">"123456"</span></div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">10</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="text-gray-700">})</span></div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">11</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="text-gray-700">self.token = response.json()[</span><span
+                class="text-orange-400">"token"</span><span class="text-gray-700">]</span></div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">12</span>&nbsp;</div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">13</span>&nbsp;&nbsp;<span
+                class="text-gray-400">@</span><span class="text-primary">task</span></div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">14</span>&nbsp;&nbsp;<span
+                class="text-purple-500">def</span> <span class="text-primary">profile</span><span
+                class="text-gray-700">(self):</span></div>
+            <div><span class="text-gray-300 text-[11px] mr-4 select-none">15</span>&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="text-gray-700">self.client.</span><span class="text-primary">get</span><span
+                class="text-gray-700">(</span><span class="text-orange-400">"/profile"</span><span
+                class="text-gray-700">,</span></div>
+            <div><span
+                class="text-gray-300 text-[11px] mr-4 select-none">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                class="text-gray-700">headers={</span><span class="text-orange-400">"Authorization"</span><span
+                class="text-gray-700">: </span><span class="text-orange-400">f"Bearer {'{'}self.token{'}'}"</span><span
+                class="text-gray-700">})</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DESCRIPTION ── -->
+  <section class="py-20 px-4 bg-white fade-in">
+    <div class="max-w-5xl mx-auto">
+      <div class="font-mono text-[11px] tracking-[.15em] uppercase text-primary mb-3">00 — Description</div>
+      <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-8">Project <span
+          class="text-gray-400 font-normal italic">objective.</span></h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <p class="text-sm text-gray-500 leading-[1.8] mb-4">
+            This project simulates a realistic load on a Flask authentication API with Redis session management.
+            The goal: validate the stability of the architecture under 100 concurrent connections
+            and demonstrate a production-level system diagnosis approach.
+          </p>
+          <p class="text-sm text-gray-500 leading-[1.8]">
+            Beyond performance testing, the project covers the diagnosis of a Python binary incompatibility
+            (ABI mismatch), resolved through isolation in a virtual environment.
+          </p>
+        </div>
+        <div class="bg-gray-50 border border-black/5 rounded-2xl p-6">
+          <div class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 mb-4">Skills demonstrated</div>
+          <div class="flex flex-col gap-3">
+            <div class="flex items-center gap-3 text-sm text-gray-600">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+              REST API architecture + distributed sessions
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-600">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+              Load testing with Locust (scripting + spawn rate)
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-600">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+              Python ABI diagnosis — greenlet / gevent
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-600">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+              Python environment management (venv / pip)
+            </div>
+            <div class="flex items-center gap-3 text-sm text-gray-600">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+              Full validation — 100 users, 0 errors
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STACK ── -->
+  <section id="stack" class="py-20 px-4 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="font-mono text-[11px] tracking-[.15em] uppercase text-primary mb-3 fade-in">01 — Tech Stack</div>
+      <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-3 fade-in">Technologies <span
+          class="text-gray-400 font-normal italic">&amp; architecture.</span></h2>
+      <p class="text-sm text-gray-500 max-w-lg leading-[1.8] mb-10 fade-in">Performance-oriented backend stack,
+        distributed session management, and realistic load simulation.</p>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-black/5 border border-black/5 rounded-2xl overflow-hidden fade-in">
+        <div class="bg-gray-50 hover:bg-white p-6 transition-colors group">
+          <div class="text-2xl mb-3">🐍</div>
+          <div class="font-semibold text-gray-900 mb-1">Flask</div>
+          <div class="text-[13px] text-gray-500 leading-[1.6] mb-3">REST authentication API, routing, JWT middleware
+          </div>
+          <span
+            class="font-mono text-[10px] px-2.5 py-1 rounded border border-green-200 text-green-600 bg-green-50">Backend</span>
+        </div>
+        <div class="bg-gray-50 hover:bg-white p-6 transition-colors group">
+          <div class="text-2xl mb-3">⚡</div>
+          <div class="font-semibold text-gray-900 mb-1">Redis</div>
+          <div class="text-[13px] text-gray-500 leading-[1.6] mb-3">User session management, in-memory cache</div>
+          <span
+            class="font-mono text-[10px] px-2.5 py-1 rounded border border-blue-200 text-blue-500 bg-blue-50">Sessions</span>
+        </div>
+        <div class="bg-gray-50 hover:bg-white p-6 transition-colors group">
+          <div class="text-2xl mb-3">🦗</div>
+          <div class="font-semibold text-gray-900 mb-1">Locust</div>
+          <div class="text-[13px] text-gray-500 leading-[1.6] mb-3">Load simulation — 100 users, configurable spawn rate
+          </div>
+          <span
+            class="font-mono text-[10px] px-2.5 py-1 rounded border border-orange-200 text-orange-500 bg-orange-50">Load
+            Testing</span>
+        </div>
+        <div class="bg-gray-50 hover:bg-white p-6 transition-colors group">
+          <div class="text-2xl mb-3">🔄</div>
+          <div class="font-semibold text-gray-900 mb-1">gevent / greenlet</div>
+          <div class="text-[13px] text-gray-500 leading-[1.6] mb-3">Async I/O, lightweight coroutines, concurrency</div>
+          <span
+            class="font-mono text-[10px] px-2.5 py-1 rounded border border-purple-200 text-purple-500 bg-purple-50">Async</span>
+        </div>
+        <div class="bg-gray-50 hover:bg-white p-6 transition-colors group">
+          <div class="text-2xl mb-3">🧪</div>
+          <div class="font-semibold text-gray-900 mb-1">Python venv</div>
+          <div class="text-[13px] text-gray-500 leading-[1.6] mb-3">Isolated environment, zero dependency conflicts
+          </div>
+          <span
+            class="font-mono text-[10px] px-2.5 py-1 rounded border border-green-200 text-green-600 bg-green-50">Env</span>
+        </div>
+        <div class="bg-gray-50 hover:bg-white p-6 transition-colors group">
+          <div class="text-2xl mb-3">🐧</div>
+          <div class="font-semibold text-gray-900 mb-1">Ubuntu 22.04</div>
+          <div class="text-[13px] text-gray-500 leading-[1.6] mb-3">Local test server, Linux system management</div>
+          <span
+            class="font-mono text-[10px] px-2.5 py-1 rounded border border-blue-200 text-blue-500 bg-blue-50">OS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROBLEM ── -->
+  <section id="problem" class="py-20 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="font-mono text-[11px] tracking-[.15em] uppercase text-primary mb-3 fade-in">02 — Diagnosis &amp;
+        Resolution</div>
+      <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-3 fade-in">Issue encountered <span
+          class="text-gray-400 font-normal italic">&amp; solution.</span></h2>
+      <p class="text-sm text-gray-500 max-w-lg leading-[1.8] mb-10 fade-in">A Python ABI conflict was blocking Locust on
+        startup. Precise diagnosis, clean fix.</p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 fade-in">
+        <!-- Error -->
+        <div class="rounded-2xl p-7 border border-red-100 bg-red-50/30">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center text-sm">❌</div>
+            <span class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400">Error detected</span>
+          </div>
+          <div class="font-semibold text-gray-900 mb-2">ValueError — greenlet ABI mismatch</div>
+          <p class="text-[13px] text-gray-500 leading-[1.75] mb-4">
+            The Locust version installed via <code
+              class="font-mono text-[12px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded">apt</code> created a binary
+            conflict with <code
+              class="font-mono text-[12px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded">gevent</code>
+            and <code class="font-mono text-[12px] bg-red-100 text-red-600 px-1.5 py-0.5 rounded">greenlet</code>.
+            Mixing system Python with pip causes an immediate crash.
+          </p>
+          <div class="bg-white border border-red-100 rounded-xl p-4 font-mono text-[12px] text-gray-500 leading-[2]">
+            <span class="text-gray-400 italic"># Error message</span><br>
+            <span class="text-red-500">ValueError: greenlet.greenlet</span><br>
+            <span class="text-red-500">size changed, may indicate</span><br>
+            <span class="text-red-500">binary incompatibility</span><br><br>
+            <span class="text-gray-400 italic"># Cause: broken system version</span><br>
+            sudo apt install python3-locust
+          </div>
+        </div>
+
+        <!-- Fix -->
+        <div class="rounded-2xl p-7 border border-green-100 bg-green-50/30">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center text-sm">✓</div>
+            <span class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400">Solution applied</span>
+          </div>
+          <div class="font-semibold text-gray-900 mb-2">Clean reinstall inside venv</div>
+          <p class="text-[13px] text-gray-500 leading-[1.75] mb-4">
+            Removed the system version, activated an isolated virtualenv, and reinstalled exclusively via
+            <code class="font-mono text-[12px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded">pip</code>.
+            Result: stable startup, 0 errors, 100 users tested successfully.
+          </p>
+          <div class="bg-white border border-green-100 rounded-xl p-4 font-mono text-[12px] text-gray-500 leading-[2]">
+            <span class="text-gray-400 italic"># Remove system version</span><br>
+            <span class="text-primary">sudo apt remove python3-locust -y</span><br><br>
+            <span class="text-gray-400 italic"># Activate clean environment</span><br>
+            <span class="text-primary">source venv/bin/activate</span><br><br>
+            <span class="text-gray-400 italic"># Reinstall correctly</span><br>
+            <span class="text-primary">pip install --upgrade pip</span><br>
+            <span class="text-primary">pip install locust</span><br><br>
+            <span class="text-green-600">✓ locust --version → 2.x.x OK</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Callout -->
+      <div class="bg-gray-50 border-l-4 border-primary rounded-r-2xl px-6 py-5 fade-in">
+        <div class="font-mono text-[10px] tracking-[.1em] uppercase text-primary mb-2">Pro rule — keep in mind</div>
+        <div class="text-sm text-gray-500 leading-[1.7]">
+          For any Python package (<strong class="text-gray-900">locust, flask, redis-py, pytest</strong>):
+          <strong class="text-gray-900">never use apt</strong> — always use
+          <strong class="text-gray-900">pip inside an isolated virtualenv</strong>. Mixing them creates ABI conflicts on
+          compiled C extensions.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TIMELINE ── -->
+  <section id="steps" class="py-20 px-4 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="font-mono text-[11px] tracking-[.15em] uppercase text-primary mb-3 fade-in">03 — Workflow</div>
+      <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-3 fade-in">Project <span
+          class="text-gray-400 font-normal italic">steps.</span></h2>
+      <p class="text-sm text-gray-500 max-w-lg leading-[1.8] mb-10 fade-in">From initial setup to validated load test —
+        every step documented.</p>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-black/5 border border-black/5 rounded-2xl overflow-hidden fade-in">
+        <div class="relative bg-gray-50 hover:bg-white p-6 transition-colors">
+          <span class="absolute top-4 right-4 font-mono text-4xl font-bold text-black/5 select-none">01</span>
+          <div class="font-mono text-[10px] tracking-[.08em] text-gray-400 mb-3">Step 01</div>
+          <div class="font-semibold text-gray-900 mb-2">Flask + Redis Architecture</div>
+          <p class="text-[13px] text-gray-500 leading-[1.6] mb-4">REST auth API with persistent Redis sessions.
+            Endpoints <code
+              class="font-mono text-[11px] text-primary bg-[rgba(140,74,107,0.07)] px-1.5 py-0.5 rounded">/login</code>,
+            <code
+              class="font-mono text-[11px] text-primary bg-[rgba(140,74,107,0.07)] px-1.5 py-0.5 rounded">/profile</code>.
+          </p>
+          <span
+            class="font-mono text-[10px] px-2.5 py-1 rounded border border-[rgba(140,74,107,0.2)] text-primary bg-[rgba(140,74,107,0.05)]">Setup</span>
+        </div>
+        <div class="relative bg-gray-50 hover:bg-white p-6 transition-colors">
+          <span class="absolute top-4 right-4 font-mono text-4xl font-bold text-black/5 select-none">02</span>
+          <div class="font-mono text-[10px] tracking-[.08em] text-gray-400 mb-3">Step 02</div>
+          <div class="font-semibold text-gray-900 mb-2">Writing locustfile.py</div>
+          <p class="text-[13px] text-gray-500 leading-[1.6] mb-4">Scenarios simulating the full cycle: login →
+            navigation → logout. Spawn rate &amp; user count configuration.</p>
+          <span
+            class="font-mono text-[10px] px-2.5 py-1 rounded border border-[rgba(140,74,107,0.2)] text-primary bg-[rgba(140,74,107,0.05)]">Scripting</span>
+        </div>
+        <div class="relative bg-gray-50 hover:bg-white p-6 transition-colors">
+          <span class="absolute top-4 right-4 font-mono text-4xl font-bold text-black/5 select-none">03</span>
+          <div class="font-mono text-[10px] tracking-[.08em] text-gray-400 mb-3">Step 03</div>
+          <div class="font-semibold text-gray-900 mb-2">ABI Diagnosis</div>
+          <p class="text-[13px] text-gray-500 leading-[1.6] mb-4">Identification of the apt/pip conflict. Analysis of
+            native C dependencies from greenlet/gevent.</p>
+          <span
+            class="font-mono text-[10px] px-2.5 py-1 rounded border border-[rgba(140,74,107,0.2)] text-primary bg-[rgba(140,74,107,0.05)]">Debug</span>
+        </div>
+        <div class="relative bg-gray-50 hover:bg-white p-6 transition-colors">
+          <span class="absolute top-4 right-4 font-mono text-4xl font-bold text-black/5 select-none">04</span>
+          <div class="font-mono text-[10px] tracking-[.08em] text-gray-400 mb-3">Step 04</div>
+          <div class="font-semibold text-gray-900 mb-2">Fix &amp; Validation</div>
+          <p class="text-[13px] text-gray-500 leading-[1.6] mb-4">Clean reinstall in venv. Full 100-user test passed,
+            Redis sessions stable.</p>
+          <span class="font-mono text-[10px] px-2.5 py-1 rounded border border-green-200 text-green-600 bg-green-50">✓
+            Validated</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESULTS ── -->
+  <section id="results" class="py-20 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="font-mono text-[11px] tracking-[.15em] uppercase text-primary mb-3 fade-in">04 — Results</div>
+      <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-3 fade-in">Load test <span
+          class="text-gray-400 font-normal italic">results.</span></h2>
+      <p class="text-sm text-gray-500 max-w-lg leading-[1.8] mb-10 fade-in">100 concurrent users, zero errors, stable
+        Redis sessions.</p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-8 items-start fade-in">
+        <!-- Metrics -->
+        <div class="grid grid-cols-2 gap-4 min-w-[280px]">
+          <div class="border border-green-100 bg-green-50/40 rounded-2xl p-5 text-center">
+            <span class="font-mono text-3xl font-bold text-primary block mb-1">100</span>
+            <span class="font-mono text-[10px] uppercase tracking-[.07em] text-gray-400">Concurrent users</span>
+          </div>
+          <div class="border border-green-100 bg-green-50/40 rounded-2xl p-5 text-center">
+            <span class="font-mono text-3xl font-bold text-primary block mb-1">0</span>
+            <span class="font-mono text-[10px] uppercase tracking-[.07em] text-gray-400">System errors</span>
+          </div>
+          <div class="border border-black/5 bg-gray-50 rounded-2xl p-5 text-center">
+            <span class="font-mono text-3xl font-bold text-blue-400 block mb-1">8089</span>
+            <span class="font-mono text-[10px] uppercase tracking-[.07em] text-gray-400">Monitoring port</span>
+          </div>
+          <div class="border border-black/5 bg-gray-50 rounded-2xl p-5 text-center">
+            <span class="font-mono text-3xl font-bold text-purple-500 block mb-1">venv</span>
+            <span class="font-mono text-[10px] uppercase tracking-[.07em] text-gray-400">Isolated env</span>
+          </div>
+          <a href="../images/capture d’écran du 2026-04-20 11-03-39.png"
+            style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; padding: 10px 18px; border: 0.5px solid rgba(0,0,0,0.15); border-radius: 12px; background: #ffffff; transition: background 0.15s;"
+            target="_blank">
+            <span
+              style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: #E6F1FB;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 12 L6 6 L9 9 L11 7 L14 12Z" fill="#378ADD" opacity="0.85" />
+                <rect x="2" y="11.5" width="12" height="0.75" rx="0.375" fill="#378ADD" opacity="0.4" />
+              </svg>
+            </span>
+            <span style="display: flex; flex-direction: column; gap: 1px;">
+              <span style="font-size: 13px; font-weight: 500; color: #111;">Locust report table</span>
+              <span style="font-size: 11px; color: #888; font-family: monospace;">2026-04-19 · 15h34 · 100 users</span>
+            </span>
+            <svg style="margin-left: 4px; opacity: 0.4;" width="14" height="14" viewBox="0 0 14 14" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="#111" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="../images/total_requests_per_second_1776679048.99.png" target="_blank"
+            style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; padding: 10px 18px; border: 0.5px solid rgba(0,0,0,0.15); border-radius: 12px; background: #ffffff; transition: background 0.15s;">
+            <span
+              style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: #E6F1FB;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 12 L6 6 L9 9 L11 7 L14 12Z" fill="#378ADD" opacity="0.85" />
+                <rect x="2" y="11.5" width="12" height="0.75" rx="0.375" fill="#378ADD" opacity="0.4" />
+              </svg>
+            </span>
+            <span style="display: flex; flex-direction: column; gap: 1px;">
+              <span style="font-size: 13px; font-weight: 500; color: #111;">Locust report chart</span>
+              <span style="font-size: 11px; color: #888; font-family: monospace;">2026-04-19 · 15h34 · 100 users</span>
+            </span>
+            <svg style="margin-left: 4px; opacity: 0.4;" width="14" height="14" viewBox="0 0 14 14" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="#111" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Table -->
+        <div class="bg-gray-50 border border-black/5 rounded-2xl overflow-hidden">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100 border-b border-black/5">
+                <th
+                  class="text-left font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 font-normal px-5 py-3">
+                  Parameter</th>
+                <th
+                  class="text-left font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 font-normal px-5 py-3">
+                  Value</th>
+                <th
+                  class="text-left font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 font-normal px-5 py-3">
+                  Status</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr class="border-b border-black/5 hover:bg-gray-100/50 transition-colors">
+                <td class="px-5 py-3.5 text-gray-700">Concurrent users</td>
+                <td class="px-5 py-3.5"><code
+                    class="font-mono text-[12px] text-primary bg-[rgba(140,74,107,0.07)] px-2 py-0.5 rounded">100 / 100</code>
+                </td>
+                <td class="px-5 py-3.5"><span
+                    class="font-mono text-[11px] px-2.5 py-1 rounded border border-green-200 text-green-600 bg-green-50">✓
+                    OK</span></td>
+              </tr>
+              <tr class="border-b border-black/5 hover:bg-gray-100/50 transition-colors">
+                <td class="px-5 py-3.5 text-gray-700">Tested endpoint</td>
+                <td class="px-5 py-3.5"><code
+                    class="font-mono text-[12px] text-primary bg-[rgba(140,74,107,0.07)] px-2 py-0.5 rounded">POST /login</code>
+                </td>
+                <td class="px-5 py-3.5"><span
+                    class="font-mono text-[11px] px-2.5 py-1 rounded border border-blue-200 text-blue-500 bg-blue-50">API
+                    Auth</span></td>
+              </tr>
+              <tr class="border-b border-black/5 hover:bg-gray-100/50 transition-colors">
+                <td class="px-5 py-3.5 text-gray-700">Redis sessions</td>
+                <td class="px-5 py-3.5 text-gray-500">Active &amp; stable</td>
+                <td class="px-5 py-3.5"><span
+                    class="font-mono text-[11px] px-2.5 py-1 rounded border border-green-200 text-green-600 bg-green-50">✓
+                    OK</span></td>
+              </tr>
+              <tr class="border-b border-black/5 hover:bg-gray-100/50 transition-colors">
+                <td class="px-5 py-3.5 text-gray-700">ABI errors</td>
+                <td class="px-5 py-3.5"><code
+                    class="font-mono text-[12px] text-primary bg-[rgba(140,74,107,0.07)] px-2 py-0.5 rounded">0</code>
+                  after fix</td>
+                <td class="px-5 py-3.5"><span
+                    class="font-mono text-[11px] px-2.5 py-1 rounded border border-green-200 text-green-600 bg-green-50">✓
+                    Resolved</span></td>
+              </tr>
+              <tr class="border-b border-black/5 hover:bg-gray-100/50 transition-colors">
+                <td class="px-5 py-3.5 text-gray-700">Locust interface</td>
+                <td class="px-5 py-3.5"><code
+                    class="font-mono text-[12px] text-primary bg-[rgba(140,74,107,0.07)] px-2 py-0.5 rounded">localhost:8089</code>
+                </td>
+                <td class="px-5 py-3.5"><span
+                    class="font-mono text-[11px] px-2.5 py-1 rounded border border-blue-200 text-blue-500 bg-blue-50">Web
+                    UI</span></td>
+              </tr>
+              <tr class="hover:bg-gray-100/50 transition-colors">
+                <td class="px-5 py-3.5 text-gray-700">Environment</td>
+                <td class="px-5 py-3.5 text-gray-500">Isolated Python venv</td>
+                <td class="px-5 py-3.5"><span
+                    class="font-mono text-[11px] px-2.5 py-1 rounded border border-green-200 text-green-600 bg-green-50">✓
+                    Clean</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills" class="py-20 px-4 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="font-mono text-[11px] tracking-[.15em] uppercase text-primary mb-3 fade-in">05 — Skills</div>
+      <h2 class="text-3xl lg:text-4xl font-bold tracking-tight mb-10 fade-in">Skills <span
+          class="text-gray-400 font-normal italic">demonstrated.</span></h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 items-start fade-in">
+        <div>
+          <p class="text-sm text-gray-500 leading-[1.8] mb-4">This project covers cross-disciplinary skills spanning
+            backend, infrastructure, and QA — rarely combined in a single project.</p>
+          <p class="text-sm text-gray-500 leading-[1.8]">The ability to diagnose a low-level system error (ABI), resolve
+            it cleanly, and validate via load testing reflects a well-rounded engineering profile.</p>
+        </div>
+        <div class="flex flex-col gap-7">
+          <div>
+            <div class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 mb-3">Backend</div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-blue-200 text-blue-500 bg-blue-50 hover:-translate-y-0.5 transition-transform cursor-default">Python
+                3.10</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-blue-200 text-blue-500 bg-blue-50 hover:-translate-y-0.5 transition-transform cursor-default">Flask</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-blue-200 text-blue-500 bg-blue-50 hover:-translate-y-0.5 transition-transform cursor-default">REST
+                API</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-blue-200 text-blue-500 bg-blue-50 hover:-translate-y-0.5 transition-transform cursor-default">JWT
+                Auth</span>
+            </div>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 mb-3">Infrastructure</div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-green-200 text-green-600 bg-green-50 hover:-translate-y-0.5 transition-transform cursor-default">Redis</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-green-200 text-green-600 bg-green-50 hover:-translate-y-0.5 transition-transform cursor-default">gevent</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-green-200 text-green-600 bg-green-50 hover:-translate-y-0.5 transition-transform cursor-default">virtualenv</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-green-200 text-green-600 bg-green-50 hover:-translate-y-0.5 transition-transform cursor-default">Linux
+                Ubuntu</span>
+            </div>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 mb-3">Testing &amp; QA</div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-orange-200 text-orange-500 bg-orange-50 hover:-translate-y-0.5 transition-transform cursor-default">Locust</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-orange-200 text-orange-500 bg-orange-50 hover:-translate-y-0.5 transition-transform cursor-default">Load
+                Testing</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-orange-200 text-orange-500 bg-orange-50 hover:-translate-y-0.5 transition-transform cursor-default">Performance</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-orange-200 text-orange-500 bg-orange-50 hover:-translate-y-0.5 transition-transform cursor-default">Monitoring</span>
+            </div>
+          </div>
+          <div>
+            <div class="font-mono text-[10px] tracking-[.1em] uppercase text-gray-400 mb-3">Debugging</div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-purple-200 text-purple-500 bg-purple-50 hover:-translate-y-0.5 transition-transform cursor-default">ABI
+                Diagnosis</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-purple-200 text-purple-500 bg-purple-50 hover:-translate-y-0.5 transition-transform cursor-default">Dependency
+                Mgmt</span>
+              <span
+                class="font-mono text-[12px] px-3 py-1.5 rounded border border-purple-200 text-purple-500 bg-purple-50 hover:-translate-y-0.5 transition-transform cursor-default">System
+                Debug</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Continue browsing -->
+  <section class="px-4 pb-20 bg-slate-50/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="pf-prevnext" data-pf-casenav="flask-redis" data-pf-base="../"></div>
+      <div class="pf-more-wrap">
+        <a class="pf-more" href="../projects.html">
+          Back to all projects <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PF:FOOTER:START -->
+  <footer class="pf-footer">
+    <div class="pf-footer__inner">
+      <div class="pf-footer__top">
+
+        <div class="pf-footer__brand">
+          <h3>Safia Massaid</h3>
+          <p>Full-stack developer and project delivery specialist. I build web, desktop and
+            mobile products end to end — from specification and architecture through to
+            testing, documentation and release.</p>
+          <div class="pf-footer__social">
+            <a href="https://github.com/safiamassaid" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
+            <a href="https://gitlab.com/safia1704832" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab" aria-hidden="true"></i></a>
+            <a href="mailto:massaidsafia2@gmail.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Work</h4>
+          <ul>
+            <li><a href="../projects.html">All projects</a></li>
+            <li><a href="../projects.html#design">UI / UX design</a></li>
+            <li><a href="../docs.html">Documentation</a></li>
+            
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="../service/service-details.html">Web development</a></li>
+            <li><a href="../service/servicedes.html">UI / UX design</a></li>
+            <li><a href="../service/servicegest.html">Project management</a></li>
+            <li><a href="../index.html#contact">Start a project</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Profile</h4>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#skills">Skills</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pf-footer__bottom">
+        <p>&copy; 2026 Safia Massaid — All rights reserved.</p>
+        <span class="pf-footer__status">Available for new projects</span>
+      </div>
+    </div>
+  </footer>
+<!-- PF:FOOTER:END -->
+
+  <!-- PF:LIGHTBOX:START -->
+  <div class="pf-lightbox" id="pf-lightbox" role="dialog" aria-modal="true"
+       aria-label="Project screenshot" aria-hidden="true">
+    <div class="pf-lightbox__frame">
+      <button class="pf-lightbox__btn pf-lightbox__close" type="button"
+              data-pf-lightbox-close aria-label="Close preview">
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+      <img class="pf-lightbox__img" data-pf-lightbox-img src="" alt="">
+      <div class="pf-lightbox__bar">
+        <p class="pf-lightbox__caption" data-pf-lightbox-caption></p>
+        <div class="pf-lightbox__nav" data-pf-lightbox-nav>
+          <span class="pf-lightbox__count" data-pf-lightbox-count></span>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-prev aria-label="Previous project">
+            <i class="bi bi-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button class="pf-lightbox__btn" type="button" data-pf-lightbox-next aria-label="Next project">
+            <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- PF:LIGHTBOX:END -->
+
+
+  <script>
+    // Mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    document.querySelectorAll('#mobile-menu a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+    });
+
+    // Fade-in on scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/data/projects.js"></script>
+  <script src="../assets/js/portfolio.js"></script>
+</body>
+
+</html>
