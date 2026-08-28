@@ -1,0 +1,16 @@
+# Netlify response headers — https://docs.netlify.com/routing/headers/
+
+# Netlify sert les .webmanifest en application/octet-stream, ce qui empeche
+# Chrome de lire le manifeste (et donc les icones d'installation).
+/site.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+
+# Les icones et la carte de partage ne changent qu'avec un redeploiement.
+/images/favicon.*
+  Cache-Control: public, max-age=604800
+/images/icon-*.png
+  Cache-Control: public, max-age=604800
+/images/apple-touch-icon.png
+  Cache-Control: public, max-age=604800
+/images/og-cover.png
+  Cache-Control: public, max-age=604800

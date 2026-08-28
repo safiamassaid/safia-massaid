@@ -1,0 +1,17 @@
+{
+  "name": "Safia Massaid — IT Engineer & PM",
+  "short_name": "Safia Massaid",
+  "description": "Portfolio of Safia Massaid: web, desktop and mobile projects, UI/UX design, QA and project management documentation.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8C4A6B",
+  "lang": "en",
+  "icons": [
+    { "src": "/images/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/images/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

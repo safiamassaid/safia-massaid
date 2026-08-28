@@ -31,9 +31,13 @@ const PROJECTS = require(path.join(ROOT, 'assets/data/projects.js'));
 const makeDocs = require('./doc-cards.js');
 
 /* The homepage renders every project so the category filters report real
-   counts, but reveals them 9 at a time. Slicing the list instead would make
-   "UI / UX Design (1)" appear next to 16 actual design projects. */
-const HOME_STEP = 9;
+   counts, but only reveals HOME_STEP of them. The grid is three columns
+   wide, so 6 fills two complete rows with no orphan. Slicing the array
+   instead would make "UI / UX Design (1)" appear next to 16 actual design
+   projects, and would drop the cards out of the markup Google reads.
+   Everything past the fold is one click away in the archive, linked from
+   the section header. */
+const HOME_STEP = 6;
 
 /* ============================================================
    Helpers
@@ -149,6 +153,15 @@ function actions(p, base, indent) {
    Card
    ============================================================ */
 
+/* The version / QA-report pair the spotlights used to show. Now that every
+   project renders as a card, the card carries it when the data has it. */
+function metricsList(p, i) {
+  const rows = (p.metrics || [])
+    .map((m) => `${i}  <li><b>${esc(m.value)}</b><span>${esc(m.label)}</span></li>`)
+    .join(NL);
+  return rows ? `${i}<ul class="pf-metrics">${NL}${rows}${NL}${i}</ul>` : '';
+}
+
 function renderCard(p, base, pad) {
   const i = ' '.repeat(pad);
   const b = badge(p);
@@ -174,60 +187,14 @@ function renderCard(p, base, pad) {
     `${i}    <span class="pf-card__badge ${b.cls}">${esc(b.text)}</span>`,
     `${i}  </div>`,
     `${i}  <div class="pf-card__body">`,
-    `${i}    <p class="pf-eyebrow">${esc(p.catLabel)}</p>`,
+    `${i}    <p class="pf-eyebrow">${esc(p.catLabel)} &middot; ${esc(p.year)}</p>`,
     `${i}    <h3 class="pf-card__title">${titleInner}</h3>`,
     `${i}    <p class="pf-card__desc">${esc(p.desc)}</p>`,
     chips(p, `${i}    `),
+    metricsList(p, `${i}    `),
     `${i}  </div>`,
     `${i}  <div class="pf-card__foot">`,
     actions(p, base, `${i}    `),
-    `${i}  </div>`,
-    `${i}</article>`
-  ]
-    .filter(Boolean)
-    .join('\n');
-}
-
-/* ============================================================
-   Featured spotlight
-   ============================================================ */
-
-function renderFeatured(p, base, pad) {
-  const i = ' '.repeat(pad);
-  const first = primary(p);
-  const b = badge(p);
-
-  const metrics = (p.metrics || [])
-    .map(
-      (m) =>
-        `${i}      <li><b>${esc(m.value)}</b><span>${esc(m.label)}</span></li>`
-    )
-    .join('\n');
-
-  return [
-    `${i}<article class="pf-featured" data-cat="${esc(p.cat)}" data-search="${esc(haystack(p))}">`,
-    `${i}  <div class="pf-featured__media">`,
-    `${i}    <img src="${esc(rel(base, p.thumb))}"`,
-    `${i}         alt="${esc(p.title)} — ${esc(p.catLabel)} interface"`,
-    `${i}         loading="lazy" decoding="async">`,
-    zoomButton(p, base, `${i}    `),
-    `${i}    <span class="pf-card__badge ${b.cls}">${esc(b.text)}</span>`,
-    `${i}  </div>`,
-    `${i}  <div class="pf-featured__body">`,
-    `${i}    <p class="pf-eyebrow">${esc(p.catLabel)} &middot; ${esc(p.year)}</p>`,
-    `${i}    <h3 class="pf-featured__title">${
-      first
-        ? `<a class="pf-card__link" href="${esc(rel(base, first.href))}"${
-            first.internal ? '' : ' target="_blank" rel="noopener"'
-          }>${esc(p.title)}</a>`
-        : esc(p.title)
-    }</h3>`,
-    `${i}    <p class="pf-featured__desc">${esc(p.long || p.desc)}</p>`,
-    chips(p, `${i}    `),
-    metrics ? `${i}    <ul class="pf-metrics">\n${metrics}\n${i}    </ul>` : '',
-    `${i}    <div class="pf-featured__foot">`,
-    actions(p, base, `${i}      `),
-    `${i}    </div>`,
     `${i}  </div>`,
     `${i}</article>`
   ]
@@ -287,19 +254,30 @@ function renderFilters(pad, withSearch) {
    ============================================================ */
 
 function renderPanel(opts) {
-  const { base = '', pad = 6, limit = 0, step = 0, withSearch = false } = opts;
+  const {
+    base = '',
+    pad = 6,
+    limit = 0,
+    step = 0,
+    withSearch = false,
+    // The homepage is a selection, not a pager: its way forward is the
+    // archive link in the section header, so it gets no "show more".
+    more = true
+  } = opts;
   const i = ' '.repeat(pad);
 
   // One list. UI/UX is a category chip, not a separate tab — the visitor
   // filters instead of choosing a track first.
-  const featured = PROJECTS.filter((p) => p.featured);
-  let grid = PROJECTS.filter((p) => !p.featured);
+  // One grid, three columns. The spotlights used to be full-width rows
+  // stacked above it, which meant the first three projects each took a
+  // screen of their own. `featured` now only decides running order.
+  let grid = PROJECTS.filter((p) => p.featured)
+    .concat(PROJECTS.filter((p) => !p.featured));
   if (limit) grid = grid.slice(0, limit);
 
   return [
     `${i}<div data-pf-panel="all" data-pf-label="projects"${step ? ` data-pf-step="${step}"` : ''}>`,
     renderFilters(pad + 2, withSearch),
-    featured.map((p) => renderFeatured(p, base, pad + 2)).join(NL + NL),
     `${i}  <div class="pf-grid">`,
     grid.map((p) => renderCard(p, base, pad + 4)).join(NL + NL),
     `${i}  </div>`,
@@ -307,7 +285,7 @@ function renderPanel(opts) {
     `${i}    <i class="bi bi-search" aria-hidden="true"></i>`,
     `${i}    <p>No project matches that filter yet. Try another category or clear the search.</p>`,
     `${i}  </div>`,
-    step
+    step && more
       ? [
           `${i}  <div class="pf-more-wrap" data-pf-more-wrap>`,
           `${i}    <button class="pf-more" type="button" data-pf-more>`,
@@ -331,57 +309,81 @@ function renderFooter(base, pad) {
   const year = 2026; // stamped, not computed — keeps output deterministic
   const home = base + 'index.html';
 
+  /* Three link columns, described once so the markup below stays flat */
+  const columns = [
+    ['Work', [
+      ['All projects', base + 'projects.html'],
+      ['UI / UX design', base + 'projects.html#design'],
+      ['Documentation', base + 'docs.html']
+    ]],
+    ['Services', [
+      ['Web development', base + 'service/service-details.html'],
+      ['UI / UX design', base + 'service/servicedes.html'],
+      ['Project management', base + 'service/servicegest.html'],
+      ['QA & testing', base + 'service/servicetest.html'],
+      ['Start a project', home + '#contact']
+    ]],
+    ['Profile', [
+      ['About', home + '#about'],
+      ['Experience', home + '#experience'],
+      ['Skills', home + '#skills'],
+      ['Contact', home + '#contact']
+    ]]
+  ];
+
+  const nav = columns
+    .map(([title, links]) => `${i}      <nav class="pf-footer__col" aria-label="${title}">
+${i}        <h4>${title}</h4>
+${i}        <ul>
+${links.map(([label, href]) => `${i}          <li><a href="${href}">${label}</a></li>`).join('\n')}
+${i}        </ul>
+${i}      </nav>`)
+    .join('\n\n');
+
   return `${i}<footer class="pf-footer">
 ${i}  <div class="pf-footer__inner">
 ${i}    <div class="pf-footer__top">
 
 ${i}      <div class="pf-footer__brand">
-${i}        <h3>Safia Massaid</h3>
-${i}        <p>Full-stack developer and project delivery specialist. I build web, desktop and
-${i}          mobile products end to end — from specification and architecture through to
-${i}          testing, documentation and release.</p>
+${i}        <a class="pf-footer__lockup" href="${home}#home" aria-label="Safia Massaid — home">
+${i}          <svg class="pf-footer__mark" viewBox="0 0 64 64" aria-hidden="true">
+${i}            <polygon points="16,0 48,0 64,32 48,64 16,64 0,32" fill="currentColor"/>
+${i}            <g fill="none" stroke="#1C1418" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+${i}              <polyline points="40,48 52,32 40,16"/>
+${i}              <polyline points="24,16 12,32 24,48"/>
+${i}            </g>
+${i}          </svg>
+${i}          <span>
+${i}            <h3>Safia Massaid</h3>
+${i}            <span class="pf-footer__role">IT Engineer &amp; Project Manager</span>
+${i}          </span>
+${i}        </a>
+
+${i}        <p>I build web, desktop and mobile products end to end — from specification and
+${i}          architecture through to testing, documentation and release.</p>
+
+${i}        <a class="pf-footer__mail" href="mailto:massaidsafia2@gmail.com">
+${i}          <i class="bi bi-envelope" aria-hidden="true"></i> massaidsafia2@gmail.com
+${i}        </a>
+
 ${i}        <div class="pf-footer__social">
 ${i}          <a href="https://github.com/safiamassaid" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
 ${i}          <a href="https://gitlab.com/safia1704832" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab" aria-hidden="true"></i></a>
+${i}          <a href="https://www.linkedin.com/in/safia-massaid-171b19235/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
 ${i}          <a href="mailto:massaidsafia2@gmail.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
 ${i}        </div>
 ${i}      </div>
 
-${i}      <div>
-${i}        <h4>Work</h4>
-${i}        <ul>
-${i}          <li><a href="${base}projects.html">All projects</a></li>
-${i}          <li><a href="${base}projects.html#design">UI / UX design</a></li>
-${i}          <li><a href="${base}docs.html">Documentation</a></li>
-${i}          <li><a href="${base}service/qovoltis.html">Qovoltis case study</a></li>
-${i}        </ul>
-${i}      </div>
-
-${i}      <div>
-${i}        <h4>Services</h4>
-${i}        <ul>
-${i}          <li><a href="${base}service/service-details.html">Web development</a></li>
-${i}          <li><a href="${base}service/servicedes.html">UI / UX design</a></li>
-${i}          <li><a href="${base}service/servicegest.html">Project management</a></li>
-${i}          <li><a href="${home}#contact">Start a project</a></li>
-${i}        </ul>
-${i}      </div>
-
-${i}      <div>
-${i}        <h4>Profile</h4>
-${i}        <ul>
-${i}          <li><a href="${home}#about">About</a></li>
-${i}          <li><a href="${home}#experience">Experience</a></li>
-${i}          <li><a href="${home}#skills">Skills</a></li>
-${i}          <li><a href="${home}#contact">Contact</a></li>
-${i}        </ul>
-${i}      </div>
+${nav}
 
 ${i}    </div>
 
 ${i}    <div class="pf-footer__bottom">
 ${i}      <p>&copy; ${year} Safia Massaid — All rights reserved.</p>
 ${i}      <span class="pf-footer__status">Available for new projects</span>
+${i}      <a class="pf-footer__top-link" href="#home">
+${i}        Back to top <i class="bi bi-arrow-up" aria-hidden="true"></i>
+${i}      </a>
 ${i}    </div>
 ${i}  </div>
 ${i}</footer>`;
@@ -444,7 +446,7 @@ function main() {
   const report = [];
 
   // --- Homepage: curated selection, no search, no pagination ---
-  const home = renderPanel({ pad: 6, step: HOME_STEP });
+  const home = renderPanel({ pad: 6, step: HOME_STEP, more: false });
   report.push(['index.html', 'PROJECTS', splice('index.html', 'PROJECTS', home)]);
 
   // --- Archive: everything, searchable, paginated ---

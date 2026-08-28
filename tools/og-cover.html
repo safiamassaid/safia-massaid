@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>OG cover source — rendered to images/og-cover.png by tools/build-images.js</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@500;600&display=swap">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { width: 1200px; height: 630px; }
+
+    body {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      font-family: Inter, system-ui, sans-serif;
+      color: #1C1418;
+      padding: 74px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* The dotted field and plum bloom from the site hero */
+    .pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(140, 74, 107, .22) 1px, transparent 1px);
+      background-size: 26px 26px;
+      -webkit-mask-image: radial-gradient(115% 85% at 50% 0%, #000 25%, transparent 76%);
+    }
+
+    .glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(52% 58% at 82% 30%, rgba(140, 74, 107, .16), transparent 70%);
+    }
+
+    .bar {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 10px;
+      background: linear-gradient(90deg, #8C4A6B, #5E2E45);
+    }
+
+    .row { position: relative; display: flex; align-items: center; gap: 16px; }
+
+    .hex { width: 46px; height: 46px; }
+
+    .brand { display: flex; flex-direction: column; line-height: 1.2; }
+    .brand b { font-size: 19px; font-weight: 800; letter-spacing: -.01em; }
+    .brand span {
+      font-family: 'Fira Code', monospace;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase; color: #8C4A6B;
+    }
+
+    .badge {
+      margin-left: auto;
+      font-family: 'Fira Code', monospace;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase; color: #6B5C63;
+      border: 1px solid #EAE4E7; border-radius: 999px;
+      padding: 9px 18px; background: #fff;
+    }
+
+    h1 {
+      position: relative;
+      font-size: 74px;
+      font-weight: 800;
+      letter-spacing: -.028em;
+      line-height: 1.06;
+      max-width: 16ch;
+    }
+
+    h1 em { font-style: normal; color: #8C4A6B; display: block; }
+
+    .foot { position: relative; display: flex; align-items: flex-end; gap: 40px; }
+
+    .disc { display: flex; flex-wrap: wrap; gap: 9px; }
+
+    .disc span {
+      font-family: 'Fira Code', monospace;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; color: #6B5C63;
+      border: 1px solid #EAE4E7; border-radius: 999px;
+      padding: 9px 16px; background: #fff;
+    }
+
+    .stats { margin-left: auto; display: flex; gap: 34px; text-align: right; }
+    .stats div b {
+      display: block;
+      font-family: 'Fira Code', monospace;
+      font-size: 30px; font-weight: 600; color: #8C4A6B;
+    }
+    .stats div span {
+      font-family: 'Fira Code', monospace;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase; color: #9C8D94;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pattern"></div>
+  <div class="glow"></div>
+
+  <div class="row">
+    <svg class="hex" viewBox="0 0 64 64" aria-hidden="true">
+      <polygon points="16,0 48,0 64,32 48,64 16,64 0,32" fill="#8C4A6B" />
+      <g fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="40,48 52,32 40,16" />
+        <polyline points="24,16 12,32 24,48" />
+      </g>
+    </svg>
+    <span class="brand">
+      <b>Safia Massaid</b>
+      <span>IT Engineer &amp; Project Manager</span>
+    </span>
+    <span class="badge">massaid-safia.netlify.app</span>
+  </div>
+
+  <h1>
+    I build the product,
+    <em>then I lead its delivery.</em>
+  </h1>
+
+  <div class="foot">
+    <div class="disc">
+      <span>Development</span>
+      <span>UI/UX Design</span>
+      <span>QA &amp; Testing</span>
+      <span>Project Management</span>
+    </div>
+    <div class="stats">
+      <div><b>+40</b><span>Projects</span></div>
+      <div><b>21</b><span>Documents</span></div>
+      <div><b>3+</b><span>Years</span></div>
+    </div>
+  </div>
+
+  <div class="bar"></div>
+</body>
+
+</html>

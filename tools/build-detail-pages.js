@@ -39,24 +39,13 @@ const url = (p) => p.split('/').map(encodeURIComponent).join('/');
    Fragments
    ------------------------------------------------------------ */
 
+/* Stylesheets only. Every meta tag — title, description, canonical,
+   Open Graph, Twitter, favicons, JSON-LD — belongs to tools/build-seo.js,
+   which owns the PF:SEO region of the head. Emitting them here too would
+   declare each one twice. Run build-seo.js after adding a page. */
 function headBlock(p, file) {
   return `
   <!-- Shared chrome -->
-  <link rel="icon" type="image/png" href="../images/favicon.ico">
-  <link rel="canonical" href="${SITE}${url(file)}">
-  <meta name="description" content="${esc(p.long || p.desc)}">
-  <meta name="author" content="Safia Massaid">
-
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Safia Massaid">
-  <meta property="og:url" content="${SITE}${url(file)}">
-  <meta property="og:title" content="${esc(p.title)} — Safia Massaid">
-  <meta property="og:description" content="${esc(p.desc)}">
-  <meta property="og:image" content="${SITE}${url(p.thumb)}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${esc(p.title)} — Safia Massaid">
-  <meta name="twitter:description" content="${esc(p.desc)}">
-  <meta name="twitter:image" content="${SITE}${url(p.thumb)}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

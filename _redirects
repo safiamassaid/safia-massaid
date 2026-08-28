@@ -1,0 +1,6 @@
+# Netlify redirects — https://docs.netlify.com/routing/redirects/
+# La page Qovoltis a été retirée du site. Elle avait été soumise à Google
+# dans le sitemap, donc on renvoie vers les services plutôt que de laisser
+# un 404 aux visiteurs qui auraient encore le lien.
+/service/qovoltis.html   /service/service-details.html   301
+/service/qovoltis        /service/service-details.html   301

@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Service banner source — rendered to assets/img/service-*.png</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@500;600&display=swap">
+  <style>
+    /* Rendered at 1200x360 by headless Chrome, one variant per query string:
+       ?v=web | ?v=uiux | ?v=pm | ?v=qa
+       Abstract diagrams rather than stock photography — they carry the brand
+       palette, weigh a few kilobytes, and say what the service actually is. */
+
+    :root {
+      --ink: #1C1418;
+      --muted: #6B5C63;
+      --faint: #9C8D94;
+      --line: #EAE4E7;
+      --ground: #FBFAFB;
+      --accent: #8C4A6B;
+      --deep: #5E2E45;
+      --live: #0F9D76;
+      --mono: 'Fira Code', ui-monospace, monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { width: 1200px; height: 360px; }
+
+    body {
+      position: relative;
+      overflow: hidden;
+      background: var(--ground);
+      font-family: Inter, system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      padding: 0 64px;
+    }
+
+    .pattern {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(140, 74, 107, .20) 1px, transparent 1px);
+      background-size: 24px 24px;
+      -webkit-mask-image: radial-gradient(120% 100% at 20% 0%, #000 20%, transparent 72%);
+    }
+
+    .glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(46% 70% at 88% 42%, rgba(140, 74, 107, .16), transparent 70%);
+    }
+
+    .bar {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+      background: linear-gradient(90deg, var(--accent), var(--deep) 60%, transparent);
+    }
+
+    /* --- Left: the label ------------------------------------- */
+
+    .label { position: relative; width: 330px; flex: none; }
+
+    .label .n {
+      font-family: var(--mono);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .label h2 {
+      font-size: 34px; font-weight: 800;
+      letter-spacing: -.025em; line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .label p {
+      font-size: 13px; line-height: 1.7; color: var(--muted);
+    }
+
+    /* --- Right: the diagram ---------------------------------- */
+
+    .art {
+      position: relative;
+      flex: 1;
+      height: 236px;
+      display: none;
+    }
+
+    body[data-v="web"] .art.web,
+    body[data-v="uiux"] .art.uiux,
+    body[data-v="pm"] .art.pm,
+    body[data-v="qa"] .art.qa { display: block; }
+
+    .card {
+      position: absolute;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 18px 40px -26px rgba(94, 46, 69, .45);
+    }
+
+    /* web — a window, a stack of code lines, a data row */
+    .web .win { inset: 0 190px 0 0; padding: 0; overflow: hidden; }
+    .web .win .chrome {
+      height: 30px; border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; gap: 6px; padding: 0 12px;
+    }
+    .web .win .chrome i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); display: block; }
+    .web .win .chrome i:first-child { background: rgba(140, 74, 107, .5); }
+    .web .code { padding: 16px 18px; display: flex; flex-direction: column; gap: 9px; }
+    .web .code span { height: 9px; border-radius: 3px; background: var(--line); display: block; }
+    .web .code span.a { background: rgba(140, 74, 107, .55); }
+    .web .code span.b { background: rgba(140, 74, 107, .28); }
+    .web .stack { inset: 24px 0 24px auto; width: 168px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .web .stack b {
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--faint);
+    }
+    .web .stack u {
+      text-decoration: none; font-family: var(--mono); font-size: 11px;
+      color: var(--ink); display: flex; justify-content: space-between;
+      padding-bottom: 8px; border-bottom: 1px solid var(--line);
+    }
+    .web .stack u em { font-style: normal; color: var(--accent); }
+
+    /* uiux — three overlapping artboards */
+    .uiux .b1 { left: 0; top: 26px; width: 210px; height: 184px; }
+    .uiux .b2 { left: 150px; top: 8px; width: 210px; height: 220px; }
+    .uiux .b3 { left: 300px; top: 40px; width: 210px; height: 156px; }
+    .uiux .card { padding: 14px; display: flex; flex-direction: column; gap: 9px; }
+    .uiux .card i { display: block; border-radius: 4px; background: var(--line); }
+    .uiux .card i.h { height: 34px; background: rgba(140, 74, 107, .16); }
+    .uiux .card i.l { height: 8px; }
+    .uiux .card i.s { height: 8px; width: 60%; }
+    .uiux .card i.btn { height: 22px; width: 78px; background: var(--accent); border-radius: 8px; margin-top: auto; }
+    .uiux .tag {
+      position: absolute; left: 300px; top: 8px;
+      font-family: var(--mono); font-size: 9px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+      background: rgba(140, 74, 107, .08); border: 1px solid rgba(140, 74, 107, .22);
+      border-radius: 6px; padding: 4px 8px;
+    }
+
+    /* pm — a gantt chart */
+    .pm .card { inset: 0; padding: 20px 22px; display: flex; flex-direction: column; gap: 13px; }
+    .pm .row { display: flex; align-items: center; gap: 14px; }
+    .pm .row b {
+      font-family: var(--mono); font-size: 9.5px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--faint);
+      width: 92px; flex: none; text-align: right;
+    }
+    .pm .track { flex: 1; height: 12px; border-radius: 999px; background: var(--ground); position: relative; }
+    .pm .track s { position: absolute; top: 0; height: 12px; border-radius: 999px; text-decoration: none; }
+    .pm .track s.p { background: linear-gradient(90deg, var(--accent), var(--deep)); }
+    .pm .track s.q { background: rgba(140, 74, 107, .28); }
+    .pm .mile {
+      position: absolute; right: 30px; top: 14px; bottom: 14px; width: 1px;
+      background: repeating-linear-gradient(180deg, var(--accent) 0 4px, transparent 4px 9px);
+    }
+    .pm .mile::after {
+      content: ""; position: absolute; left: -4px; top: -4px;
+      width: 9px; height: 9px; background: var(--accent); transform: rotate(45deg);
+    }
+
+    /* qa — a test run */
+    .qa .card { inset: 0 132px 0 0; padding: 18px 22px; display: flex; flex-direction: column; gap: 11px; }
+    .qa .t { display: flex; align-items: center; gap: 12px; }
+    .qa .t i {
+      width: 16px; height: 16px; border-radius: 50%; flex: none;
+      display: grid; place-items: center; font-size: 9px; color: #fff;
+      background: var(--live); font-family: var(--mono); font-style: normal;
+    }
+    .qa .t i.f { background: #B45309; }
+    .qa .t s { text-decoration: none; height: 8px; border-radius: 3px; background: var(--line); flex: 1; }
+    .qa .t b {
+      font-family: var(--mono); font-size: 9.5px; color: var(--faint);
+      letter-spacing: .08em; width: 46px; text-align: right;
+    }
+    .qa .ring { inset: 34px 0 34px auto; width: 116px; display: grid; place-items: center; gap: 2px; }
+    .qa .ring em {
+      font-style: normal; font-family: var(--mono);
+      font-size: 30px; font-weight: 600; color: var(--accent);
+    }
+    .qa .ring span {
+      font-family: var(--mono); font-size: 9px; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--faint);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pattern"></div>
+  <div class="glow"></div>
+
+  <div class="label">
+    <p class="n" id="n"></p>
+    <h2 id="t"></h2>
+    <p id="s"></p>
+  </div>
+
+  <!-- web -->
+  <div class="art web">
+    <div class="card win">
+      <div class="chrome"><i></i><i></i><i></i></div>
+      <div class="code">
+        <span class="a" style="width:46%"></span>
+        <span style="width:72%"></span>
+        <span class="b" style="width:58%"></span>
+        <span style="width:80%"></span>
+        <span class="a" style="width:38%"></span>
+        <span style="width:66%"></span>
+        <span class="b" style="width:50%"></span>
+      </div>
+    </div>
+    <div class="card stack">
+      <b>Stack</b>
+      <u>Laravel <em>PHP</em></u>
+      <u>React <em>JS</em></u>
+      <u>Node.js <em>API</em></u>
+      <u>PostgreSQL <em>DB</em></u>
+    </div>
+  </div>
+
+  <!-- uiux -->
+  <div class="art uiux">
+    <div class="card b1"><i class="h"></i><i class="l"></i><i class="s"></i><i class="btn"></i></div>
+    <div class="card b2"><i class="h"></i><i class="l"></i><i class="l"></i><i class="s"></i><i class="btn"></i></div>
+    <div class="card b3"><i class="h"></i><i class="s"></i><i class="btn"></i></div>
+    <span class="tag">Design system</span>
+  </div>
+
+  <!-- pm -->
+  <div class="art pm">
+    <div class="card">
+      <div class="row"><b>Discovery</b><div class="track"><s class="p" style="left:2%;width:22%"></s></div></div>
+      <div class="row"><b>Spec / CDC</b><div class="track"><s class="p" style="left:18%;width:26%"></s></div></div>
+      <div class="row"><b>Design</b><div class="track"><s class="q" style="left:38%;width:24%"></s></div></div>
+      <div class="row"><b>Build</b><div class="track"><s class="p" style="left:52%;width:34%"></s></div></div>
+      <div class="row"><b>QA</b><div class="track"><s class="q" style="left:74%;width:20%"></s></div></div>
+      <div class="mile"></div>
+    </div>
+  </div>
+
+  <!-- qa -->
+  <div class="art qa">
+    <div class="card">
+      <div class="t"><i>✓</i><s style="width:70%"></s><b>PASS</b></div>
+      <div class="t"><i>✓</i><s style="width:52%"></s><b>PASS</b></div>
+      <div class="t"><i class="f">!</i><s style="width:64%"></s><b>MAJOR</b></div>
+      <div class="t"><i>✓</i><s style="width:44%"></s><b>PASS</b></div>
+      <div class="t"><i>✓</i><s style="width:58%"></s><b>PASS</b></div>
+      <div class="t"><i>✓</i><s style="width:36%"></s><b>PASS</b></div>
+    </div>
+    <div class="card ring">
+      <em>6</em>
+      <span>QA reports</span>
+    </div>
+  </div>
+
+  <div class="bar"></div>
+
+  <script>
+    var COPY = {
+      web:  ['01 / Engineering', 'Web Development',    'Backend architecture, database design and the interfaces on top.'],
+      uiux: ['02 / Creative',    'UI/UX Design',       'Research, wireframes, prototypes and a design system that holds.'],
+      pm:   ['03 / Leadership',  'Project Management', 'Specification, planning and the governance that keeps a date.'],
+      qa:   ['04 / Assurance',   'QA & Testing',       'Functional, API and load campaigns — with the evidence to prove it.']
+    };
+    var v = (location.search.match(/v=(\w+)/) || [, 'web'])[1];
+    var c = COPY[v] || COPY.web;
+    document.body.dataset.v = v;
+    document.getElementById('n').textContent = c[0];
+    document.getElementById('t').textContent = c[1];
+    document.getElementById('s').textContent = c[2];
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+# https://massaid-safia.netlify.app/robots.txt
+# Le site entier est ouvert à l'indexation.
+
+User-agent: *
+Allow: /
+
+# Sources des générateurs : ce sont des gabarits, pas des pages du site.
+Disallow: /tools/
+
+Sitemap: https://massaid-safia.netlify.app/sitemap.xml
