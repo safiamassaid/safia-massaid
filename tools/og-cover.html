@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="robots" content="noindex, nofollow">
-  <title>OG cover source — rendered to images/og-cover.png by tools/build-images.js</title>
+  <title>OG cover source — rendered to images/og-cover.png with headless Chrome</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@500;600&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@500;600;700&display=swap">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -20,7 +20,7 @@
       background: #fff;
       font-family: Inter, system-ui, sans-serif;
       color: #1C1418;
-      padding: 74px 80px;
+      padding: 64px 80px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -69,9 +69,12 @@
       padding: 9px 18px; background: #fff;
     }
 
+    /* Headline and lede share the left column: 720px keeps every line clear
+       of the portrait, which starts at 804px. */
+    .say { position: relative; width: 720px; }
+
     h1 {
-      position: relative;
-      font-size: 74px;
+      font-size: 62px;
       font-weight: 800;
       letter-spacing: -.028em;
       line-height: 1.06;
@@ -80,9 +83,20 @@
 
     h1 em { font-style: normal; color: #8C4A6B; display: block; }
 
-    .foot { position: relative; display: flex; align-items: flex-end; gap: 40px; }
+    /* The hero lede, shortened to the part that dates the rest of the page:
+       who she is now. No counts — a number baked into a cached share card
+       is wrong the week after a project lands. */
+    .lede {
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.62;
+      color: #6B5C63;
+      max-width: 585px;
+    }
 
-    .disc { display: flex; flex-wrap: wrap; gap: 9px; }
+    .lede b { font-weight: 600; color: #1C1418; }
+
+    .disc { position: relative; display: flex; flex-wrap: wrap; gap: 9px; width: 720px; }
 
     .disc span {
       font-family: 'Fira Code', monospace;
@@ -92,16 +106,38 @@
       padding: 9px 16px; background: #fff;
     }
 
-    .stats { margin-left: auto; display: flex; gap: 34px; text-align: right; }
-    .stats div b {
-      display: block;
-      font-family: 'Fira Code', monospace;
-      font-size: 30px; font-weight: 600; color: #8C4A6B;
+    /* --- Portrait -------------------------------------------------
+       Same cut-out and same plum arch as the site hero, so the share
+       card and the page a click later show the same picture. */
+    .portrait {
+      position: absolute;
+      right: 56px;
+      bottom: 10px;
+      width: 340px;
+      height: 468px;
     }
-    .stats div span {
-      font-family: 'Fira Code', monospace;
-      font-size: 10px; font-weight: 600;
-      letter-spacing: .16em; text-transform: uppercase; color: #9C8D94;
+
+    .portrait::before {
+      content: "";
+      position: absolute;
+      inset: 34px 14px 0;
+      border-radius: 200px 200px 24px 24px;
+      background:
+        radial-gradient(120% 80% at 50% 8%, rgba(140, 74, 107, .22), transparent 68%),
+        linear-gradient(180deg, rgba(140, 74, 107, .15), rgba(140, 74, 107, .03));
+      border: 1px solid rgba(140, 74, 107, .22);
+      border-bottom: 0;
+    }
+
+    .portrait img {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 24px 38px rgba(94, 46, 69, .22));
     }
   </style>
 </head>
@@ -125,24 +161,27 @@
     <span class="badge">massaid-safia.netlify.app</span>
   </div>
 
-  <h1>
-    I build the product,
-    <em>then I lead its delivery.</em>
-  </h1>
-
-  <div class="foot">
-    <div class="disc">
-      <span>Development</span>
-      <span>UI/UX Design</span>
-      <span>QA &amp; Testing</span>
-      <span>Project Management</span>
-    </div>
-    <div class="stats">
-      <div><b>+40</b><span>Projects</span></div>
-      <div><b>21</b><span>Documents</span></div>
-      <div><b>3+</b><span>Years</span></div>
-    </div>
+  <div class="say">
+    <h1>
+      I build the product,
+      <em>then I lead its delivery.</em>
+    </h1>
+    <p class="lede">
+      IT engineer, three years building web, desktop and mobile products end to
+      end. Now <b>Assistant Project Manager</b> at Kyo Conseil.
+    </p>
   </div>
+
+  <div class="disc">
+    <span>Development</span>
+    <span>UI/UX Design</span>
+    <span>QA &amp; Testing</span>
+    <span>Project Management</span>
+  </div>
+
+  <figure class="portrait">
+    <img src="../images/safia-massaid.png" alt="">
+  </figure>
 
   <div class="bar"></div>
 </body>
