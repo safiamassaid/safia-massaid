@@ -141,7 +141,7 @@ the sentinel.
 
 ### The portrait
 
-`images/safia-massaid-it-engineer.png` is the photograph, a cut-out with a real
+`images/safia-massaid.png` is the photograph, a cut-out with a real
 alpha channel. It appears twice on purpose:
 
 - visibly in the hero, standing in front of a plum arch drawn as a

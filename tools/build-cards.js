@@ -369,7 +369,7 @@ ${i}        </a>
 ${i}        <div class="pf-footer__social">
 ${i}          <a href="https://github.com/safiamassaid" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github" aria-hidden="true"></i></a>
 ${i}          <a href="https://gitlab.com/safia1704832" target="_blank" rel="noopener" aria-label="GitLab"><i class="bi bi-gitlab" aria-hidden="true"></i></a>
-${i}          <a href="https://www.linkedin.com/in/safia-massaid-171b19235/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+${i}          <a href="https://www.linkedin.com/in/safia-massaid/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
 ${i}          <a href="mailto:massaidsafia2@gmail.com" aria-label="Email"><i class="bi bi-envelope" aria-hidden="true"></i></a>
 ${i}        </div>
 ${i}      </div>

@@ -46,7 +46,7 @@
     /* The photograph itself. Feeds Person.image in the JSON-LD, which is
        what Google reads when it decides whether it has a picture of the
        person behind the name. Descriptive filename on purpose. */
-    portrait: 'images/safia-massaid-it-engineer.png',
+    portrait: 'images/safia-massaid.png',
     portraitWidth: 340,
     portraitHeight: 685,
     ogImageAlt: 'Safia Massaid — IT engineer and project manager portfolio',
@@ -55,7 +55,7 @@
     sameAs: [
       'https://github.com/safiamassaid',
       'https://gitlab.com/safia1704832',
-      'https://www.linkedin.com/in/safia-massaid-171b19235/'
+      'https://www.linkedin.com/in/safia-massaid/'
     ],
 
     /* Feeds Person.knowsAbout — the disciplines, not every tool */
