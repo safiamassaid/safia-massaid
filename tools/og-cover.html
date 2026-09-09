@@ -19,7 +19,7 @@
       overflow: hidden;
       background: #fff;
       font-family: Inter, system-ui, sans-serif;
-      color: #1C1418;
+      color: #141A2E;
       padding: 64px 80px;
       display: flex;
       flex-direction: column;
@@ -30,7 +30,7 @@
     .pattern {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(140, 74, 107, .22) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(30, 58, 138, .22) 1px, transparent 1px);
       background-size: 26px 26px;
       -webkit-mask-image: radial-gradient(115% 85% at 50% 0%, #000 25%, transparent 76%);
     }
@@ -38,14 +38,14 @@
     .glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(52% 58% at 82% 30%, rgba(140, 74, 107, .16), transparent 70%);
+      background: radial-gradient(52% 58% at 82% 30%, rgba(30, 58, 138, .16), transparent 70%);
     }
 
     .bar {
       position: absolute;
       left: 0; right: 0; bottom: 0;
       height: 10px;
-      background: linear-gradient(90deg, #8C4A6B, #5E2E45);
+      background: linear-gradient(90deg, #1E3A8A, #152A63);
     }
 
     .row { position: relative; display: flex; align-items: center; gap: 16px; }
@@ -57,15 +57,15 @@
     .brand span {
       font-family: 'Fira Code', monospace;
       font-size: 11px; font-weight: 600;
-      letter-spacing: .16em; text-transform: uppercase; color: #8C4A6B;
+      letter-spacing: .16em; text-transform: uppercase; color: #1E3A8A;
     }
 
     .badge {
       margin-left: auto;
       font-family: 'Fira Code', monospace;
       font-size: 12px; font-weight: 600;
-      letter-spacing: .14em; text-transform: uppercase; color: #6B5C63;
-      border: 1px solid #EAE4E7; border-radius: 999px;
+      letter-spacing: .14em; text-transform: uppercase; color: #565F79;
+      border: 1px solid #E4E7F0; border-radius: 999px;
       padding: 9px 18px; background: #fff;
     }
 
@@ -81,7 +81,7 @@
       max-width: 16ch;
     }
 
-    h1 em { font-style: normal; color: #8C4A6B; display: block; }
+    h1 em { font-style: normal; color: #1E3A8A; display: block; }
 
     /* The hero lede, shortened to the part that dates the rest of the page:
        who she is now. No counts — a number baked into a cached share card
@@ -90,25 +90,26 @@
       margin-top: 20px;
       font-size: 18px;
       line-height: 1.62;
-      color: #6B5C63;
+      color: #565F79;
       max-width: 585px;
     }
 
-    .lede b { font-weight: 600; color: #1C1418; }
+    .lede b { font-weight: 600; color: #141A2E; }
 
     .disc { position: relative; display: flex; flex-wrap: wrap; gap: 9px; width: 720px; }
 
     .disc span {
       font-family: 'Fira Code', monospace;
       font-size: 12px; font-weight: 600;
-      letter-spacing: .12em; text-transform: uppercase; color: #6B5C63;
-      border: 1px solid #EAE4E7; border-radius: 999px;
+      letter-spacing: .12em; text-transform: uppercase; color: #565F79;
+      border: 1px solid #E4E7F0; border-radius: 999px;
       padding: 9px 16px; background: #fff;
     }
 
     /* --- Portrait -------------------------------------------------
-       Same cut-out and same plum arch as the site hero, so the share
-       card and the page a click later show the same picture. */
+       Same cut-out and same pale-blue arch as the site hero, so the share
+       card and the page a click later show the same picture. Keep these
+       three values in sync with .hero-portrait::before in main.css. */
     .portrait {
       position: absolute;
       right: 56px;
@@ -123,9 +124,9 @@
       inset: 34px 14px 0;
       border-radius: 200px 200px 24px 24px;
       background:
-        radial-gradient(120% 80% at 50% 8%, rgba(140, 74, 107, .22), transparent 68%),
-        linear-gradient(180deg, rgba(140, 74, 107, .15), rgba(140, 74, 107, .03));
-      border: 1px solid rgba(140, 74, 107, .22);
+        radial-gradient(120% 80% at 50% 8%, rgba(30, 58, 138, .13), transparent 68%),
+        linear-gradient(180deg, #EEF3FF, rgba(238, 243, 255, 0));
+      border: 1px solid rgba(30, 58, 138, .20);
       border-bottom: 0;
     }
 
@@ -137,7 +138,7 @@
       height: 100%;
       object-fit: contain;
       object-position: bottom center;
-      filter: drop-shadow(0 24px 38px rgba(94, 46, 69, .22));
+      filter: drop-shadow(0 24px 38px rgba(21, 42, 99, .22));
     }
   </style>
 </head>
@@ -148,7 +149,7 @@
 
   <div class="row">
     <svg class="hex" viewBox="0 0 64 64" aria-hidden="true">
-      <polygon points="16,0 48,0 64,32 48,64 16,64 0,32" fill="#8C4A6B" />
+      <polygon points="16,0 48,0 64,32 48,64 16,64 0,32" fill="#1E3A8A" />
       <g fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="40,48 52,32 40,16" />
         <polyline points="24,16 12,32 24,48" />

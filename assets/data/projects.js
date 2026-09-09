@@ -294,42 +294,6 @@
       year: '2023'
     },
     {
-      slug: 'orbiserp-demo',
-      track: 'dev',
-      cat: 'website',
-      catLabel: 'Website',
-      title: 'OrbisERP — Guided Demo',
-      desc: 'Web demo of the OrbisERP desktop app — a nine-step walkthrough that sells it without an install.',
-      thumb: 'assets/img/dem.png',
-      live: 'https://demoorbiserp.netlify.app/',
-      stack: ['JavaScript', 'Netlify'],
-      year: '2025'
-    },
-    {
-      slug: 'hbt-hotel',
-      track: 'dev',
-      cat: 'website',
-      catLabel: 'Website',
-      title: 'HBT Hotel',
-      desc: 'Boutique hotel landing page built around room photography and a single booking call to action.',
-      thumb: 'assets/img/portfolio/hotel.png',
-      live: 'https://incandescent-kringle-c60f7b.netlify.app',
-      stack: ['HTML', 'CSS', 'JavaScript'],
-      year: '2023'
-    },
-    {
-      slug: 'edgeledger',
-      track: 'dev',
-      cat: 'website',
-      catLabel: 'Website',
-      title: 'EdgeLedger',
-      desc: 'Corporate finance landing page with a full-bleed skyline hero and service sections.',
-      thumb: 'assets/img/portfolio/vert.png',
-      live: 'https://zesty-rugelach-1ea57a.netlify.app',
-      stack: ['HTML', 'CSS', 'JavaScript'],
-      year: '2023'
-    },
-    {
       slug: 'travel-agency',
       track: 'dev',
       cat: 'website',
@@ -341,18 +305,7 @@
       stack: ['HTML', 'CSS', 'JavaScript'],
       year: '2023'
     },
-    {
-      slug: 'parallax-landing',
-      track: 'dev',
-      cat: 'website',
-      catLabel: 'Website',
-      title: 'Parallax Landing Page',
-      desc: 'Scroll-driven landing page exploring layered parallax backgrounds and type transitions.',
-      thumb: 'assets/img/portfolio/menu.png',
-      live: 'https://gleeful-crumble-745058.netlify.app',
-      stack: ['HTML', 'CSS', 'JavaScript'],
-      year: '2023'
-    },
+
     {
       slug: 'todo-list',
       track: 'dev',
@@ -365,17 +318,7 @@
       stack: ['JavaScript', 'LocalStorage'],
       year: '2023'
     },
-    {
-      slug: 'mahdi-massaid-v1',
-      track: 'dev',
-      cat: 'website',
-      catLabel: 'Website',
-      title: 'Mahdi Massaid — Artist Site',
-      desc: 'First edition of an artist site for a songwriter and author, built around album and press sections.',
-      thumb: 'assets/img/portfolio/md.png',
-      stack: ['HTML', 'CSS', 'JavaScript'],
-      year: '2023'
-    },
+
     {
       slug: 'massaid-mahdi',
       track: 'dev',
@@ -388,18 +331,7 @@
       stack: ['HTML', 'CSS', 'JavaScript'],
       year: '2024'
     },
-    {
-      slug: 'my-drow',
-      track: 'dev',
-      cat: 'website',
-      catLabel: 'Static Site',
-      title: 'My-Drow',
-      desc: 'Browser drawing tool with brush thickness, colour picker and a magic eraser, drawn on canvas.',
-      thumb: 'assets/img/portfolio/dessin.png',
-      live: 'https://friendly-panda-6cfbdf.netlify.app',
-      stack: ['Canvas API', 'JavaScript'],
-      year: '2023'
-    },
+
     {
       slug: 'salon-beaute',
       track: 'dev',
@@ -436,18 +368,7 @@
       stack: ['HTML', 'CSS', 'JavaScript'],
       year: '2023'
     },
-    {
-      slug: 'terra-voyage',
-      track: 'dev',
-      cat: 'website',
-      catLabel: 'Website',
-      title: 'Terra Voyage',
-      desc: 'Travel site opening on a full-screen coastline with a low-cost discovery pitch.',
-      thumb: 'assets/img/portfolio/trav.png',
-      live: 'https://idyllic-frangollo-62812b.netlify.app/',
-      stack: ['HTML', 'CSS', 'JavaScript'],
-      year: '2023'
-    },
+
     {
       slug: 'cabinet-avocats',
       track: 'dev',
@@ -469,18 +390,6 @@
       desc: 'Nursery site presenting the team, services and an online pre-registration form.',
       thumb: 'assets/img/portfolio/crech.png',
       live: 'https://regal-belekoy-6e60cc.netlify.app/',
-      stack: ['HTML', 'CSS', 'JavaScript'],
-      year: '2023'
-    },
-    {
-      slug: 'sama-portfolio',
-      track: 'dev',
-      cat: 'website',
-      catLabel: 'Website',
-      title: 'SA-MA Portfolio',
-      desc: 'Earlier edition of this portfolio, built as an illustrated single-page site.',
-      thumb: 'assets/img/portfolio/porta.png',
-      live: 'https://safiamassaid.netlify.app/',
       stack: ['HTML', 'CSS', 'JavaScript'],
       year: '2023'
     },

@@ -36,7 +36,7 @@
     jobTitle: 'IT Engineer & Assistant Project Manager',
     lang: 'en',
     locale: 'en_US',
-    themeColor: '#8C4A6B',
+    themeColor: '#1E3A8A',
     email: 'massaidsafia2@gmail.com',
     employer: 'Kyo Conseil',
 
@@ -95,9 +95,9 @@
         type: 'website',
         priority: '0.9',
         changefreq: 'weekly',
-        title: '+40 Projects — Safia Massaid, IT Engineer Portfolio',
+        title: '+30 Projects — Safia Massaid, IT Engineer Portfolio',
         description:
-          'The full archive: +40 web, desktop, mobile and UI/UX projects, each with the stack it was built on, the problem it solved and a case study you can open.'
+          'The full archive: +30 web, desktop, mobile and UI/UX projects, each with the stack it was built on, the problem it solved and a case study you can open.'
       },
 
       'docs.html': {

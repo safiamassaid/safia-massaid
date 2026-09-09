@@ -1,17 +1,48 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
   <meta name="robots" content="noindex, nofollow">
-<title>App icon source — rendered to images/*.png by tools/build-images.js</title>
+<title>App icon source — rendered to images/*.png with headless Chrome</title>
+<!--
+  The hexagon is the brand mark. It has to be the SAME hexagon in three places
+  or the site shows two different logos: .hexa-logo in assets/css/main.css
+  (clip-path 25/75/100/75/25/0 %), images/favicon.svg, and this file. The
+  polygon below is that clip-path expressed on a 64-unit viewBox — 16/64 = 25%,
+  48/64 = 75% — so all three are one shape.
+
+  This template used to draw the chevrons on a full-bleed navy SQUARE, with no
+  hexagon at all, which is why every PNG icon and favicon.ico disagreed with
+  favicon.svg and with the header.
+
+  Two variants, chosen with ?v= like tools/service-banner.html:
+
+    (default)  transparent ground — favicon-32, icon-192, icon-512, favicon.ico.
+               Render these with --default-background-color=00000000 or Chrome
+               composites them onto white and the transparency is lost.
+
+    ?v=solid   opaque white ground, hexagon inset — apple-touch-icon only. iOS
+               clips to a rounded square and composites a transparent icon onto
+               black, so Apple's icon must carry its own opaque ground.
+-->
 <style>
-  *{margin:0;padding:0}
-  html,body{width:100%;height:100%;background:#8C4A6B}
-  svg{width:100%;height:100%;display:block}
+  * { margin: 0; padding: 0 }
+  html, body { width: 100%; height: 100%; background: transparent }
+  body[data-v="solid"] { background: #FFFFFF }
+
+  svg { width: 100%; height: 100%; display: block }
+  /* Breathing room inside the rounded square iOS draws around it. */
+  body[data-v="solid"] svg { padding: 7%; box-sizing: border-box }
 </style></head>
 <body>
   <svg viewBox="0 0 64 64" aria-hidden="true">
-    <g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="40,46 51,32 40,18"/>
-      <polyline points="24,18 13,32 24,46"/>
+    <polygon points="16,0 48,0 64,32 48,64 16,64 0,32" fill="#1E3A8A"/>
+    <g fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="40,48 52,32 40,16"/>
+      <polyline points="24,16 12,32 24,48"/>
     </g>
   </svg>
+
+  <script>
+    var v = (location.search.match(/v=(\w+)/) || [, 'flat'])[1];
+    document.body.dataset.v = v;
+  </script>
 </body></html>

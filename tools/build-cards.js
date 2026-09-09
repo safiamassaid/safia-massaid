@@ -348,7 +348,7 @@ ${i}      <div class="pf-footer__brand">
 ${i}        <a class="pf-footer__lockup" href="${home}#home" aria-label="Safia Massaid — home">
 ${i}          <svg class="pf-footer__mark" viewBox="0 0 64 64" aria-hidden="true">
 ${i}            <polygon points="16,0 48,0 64,32 48,64 16,64 0,32" fill="currentColor"/>
-${i}            <g fill="none" stroke="#1C1418" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+${i}            <g fill="none" stroke="#141A2E" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
 ${i}              <polyline points="40,48 52,32 40,16"/>
 ${i}              <polyline points="24,16 12,32 24,48"/>
 ${i}            </g>

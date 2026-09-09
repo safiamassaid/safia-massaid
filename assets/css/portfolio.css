@@ -7,21 +7,45 @@
    ============================================================ */
 
 :root {
-  /* --- Neutrals, biased toward the plum so the page reads as one palette --- */
-  --pf-ink: #1C1418;
-  --pf-ink-2: #3A2E34;
-  --pf-muted: #6B5C63;
-  --pf-faint: #9C8D94;
-  --pf-line: #EAE4E7;
-  --pf-line-soft: #F3EFF1;
-  --pf-ground: #FBFAFB;
+  /* --- Neutrals, biased toward the navy so the page reads as one palette --- */
+  --pf-ink: #141A2E;
+  --pf-ink-2: #2A3350;
+  --pf-muted: #565F79;
+  --pf-faint: #878FA6;
+  --pf-line: #E4E7F0;
+  --pf-line-soft: #F0F2F8;
+  --pf-ground: #FAFAFC;
   --pf-surface: #FFFFFF;
 
-  /* --- Accent: the existing brand plum, unchanged --- */
-  --pf-accent: #8C4A6B;
-  --pf-accent-deep: #5E2E45;
-  --pf-accent-soft: rgba(140, 74, 107, .08);
-  --pf-accent-line: rgba(140, 74, 107, .22);
+  /* --- Accent: navy. Structure, engineering, project management. --- */
+  --pf-accent: #1E3A8A;
+  --pf-accent-deep: #152A63;
+  --pf-accent-soft: rgba(30, 58, 138, .08);
+  --pf-accent-line: rgba(30, 58, 138, .22);
+
+  /* --- Rose: the counterweight, and it lives on ONE kind of surface.
+
+         Rose appears only on the dark slabs — the footer and the two dark
+         panels — because that is the only place the navy cannot separate
+         itself: a navy bloom or a navy mark on a navy ground is invisible.
+         Everywhere on a light ground, the accent is navy.
+
+         It is deliberately absent from the hero. The warmth there comes from
+         the photograph itself, and a rose arch behind a peach hijab put the
+         same hue on both sides of the silhouette — see .hero-portrait::before
+         in main.css.
+
+         --pf-rose is a surface and graphic colour ONLY: 2.65:1 on white, so it
+         can never carry text or a lone icon on a light ground. If rose type is
+         ever needed, #A83070 is the same hue at 6.3:1 — don't darken by eye. */
+  --pf-rose: #F472B6;
+  --pf-rose-line: rgba(244, 114, 182, .38);
+
+  /* --- The navy is dark, so the header's "which page am I on" step now runs
+         light-to-dark instead of dark-to-light: resting nav is this mid-slate
+         (4.9:1 on the bar), current is --pf-accent. 2.1:1 between them, so the
+         state still survives greyscale. See main.css. --- */
+  --pf-nav-rest: #657090;
 
   /* --- Semantic only. Never decorative. --- */
   --pf-live: #0F9D76;
@@ -36,8 +60,8 @@
   --pf-r-lg: 20px;
   --pf-r-md: 14px;
   --pf-r-sm: 9px;
-  --pf-shadow: 0 1px 2px rgba(28, 20, 24, .04), 0 8px 24px -14px rgba(28, 20, 24, .14);
-  --pf-shadow-lift: 0 2px 6px rgba(28, 20, 24, .05), 0 26px 50px -22px rgba(94, 46, 69, .28);
+  --pf-shadow: 0 1px 2px rgba(20, 26, 46, .04), 0 8px 24px -14px rgba(20, 26, 46, .14);
+  --pf-shadow-lift: 0 2px 6px rgba(20, 26, 46, .05), 0 26px 50px -22px rgba(21, 42, 99, .28);
 
   --pf-ease: cubic-bezier(.22, 1, .36, 1);
 }
@@ -124,7 +148,7 @@
   background: var(--pf-accent);
   border-color: var(--pf-accent);
   color: #fff;
-  box-shadow: 0 12px 26px -16px rgba(94, 46, 69, .95);
+  box-shadow: 0 12px 26px -16px rgba(21, 42, 99, .95);
 }
 
 .pf-btn--primary:hover {
@@ -473,7 +497,7 @@
 [data-pf-track][aria-selected="true"] {
   background: var(--pf-surface);
   color: var(--pf-accent);
-  box-shadow: 0 1px 2px rgba(28, 20, 24, .07);
+  box-shadow: 0 1px 2px rgba(20, 26, 46, .07);
 }
 
 /* Visually hidden, still read by screen readers */
@@ -872,7 +896,7 @@
 }
 
 /* Kind colouring — encodes the document type, not decoration */
-.pf-doc__icon--spec { background: rgba(140, 74, 107, .09); color: #8C4A6B; }
+.pf-doc__icon--spec { background: rgba(30, 58, 138, .09); color: #1E3A8A; }
 .pf-doc__icon--tech { background: rgba(79, 70, 229, .09);  color: #4F46E5; }
 .pf-doc__icon--qa   { background: rgba(15, 157, 118, .10); color: #0F9D76; }
 .pf-doc__icon--bug  { background: rgba(217, 119, 6, .11);  color: #B45309; }
@@ -974,7 +998,7 @@
   gap: 20px;
   padding: 22px;
   border-radius: var(--pf-r-lg);
-  background: linear-gradient(155deg, var(--pf-ink) 0%, #2B2126 100%);
+  background: linear-gradient(155deg, var(--pf-ink) 0%, #212942 100%);
   color: rgba(255, 255, 255, .68);
 }
 
@@ -1540,7 +1564,7 @@
   border: 1px solid var(--pf-line);
   border-radius: 24px;
   background:
-    linear-gradient(180deg, rgba(140, 74, 107, .05), rgba(140, 74, 107, 0) 240px),
+    linear-gradient(180deg, rgba(30, 58, 138, .05), rgba(30, 58, 138, 0) 240px),
     var(--pf-surface);
 }
 
@@ -1825,11 +1849,13 @@
   gap: 44px;
   padding: 44px 40px;
   color: #fff;
-  background: linear-gradient(160deg, #1C1418 0%, #3A2434 58%, #5E2E45 100%);
+  background: linear-gradient(160deg, #141A2E 0%, #1B2E63 58%, #1E3A8A 100%);
   overflow: hidden;
 }
 
-/* A single soft accent bloom — enough to lift the panel, not a texture */
+/* A single soft bloom — enough to lift the panel, not a texture. It is rose,
+   not navy: the panel is already navy, so an accent-coloured bloom on it had
+   nothing to separate itself from. */
 .ct-pitch::after {
   content: "";
   position: absolute;
@@ -1838,7 +1864,7 @@
   width: 340px;
   height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(140, 74, 107, .55), transparent 70%);
+  background: radial-gradient(circle, rgba(244, 114, 182, .30), transparent 70%);
   pointer-events: none;
 }
 
@@ -2375,8 +2401,8 @@
   padding: 24px 22px;
   color: #fff;
   background:
-    radial-gradient(90% 120% at 90% 0%, rgba(140, 74, 107, .32), transparent 62%),
-    linear-gradient(140deg, #1C1418 0%, #3A2434 100%);
+    radial-gradient(90% 120% at 90% 0%, rgba(244, 114, 182, .22), transparent 62%),
+    linear-gradient(140deg, #141A2E 0%, #1F2E5E 100%);
 }
 
 .svp-next p {
@@ -2635,12 +2661,13 @@
 
 .pf-footer {
   position: relative;
-  /* Plum-warmed rather than flat near-black: the same ink the page uses
-     for text, shifted toward --pf-accent-deep across the diagonal, with a
-     soft bloom in the top corner so the band is not one dead slab. */
+  /* Navy-warmed rather than flat near-black: the same ink the page uses
+     for text, shifted toward the accent across the diagonal, with a soft rose
+     bloom in the top corner so the band is not one dead slab. The bloom has to
+     be rose — a navy one on a navy slab is the same dead slab. */
   background:
-    radial-gradient(90% 120% at 88% 0%, rgba(140, 74, 107, .26), transparent 62%),
-    linear-gradient(135deg, #1C1418 0%, #2C1D26 48%, #4A2438 100%);
+    radial-gradient(90% 120% at 88% 0%, rgba(244, 114, 182, .18), transparent 62%),
+    linear-gradient(135deg, #141A2E 0%, #1B2440 48%, #17306E 100%);
   color: rgba(255, 255, 255, .66);
   padding: 68px 0 28px;
   font-family: var(--pf-sans);
@@ -2653,7 +2680,7 @@
   position: absolute;
   inset: 0 0 auto;
   height: 2px;
-  background: linear-gradient(90deg, var(--pf-accent), var(--pf-accent-deep) 65%, transparent);
+  background: linear-gradient(90deg, var(--pf-rose), rgba(244, 114, 182, .30) 65%, transparent);
 }
 
 .pf-footer__inner {
@@ -2684,7 +2711,7 @@
   width: 34px;
   height: 34px;
   flex: none;
-  color: var(--pf-accent);
+  color: var(--pf-rose);
   transition: color .3s var(--pf-ease), transform .4s var(--pf-ease);
 }
 
@@ -2738,7 +2765,7 @@
 
 .pf-footer__mail:hover {
   color: #fff;
-  border-bottom-color: var(--pf-accent);
+  border-bottom-color: var(--pf-rose);
 }
 
 /* --- Link columns --------------------------------------------- */
@@ -2803,9 +2830,9 @@
 }
 
 .pf-footer__social a:hover {
-  background: var(--pf-accent);
-  border-color: var(--pf-accent);
-  color: #fff;
+  background: var(--pf-rose);
+  border-color: var(--pf-rose);
+  color: var(--pf-ink);
   transform: translateY(-2px);
 }
 
@@ -2870,8 +2897,8 @@
 }
 
 .pf-footer__top-link:hover {
-  border-color: var(--pf-accent);
-  background: rgba(140, 74, 107, .18);
+  border-color: var(--pf-rose-line);
+  background: rgba(255, 255, 255, .10);
   color: #fff;
 }
 
@@ -2880,7 +2907,7 @@
 }
 
 .pf-footer a:focus-visible {
-  outline: 2px solid var(--pf-accent);
+  outline: 2px solid var(--pf-rose);
   outline-offset: 3px;
   border-radius: var(--pf-r-sm);
 }

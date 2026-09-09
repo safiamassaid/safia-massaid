@@ -333,7 +333,7 @@ function page(s, header) {
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { primary: '#8C4A6B', dark: '#1a1a1a' } } }
+      theme: { extend: { colors: { primary: '#1E3A8A', dark: '#1a1a1a' } } }
     }
   </script>
 

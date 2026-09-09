@@ -16,13 +16,13 @@
        palette, weigh a few kilobytes, and say what the service actually is. */
 
     :root {
-      --ink: #1C1418;
-      --muted: #6B5C63;
-      --faint: #9C8D94;
-      --line: #EAE4E7;
-      --ground: #FBFAFB;
-      --accent: #8C4A6B;
-      --deep: #5E2E45;
+      --ink: #141A2E;
+      --muted: #565F79;
+      --faint: #878FA6;
+      --line: #E4E7F0;
+      --ground: #FAFAFC;
+      --accent: #1E3A8A;
+      --deep: #152A63;
       --live: #0F9D76;
       --mono: 'Fira Code', ui-monospace, monospace;
     }
@@ -44,14 +44,14 @@
 
     .pattern {
       position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(140, 74, 107, .20) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(30, 58, 138, .20) 1px, transparent 1px);
       background-size: 24px 24px;
       -webkit-mask-image: radial-gradient(120% 100% at 20% 0%, #000 20%, transparent 72%);
     }
 
     .glow {
       position: absolute; inset: 0;
-      background: radial-gradient(46% 70% at 88% 42%, rgba(140, 74, 107, .16), transparent 70%);
+      background: radial-gradient(46% 70% at 88% 42%, rgba(30, 58, 138, .16), transparent 70%);
     }
 
     .bar {
@@ -101,7 +101,7 @@
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 14px;
-      box-shadow: 0 18px 40px -26px rgba(94, 46, 69, .45);
+      box-shadow: 0 18px 40px -26px rgba(21, 42, 99, .45);
     }
 
     /* web — a window, a stack of code lines, a data row */
@@ -111,11 +111,11 @@
       display: flex; align-items: center; gap: 6px; padding: 0 12px;
     }
     .web .win .chrome i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); display: block; }
-    .web .win .chrome i:first-child { background: rgba(140, 74, 107, .5); }
+    .web .win .chrome i:first-child { background: rgba(30, 58, 138, .5); }
     .web .code { padding: 16px 18px; display: flex; flex-direction: column; gap: 9px; }
     .web .code span { height: 9px; border-radius: 3px; background: var(--line); display: block; }
-    .web .code span.a { background: rgba(140, 74, 107, .55); }
-    .web .code span.b { background: rgba(140, 74, 107, .28); }
+    .web .code span.a { background: rgba(30, 58, 138, .55); }
+    .web .code span.b { background: rgba(30, 58, 138, .28); }
     .web .stack { inset: 24px 0 24px auto; width: 168px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
     .web .stack b {
       font-family: var(--mono); font-size: 10px; font-weight: 600;
@@ -134,7 +134,7 @@
     .uiux .b3 { left: 300px; top: 40px; width: 210px; height: 156px; }
     .uiux .card { padding: 14px; display: flex; flex-direction: column; gap: 9px; }
     .uiux .card i { display: block; border-radius: 4px; background: var(--line); }
-    .uiux .card i.h { height: 34px; background: rgba(140, 74, 107, .16); }
+    .uiux .card i.h { height: 34px; background: rgba(30, 58, 138, .16); }
     .uiux .card i.l { height: 8px; }
     .uiux .card i.s { height: 8px; width: 60%; }
     .uiux .card i.btn { height: 22px; width: 78px; background: var(--accent); border-radius: 8px; margin-top: auto; }
@@ -142,7 +142,7 @@
       position: absolute; left: 300px; top: 8px;
       font-family: var(--mono); font-size: 9px; font-weight: 600;
       letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
-      background: rgba(140, 74, 107, .08); border: 1px solid rgba(140, 74, 107, .22);
+      background: rgba(30, 58, 138, .08); border: 1px solid rgba(30, 58, 138, .22);
       border-radius: 6px; padding: 4px 8px;
     }
 
@@ -157,7 +157,7 @@
     .pm .track { flex: 1; height: 12px; border-radius: 999px; background: var(--ground); position: relative; }
     .pm .track s { position: absolute; top: 0; height: 12px; border-radius: 999px; text-decoration: none; }
     .pm .track s.p { background: linear-gradient(90deg, var(--accent), var(--deep)); }
-    .pm .track s.q { background: rgba(140, 74, 107, .28); }
+    .pm .track s.q { background: rgba(30, 58, 138, .28); }
     .pm .mile {
       position: absolute; right: 30px; top: 14px; bottom: 14px; width: 1px;
       background: repeating-linear-gradient(180deg, var(--accent) 0 4px, transparent 4px 9px);

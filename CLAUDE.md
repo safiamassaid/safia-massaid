@@ -49,6 +49,7 @@ node tools/build-service-pages.js# rebuilds the 4 service pages from their conte
 node tools/build-seo.js          # every <head> meta tag + JSON-LD, all 35 pages
 node tools/build-alt.js          # alt text + lazy loading on case-study images
 node tools/build-sitemap.js      # sitemap.xml from the pages on disk
+node tools/build-icons.js <m>    # favicons + .ico, from the 512px masters
 node tools/check-links.js        # verifies every local href/src — run before deploying
 ```
 
@@ -144,8 +145,18 @@ the sentinel.
 `images/safia-massaid.png` is the photograph, a cut-out with a real
 alpha channel. It appears twice on purpose:
 
-- visibly in the hero, standing in front of a plum arch drawn as a
-  `.hero-portrait::before` pseudo-element
+- visibly in the hero, standing in front of a **pale blue** arch (`#EEF3FF`)
+  drawn as a `.hero-portrait::before` pseudo-element. This arch was rose first,
+  and that is the interesting part: the hijab in the photograph is peach, so a
+  rose arch put the same hue on both sides of the silhouette and the two blended
+  into one pink mass. A cool ground is the hijab's complement, so the warm half
+  of the portrait separates instead of dissolving, and the blazer is read against
+  a tint of its own navy. **The warmth in this hero comes from the photograph, so
+  the CSS does not supply any.** Don't "warm it up" — that is the bug, not a fix.
+  Below about `#F4F7FF` the arch stops reading as a shape against the
+  `--pf-ground` page, so it can't go much paler either.
+  `tools/og-cover.html` repeats the same three values so the share card matches
+  the page a click later — change one, change both
 - as `Person.image` in the homepage JSON-LD, written as an `ImageObject` with
   width, height and caption — Google wants the dimensions before it will
   consider a photograph for a knowledge panel
@@ -169,9 +180,14 @@ it `--pf-ink-2` removed the machine-label read without touching the font.
 Two accessibility fixes live in that bar and should not be undone:
 
 - The resting nav colour and the hover/current colour used to be **isoluminant**
-  (#6B5C63 vs #8C4A6B is 1.01:1) — "which page am I on" was carried by hue alone.
-  `--pf-ink-2` against `--pf-accent` is a 2.04:1 luminance step, so the state
-  survives greyscale.
+  (the old #6B5C63 against the old plum was 1.01:1) — "which page am I on" was
+  carried by hue alone. There is a luminance step now, but it runs the **opposite
+  way** from the plum era: the plum was lighter than the nav text, the navy is
+  darker than any readable body colour. So the resting item is `--pf-nav-rest`
+  (`#657090`, a mid-slate) and the current one is `--pf-accent`. Measured:
+  **4.91:1** resting against the bar, **10.36:1** current, **2.11:1** between the
+  two, so the state survives greyscale. Do not point `.nav-item` back at
+  `--pf-ink-2` — it is near-black, and near-black against navy is 1.25:1.
 - `.mobile-nav-link` was emitted on seven anchors per page and **styled nowhere**,
   and `sync-header.js` gives the mobile current item `nav-item is-current` without
   `nav-link` — so `.nav-link::after`, the rule carrying `content:''`, never fired
@@ -208,6 +224,14 @@ across the case studies. The first image of a page stays `eager` with
 `fetchpriority="high"` (it is the LCP); the rest are `lazy`. The lightbox `<img>`
 keeps `alt=""` on purpose — `portfolio.js` fills it at runtime.
 
+**Ten image assets are baked from the palette and do not follow a CSS edit.** A
+colour change is only half-done until they are re-rendered: `images/og-cover.png`,
+the four `assets/img/service-*.png` banners, and the icon set
+(`favicon.svg`, `favicon-32.png`, `icon-192.png`, `icon-512.png`,
+`apple-touch-icon.png`, plus `favicon.ico` and its root copy — the last five come
+from `tools/build-icons.js`, see below). Nothing in `check-links.js` catches a
+banner that is still the old colour — it resolves fine, it is just wrong.
+
 Share card: `images/og-cover.png` (1200x630) is rendered from `tools/og-cover.html`,
 and the favicons from `tools/icon-source.html`, with headless Chrome:
 
@@ -216,8 +240,45 @@ chrome --headless=new --window-size=1200,630 --run-all-compositor-stages-before-
        --screenshot=images/og-cover.png http://localhost:8080/tools/og-cover.html
 ```
 
-`images/favicon.ico` is a 142-byte PNG-in-ICO built from `images/favicon-32.png`
-— it replaced a 465 KB file that every visitor was downloading.
+`images/favicon.ico` is a ~390-byte PNG-in-ICO — a 6-byte header plus one
+16-byte directory entry wrapped round `images/favicon-32.png`. It replaced a
+465 KB file that every visitor was downloading. `tools/build-icons.js` emits it
+and the root copy; don't hand-roll it.
+
+### The icon set is one mark, and Chrome cannot render it small
+
+The hexagon is the brand mark and it must be **the same hexagon** in three
+places or the site ships two logos: `.hexa-logo` in `main.css` (a `clip-path` at
+25/75/100/75/25/0 %), `images/favicon.svg`, and `tools/icon-source.html`. The
+polygon `16,0 48,0 64,32 48,64 16,64 0,32` on a 64-unit viewBox is that
+clip-path. They drifted once: the icon template drew the chevrons on a
+**full-bleed navy square with no hexagon at all**, so every PNG and the `.ico`
+disagreed with the SVG and the header.
+
+That drift hid a second bug. **Headless Chrome on Windows cannot render a window
+narrower than ~500px.** Ask for `--window-size=32,32` and it renders at the
+minimum width and returns the top-left 32x32 **crop** — exiting 0 and reporting
+"bytes written". For a centred hexagon that crop is a fully transparent tile; for
+the old solid square it was still a solid square, which is why nobody noticed.
+
+So Chrome renders **one 512px master per variant** and `tools/build-icons.js`
+box-filters it down (better small sizes than Chrome's own 32px raster, too):
+
+```bash
+chrome --headless=new --window-size=512,512 --default-background-color=00000000        --run-all-compositor-stages-before-draw        --screenshot=images/icon-512.png http://localhost:8080/tools/icon-source.html
+chrome ... --screenshot=/tmp/apple-master.png        'http://localhost:8080/tools/icon-source.html?v=solid'
+node tools/build-icons.js /tmp/apple-master.png
+```
+
+`--default-background-color=00000000` is required or Chrome composites the
+hexagon onto white and the transparency is lost. `?v=solid` gives an opaque
+white ground with the hexagon inset — **apple-touch-icon only**: iOS clips to a
+rounded square and composites a transparent icon onto black, so Apple's icon
+must carry its own ground. Everything else stays transparent.
+
+The generator refuses to build from a bad master: a correct hexagon covers
+**~75%** of its box (four 16x32 corner triangles removed from 64x64), so
+anything outside 60-85% is assumed to be a Chrome crop and throws.
 
 Three things keep the favicon reachable by Google's fetcher, and all three matter:
 
@@ -311,18 +372,61 @@ leaving absolute URLs alone.
 
 ## Design system
 
-Brand colour is `#8C4A6B` (plum) and predates this code — keep it. Tokens live on
-`:root` in `assets/css/portfolio.css`:
+The palette is **two colours doing two different jobs**, taken from what the
+owner actually wears in the hero portrait:
+
+- **Navy `#1E3A8A`** — authority, structure, the engineering and project-management
+  read. It carries everything structural: links, buttons, eyebrows, the dot grid,
+  the current nav item, focus rings.
+- **Rose `#F472B6`** — the counterweight, and it appears on **dark grounds
+  only**. See below; the rule is narrower than it looks.
+
+It replaced a plum `#8C4A6B` that predated the code. That swap is done — 266
+literals across 44 files — so there should be no plum left anywhere; if you find
+some, it is a bug, not a survivor.
+
+Tokens live on `:root` in `assets/css/portfolio.css`:
 
 | Token | Role |
 |---|---|
-| `--pf-ink` `--pf-muted` `--pf-faint` | text, warmed slightly toward the plum |
+| `--pf-ink` `--pf-muted` `--pf-faint` | text, cooled slightly toward the navy |
 | `--pf-line` `--pf-ground` `--pf-surface` | borders and grounds |
-| `--pf-accent` `--pf-accent-deep` | the brand plum |
+| `--pf-accent` `--pf-accent-deep` | the brand navy |
+| `--pf-rose` `--pf-rose-line` | the warm counterweight, dark grounds only |
+| `--pf-nav-rest` | resting header nav — see **The header bar** |
 | `--pf-live` | semantic only — "live demo". Never decorative. |
 
 The neutrals are deliberately hue-biased toward the accent rather than Tailwind's stock
 slate. Use the tokens; don't introduce new literal colours.
+
+### Where the rose is allowed
+
+**On dark grounds, and nowhere else.** That is the whole rule, and it has a
+reason behind it rather than being a quota: the navy cannot separate itself from
+a navy slab, so the footer and the two dark panels (`.ct-pitch`, `.svp-next`)
+need a second colour or they read as one dead surface. On a light ground the
+navy separates perfectly well, so there is nothing for the rose to do there.
+
+That comes to the footer's hexagon mark, its top hairline, its mail and social
+hovers and focus ring, and the corner blooms on the three dark panels. If you are
+about to put rose on a white ground, you are about to make the site pink.
+
+Two things to know before touching it:
+
+- **`--pf-rose` never carries text or a lone icon on a light ground** — it is
+  2.65:1 on white. If rose type is ever needed the value is `#A83070` (6.3:1);
+  don't darken `#F472B6` by eye.
+- **An accent-coloured bloom on a dark panel has to be rose, not navy.** Under the
+  plum the accent was a mid-tone, so a plum bloom lifted a near-black slab. The
+  navy is dark: a navy bloom on a navy slab is the same dead slab. That trap
+  caught the footer's hexagon mark, its top hairline, the mail hover, the social
+  hover and the focus ring — five things, all navy-on-navy for a moment.
+
+**The hero has no rose at all, on purpose** — see **The portrait** above. That was
+the obvious place for it and it was wrong.
+
+**Never introduce a third hue.** Every colour on the page is navy, rose, a neutral
+biased toward the navy, or `--pf-live`.
 
 **Type**: Inter for UI and body, Fira Code for labels/eyebrows/counters, and **Fraunces**
 for project and case-study titles only — the work gets an editorial voice, the chrome
