@@ -317,11 +317,11 @@ function renderFooter(base, pad) {
       ['Documentation', base + 'docs.html']
     ]],
     ['Services', [
+      ['Project management', base + 'service/servicegest.html'],
       ['Web development', base + 'service/service-details.html'],
       ['UI / UX design', base + 'service/servicedes.html'],
-      ['Project management', base + 'service/servicegest.html'],
       ['QA & testing', base + 'service/servicetest.html'],
-      ['Start a project', home + '#contact']
+      ['Download CV', base + 'Safia_Massaid.pdf']
     ]],
     ['Profile', [
       ['About', home + '#about'],
@@ -355,12 +355,12 @@ ${i}            </g>
 ${i}          </svg>
 ${i}          <span>
 ${i}            <h3>Safia Massaid</h3>
-${i}            <span class="pf-footer__role">IT Engineer &amp; Project Manager</span>
+${i}            <span class="pf-footer__role">Technical Project Manager</span>
 ${i}          </span>
 ${i}        </a>
 
-${i}        <p>I build web, desktop and mobile products end to end — from specification and
-${i}          architecture through to testing, documentation and release.</p>
+${i}        <p>Technical project manager with a full-stack background — from specification and
+${i}          planning through code, testing, documentation and release.</p>
 
 ${i}        <a class="pf-footer__mail" href="mailto:massaidsafia2@gmail.com">
 ${i}          <i class="bi bi-envelope" aria-hidden="true"></i> massaidsafia2@gmail.com
@@ -380,7 +380,7 @@ ${i}    </div>
 
 ${i}    <div class="pf-footer__bottom">
 ${i}      <p>&copy; ${year} Safia Massaid — All rights reserved.</p>
-${i}      <span class="pf-footer__status">Available for new projects</span>
+${i}      <span class="pf-footer__status">Open to new roles</span>
 ${i}      <a class="pf-footer__top-link" href="#home">
 ${i}        Back to top <i class="bi bi-arrow-up" aria-hidden="true"></i>
 ${i}      </a>

@@ -1,6 +1,8 @@
-# Safia Massaid — Portfolio
+# CLAUDE.md
 
-Static portfolio site deployed to **Netlify** at `https://massaid-safia.netlify.app/`.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+Safia Massaid's portfolio: a static site deployed to **Netlify** at `https://massaid-safia.netlify.app/`.
 
 **There is no build step and no package manager.** The `.html` files in this repo are
 exactly what ships. Node is used only by the generators in `tools/`, which write HTML
@@ -8,22 +10,75 @@ into the pages — they are developer conveniences, not a deployment dependency.
 
 ---
 
+## Contexte et règles de travail
+
+Rédigé par Safia Massaid, à qui appartient ce site. **Ces règles priment sur tout le
+reste de ce fichier.** Réponds-lui en français.
+
+### Le projet
+
+Portfolio personnel de Safia Massaid, en ligne sur https://massaid-safia.netlify.app/
+(hébergé sur Netlify, déployé depuis le dépôt GitHub `safiamassaid/safia-massaid`).
+Site en anglais. Sections : Hero, About, Services, Experience, Stack, Deliverables,
+Selected work (grille filtrable), Documentation (21 documents), Contact.
+
+Dans `index.html`, ces sections correspondent à `#home`, `#about`, `#services`,
+`#experience`, `#skills` (Stack), `section.pmd` (Deliverables), `#projects` (Selected
+work), `#docs` et `#contact`. Attention à l'ordre réel dans la page : `#contact` vient
+juste après `#services`, avant `#experience`, et non à la fin.
+
+### L'objectif
+
+Je me repositionne comme **Technical Project Manager / IT Project Manager** (background
+dev full-stack, UI/UX, QA). Le portfolio doit parler aux **recruteurs (Canada, pays du
+Golfe)**, pas aux clients freelance.
+
+Priorités, dans l'ordre : clarté du positionnement PM, référencement (SEO),
+performance, accessibilité.
+
+### Comment travailler avec moi
+
+- Je ne code pas moi-même : explique-moi chaque changement en français simple, en une
+  ou deux phrases.
+- Avant toute modification importante, propose-moi un plan et attends mon accord.
+  Un passage des générateurs de `tools/` peut réécrire jusqu'à 35 pages : il compte
+  comme une modification importante.
+- Ne touche pas au design global sans me demander.
+- Garde les fichiers lourds (PDF, images) hors des modifications sauf demande
+  explicite. Cela vaut aussi pour les re-rendus d'images décrits plus bas (og-cover,
+  bannières, icônes) et pour la suppression des images inutilisées.
+- Après chaque tâche, dis-moi comment vérifier le résultat en local
+  (`python -m http.server 8093` à la racine du dépôt, puis http://localhost:8093/ dans
+  le navigateur ; voir **Gotchas** pour le choix du port).
+
+---
+
 ## Layout
 
 ```
 index.html            Homepage — hero, about, services, experience, skills, projects, docs
-projects.html         Full project archive (57), searchable and filterable
+projects.html         Full project archive (49), searchable and filterable
 docs.html             Full documentation library (21 PDFs)
 details/              18 case-study pages for development projects
 designdetail/         10 case-study pages for UI/UX work
-service/                4 service pages, all generated
+service/              4 service pages, all generated
 doc/gp, doc/test      The PDFs themselves
 assets/css/           main.css (site chrome) + portfolio.css (project/doc components)
 assets/js/            main.js (header/mobile menu) + portfolio.js (everything else)
-assets/data/          projects.js, docs.js — the single sources of truth
-assets/img/           Screenshots and photography
-tools/                Generators and the link checker
+assets/data/          projects.js, docs.js, seo.js — the single sources of truth
+assets/img/           Project screenshots + the four service banners
+images/               Portrait, og-cover, favicon/icon set
+tools/                Generators, the link checker, and three HTML render templates
 ```
+
+That is 35 real pages: index, projects and docs, plus 28 case studies and 4 service
+pages. `googlef60eb449e06e57e3.html` at the root is the Search Console ownership proof:
+keep it, and keep it out of the sitemap. `assets/js/index.js` is loaded by no page. It
+is left over from the old tab layout.
+
+Total counts aren't fixed: the generators print the real ones
+(`49 projects — 33 development, 16 design`), so trust that output over any number
+in this file.
 
 ---
 
@@ -41,24 +96,66 @@ regions marked by sentinel comments:
 Edit the data file, then run the generator. Anything you type between the sentinels is
 overwritten on the next run.
 
+| Region | Owner | Where |
+|---|---|---|
+| `PROJECTS`, `DOCS` | `build-cards.js` | index.html |
+| `ARCHIVE` | `build-cards.js` | projects.html |
+| `DOCSARCHIVE` | `build-cards.js` | docs.html |
+| `FOOTER`, `LIGHTBOX` | `build-cards.js` | all 35 pages |
+| `SEO` | `build-seo.js` | all 35 `<head>`s |
+
+`build-cards.js` renders document cards through `tools/doc-cards.js`, a module
+rather than a standalone script.
+
 ```bash
-node tools/sync-header.js        # copies the header from index.html to all 35 other pages
-node tools/build-cards.js        # cards, docs, footer, lightbox — all pages
-node tools/build-detail-pages.js # shared chrome on the 28 case-study pages
-node tools/build-service-pages.js# rebuilds the 4 service pages from their content blocks
-node tools/build-seo.js          # every <head> meta tag + JSON-LD, all 35 pages
-node tools/build-alt.js          # alt text + lazy loading on case-study images
-node tools/build-sitemap.js      # sitemap.xml from the pages on disk
-node tools/build-icons.js <m>    # favicons + .ico, from the 512px masters
-node tools/check-links.js        # verifies every local href/src — run before deploying
+node tools/sync-header.js         # copies the header from index.html to the 34 other pages
+node tools/build-cards.js         # cards, docs, footer, lightbox — all pages
+node tools/build-detail-pages.js  # stylesheets, breadcrumb, case nav on the 28 case studies
+node tools/build-service-pages.js # rebuilds the 4 service pages from their content blocks
+node tools/build-seo.js [--check] # every <head> meta tag + JSON-LD, all 35 pages
+node tools/build-alt.js [--check] # alt text + lazy loading on case-study images
+node tools/build-sitemap.js       # sitemap.xml from the pages on disk
+node tools/build-icons.js <m>     # favicons + .ico, from the 512px masters
+node tools/check-links.js         # verifies every local href/src — run before deploying
 ```
+
+There are no tests and no linter. `--check` on build-seo and build-alt, plus
+`check-links.js`, are the only verification, and all three write nothing.
+
+### Run order
+
+The generators overwrite each other's output, so order matters. The full pass is:
+
+```bash
+node tools/build-service-pages.js   # writes service/ whole, with an empty SEO region
+node tools/sync-header.js           # marks "Services" current on those 4 pages
+node tools/build-detail-pages.js
+node tools/build-seo.js             # refills every SEO region
+node tools/build-alt.js
+node tools/build-cards.js           # refills footer + lightbox
+node tools/build-sitemap.js
+node tools/check-links.js
+```
+
+`build-service-pages.js` copies the header out of index.html as it is, with no
+`is-current`, and its closing message tells you to run only build-seo and build-cards. If
+you skip `sync-header.js` after it, the service pages ship with no nav item marked current.
 
 **index.html owns the header.** Edit it there and run `sync-header.js`; every other page
 gets it with the right relative depth and its own nav item marked current. Editing a
-header anywhere else is how the 35 copies drifted apart in the first place.
+header anywhere else is how the copies drifted apart in the first place.
 
-`build-cards.js` and `build-detail-pages.js` are idempotent — re-running them when
-nothing changed reports `unchanged`.
+### Reading generator output on Windows
+
+The generators are idempotent in content, but their reports can still say pages changed:
+
+- This checkout has `core.autocrlf=true` and no `.gitattributes`, so pages arrive with
+  CRLF line endings and the generators write LF. On the first run, `build-seo.js --check`
+  reports all 35 pages as changed even when nothing has, and the regions they write
+  come out with mixed line endings. Git normalises line endings on commit, so `git diff`
+  is the real test of whether anything changed, not the generator's own report.
+- `build-cards.js` prints `unchanged` per grid region, but `written footer x35` and
+  `written lightbox x35` appear on every run, changed or not.
 
 ### One list, one filter row
 
@@ -67,14 +164,14 @@ There are no Development/Design tabs. Every project lives in a single panel and
 only control, matching the document tabs.
 
 That forces one rule: **the homepage renders the whole list** — it just doesn't reveal all
-of it. `HOME_STEP` in `build-cards.js` is 4, and the three featured spotlights are always
-visible, so a visitor sees seven projects. Slicing the list to a curated dozen would make the
+of it. `HOME_STEP` in `build-cards.js` is 6, so a visitor sees two full rows of the
+three-column grid. Slicing the list to a curated dozen would make the
 chips lie — "UI / UX Design (1)" next to 16 real design projects — and would drop the cards
 out of the served markup Google reads. If the homepage ever needs to be longer or shorter,
 change `HOME_STEP`; never slice the array.
 
 The homepage panel is rendered with `more: false`, so it has no "Show more" pager: the way
-forward is the **"View all 57 projects" button in the section header**, next to the title.
+forward is the **"View all projects" button in the section header**, next to the title.
 Same for the documents section and its "Open the library" button. The archive page keeps
 its pager.
 
@@ -96,9 +193,11 @@ document grid and the footer.
 
 ### Adding a project
 
-1. Add an entry to `assets/data/projects.js` (field docs are in the file header).
-   `cat` picks the filter chip, `page` links a case study, `featured` promotes it to a
-   spotlight (keep this to about three — one per kind of work).
+1. Add an entry to `assets/data/projects.js` (field docs are in the file header, but
+   two of them are stale: `track` no longer picks a tab, and `featured` no longer makes
+   a spotlight). `cat` picks the filter chip, `page` links a case study, `metrics` adds
+   the value/label pair to the card, and `featured` moves the project to the front of
+   the grid (keep this to about three, one per kind of work).
 2. `node tools/build-cards.js`
 3. If it has a case-study page, `node tools/build-detail-pages.js` then
    `node tools/build-sitemap.js`.
@@ -124,7 +223,7 @@ favicons, Open Graph, Twitter Card and JSON-LD. **No page carries a hand-written
 meta tag any more** — the first run stripped them, and re-running rewrites the
 region in place.
 
-- The 8 fixed pages (home, projects, docs, the 4 service pages) get their title
+- The 7 fixed pages (home, projects, docs, the 4 service pages) get their title
   and description from `assets/data/seo.js`.
 - The 28 case studies **derive** theirs from `assets/data/projects.js`, so a new
   project needs an entry there and nothing else. The generator searches
@@ -265,8 +364,11 @@ So Chrome renders **one 512px master per variant** and `tools/build-icons.js`
 box-filters it down (better small sizes than Chrome's own 32px raster, too):
 
 ```bash
-chrome --headless=new --window-size=512,512 --default-background-color=00000000        --run-all-compositor-stages-before-draw        --screenshot=images/icon-512.png http://localhost:8080/tools/icon-source.html
-chrome ... --screenshot=/tmp/apple-master.png        'http://localhost:8080/tools/icon-source.html?v=solid'
+chrome --headless=new --window-size=512,512 --default-background-color=00000000 \
+       --run-all-compositor-stages-before-draw \
+       --screenshot=images/icon-512.png http://localhost:8080/tools/icon-source.html
+chrome ... --screenshot=/tmp/apple-master.png \
+       'http://localhost:8080/tools/icon-source.html?v=solid'
 node tools/build-icons.js /tmp/apple-master.png
 ```
 
@@ -303,7 +405,8 @@ everything in this repo ships to Netlify — including the folder of generators.
 
 Four of them now, written whole on every run by `tools/build-service-pages.js`
 from the `SERVICES` array at the top of that file. **Never hand-edit a page under
-`service/`** — edit the array and re-run, then `build-seo.js` and `build-cards.js`.
+`service/`**. Edit the array and re-run, then run `sync-header.js`, `build-seo.js` and
+`build-cards.js`, in that order (see **Run order**).
 
 | Page | Service |
 |---|---|
@@ -354,6 +457,25 @@ banner says what the service is instead of showing an unrelated desk.
 
 `assets/img/service.jpg`, `graphe.jpg` and `pexels-fauxels-3183153.jpg` are now
 unreferenced and can be deleted.
+
+---
+
+## The CV
+
+`Safia_Massaid.pdf` at the root is the CV that the hero, the contact block and the
+footer's "Download CV" link to. It is printed from `tools/cv.html` and is no longer a
+Word export:
+
+```bash
+chrome --headless=new --no-pdf-header-footer \
+       --print-to-pdf=Safia_Massaid.pdf http://localhost:8093/tools/cv.html
+```
+
+Edit the text in the template, never the PDF, and keep it to **one page**: Chrome
+prints a second page without warning, so count pages after every edit. Every claim in
+it must match `index.html`, the same way service copy has to (see **Copy rules**),
+because a recruiter reads both. Title, years of experience, roles, dates and mobility
+are the fields that drifted last time.
 
 ---
 
@@ -448,6 +570,7 @@ attributes on static markup:
 |---|---|
 | `data-pf-filter` + `data-cat` | category chips, with live counts |
 | `data-pf-search` / `data-pf-docsearch` | text search |
+| `data-pf-doctab` + `data-pf-docpanel` | document category tabs |
 | `data-pf-step` / `data-pf-more` | progressive reveal |
 | `data-pf-zoom` | opens the lightbox (Esc / ← / →, focus trapped) |
 | `data-pf-count` | real totals, read from `PF_PROJECTS` |
@@ -466,14 +589,23 @@ filter or the progressive reveal is hiding most of the grid.
 - Every page uses `.glass-header`, `.hexa-logo` and `.nav-item`, which live in
   `main.css` — a page that forgets to link it renders the hexagon logo as a plain
   square and the nav unstyled. All 28 case-study pages had exactly this bug.
-- Card and featured images set `object-position: top` (featured uses `top left`) so a
-  site's logo and navigation stay in frame instead of being cropped away.
-- `assets/img/service.jpg`, `graphe.jpg` and `pexels-fauxels-3183153.jpg` are 4000px
-  originals (0.7–1.4 MB) used as ~1200×320 banners. They should be downscaled.
+- Card images set `object-position: top center` so a site's logo and navigation stay
+  in frame instead of being cropped away.
+- `build-sitemap.js` takes each `<lastmod>` from the file's modification time on disk.
+  A clone, checkout or bulk generator run sets those times all at once. In the
+  committed sitemap all 35 entries say `2026-09-09`. Treat `lastmod` as "when this
+  checkout last touched the file", not as when the content changed.
+- Hand-written counts outside the sentinels go stale. Right now `index.html` still says
+  `41` development projects in its served markup, where the real figure is 33.
+  `portfolio.js` corrects it at runtime, but Google and no-JS visitors read the stale
+  number.
 - `service/qovoltis.html` was removed at the owner's request. Its URL had already been
   submitted to Google in the sitemap, so `_redirects` 301s it to the web-development
   service page rather than leaving a 404. Do not re-add it without asking.
 - Headless Chrome screenshots of this site need
   `--run-all-compositor-stages-before-draw`; without it large images photograph blank.
-- Local preview: `python -m http.server 8080`. Relative paths need a server; opening
-  the files directly with `file://` will not resolve them the same way.
+- Local preview: `python -m http.server <port>`. Relative paths need a server; opening
+  the files directly with `file://` will not resolve them the same way. **On the owner's
+  machine Docker already listens on 8080 and 8000**, and `localhost:8080` answers
+  `Not found.` instead of serving the site. Use 8093. The `:8080` URLs in the Chrome
+  commands above need the same substitution.

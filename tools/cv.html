@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>CV source — printed to Safia_Massaid.pdf with headless Chrome</title>
+  <!--
+    The CV linked from the site (hero, contact, footer). Edit the text here, then
+    with the local server running on :8080:
+
+      chrome --headless=new --no-pdf-header-footer \
+             --print-to-pdf=Safia_Massaid.pdf \
+             http://localhost:8080/tools/cv.html
+
+    It replaces a Word 2016 export and keeps its look: US Letter, Calibri, a
+    centred navy name and navy section rules. Keep it to one page, and keep every
+    claim in step with index.html — a recruiter reads both.
+  -->
+  <style>
+    @page { size: Letter; margin: 0.45in 0.6in; }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Calibri, Carlito, Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.25;
+      color: #1A1A1A;
+    }
+
+    header { text-align: center; margin-bottom: 6pt; }
+
+    h1 {
+      font-size: 21pt;
+      letter-spacing: 0.06em;
+      color: #1E3A8A;
+    }
+
+    .title { font-size: 11.5pt; color: #444; margin-top: 2pt; }
+    .contact { font-size: 9pt; color: #555; margin-top: 4pt; }
+    .contact a { color: inherit; text-decoration: none; }
+
+    h2 {
+      font-size: 10.5pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1E3A8A;
+      border-bottom: 0.75pt solid #1E3A8A;
+      padding-bottom: 2pt;
+      margin: 9pt 0 5pt;
+    }
+
+    .role {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12pt;
+      margin-top: 5pt;
+    }
+
+    .role b { font-weight: 700; }
+    .date { color: #666; white-space: nowrap; font-size: 9.5pt; }
+
+    ul { margin: 2pt 0 0 14pt; }
+    li { margin-top: 2pt; }
+
+    .skills p { margin-top: 2.5pt; }
+
+    p.summary { text-align: justify; }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>SAFIA MASSAID</h1>
+    <p class="title">Technical Project Manager &middot; Full-Stack Development &middot; UI/UX &middot; QA</p>
+    <p class="contact">
+      massaidsafia2@gmail.com &nbsp;|&nbsp; +213 7 99 21 48 52 &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/safia-massaid/">linkedin.com/in/safia-massaid</a> &nbsp;|&nbsp;
+      <a href="https://github.com/safiamassaid">github.com/safiamassaid</a> &nbsp;|&nbsp;
+      <a href="https://massaid-safia.netlify.app/">massaid-safia.netlify.app</a>
+    </p>
+    <p class="contact">Algiers, Algeria &middot; Open to relocation (Canada, Gulf) and remote work</p>
+  </header>
+
+  <h2>Professional Summary</h2>
+  <p class="summary">
+    Technical project manager with a full-stack engineering background and a Master's degree in Computer
+    Systems. 2+ years building web, desktop and mobile products end to end: specification, code, UI/UX,
+    testing and delivery. Currently Assistant Project Manager at Kyo Conseil, turning client requirements
+    into specifications and running agile sprints, while working freelance as a full-stack web developer for
+    Olten Agency. Experienced in remote, multicultural teams in Arabic, French and English.
+  </p>
+
+  <h2>Professional Experience</h2>
+
+  <div class="role">
+    <span><b>Assistant Project Manager</b> | SARL Kyo Conseil — Algiers, Algeria</span>
+    <span class="date">Aug 2026 – Present</span>
+  </div>
+  <ul>
+    <li>Translate client requirements into functional specifications (cahier des charges, UML) and run agile
+      sprint cycles for cross-functional engineering teams.</li>
+    <li>Track deliverables against release dates; coordinate development, design and QA workstreams on client
+      platforms.</li>
+    <li>Act as the technical bridge between clients and developers, anticipating risks and technical constraints
+      before they impact delivery.</li>
+  </ul>
+
+  <div class="role">
+    <span><b>Full-Stack Web Developer (Freelance)</b> | Olten Agency — Remote</span>
+    <span class="date">Nov 2025 – Present</span>
+  </div>
+  <ul>
+    <li>Build the agency's digital products, including an ERP platform and a rental &amp; carpooling marketplace
+      (Laravel, WinForms/.NET, MySQL).</li>
+    <li>Design the interfaces behind them in Figma — wireframes, high-fidelity prototypes and design systems
+      handed off to production.</li>
+  </ul>
+
+  <div class="role">
+    <span><b>Web Developer</b> | Techitaway</span>
+    <span class="date">Jul 2024 – Jul 2026</span>
+  </div>
+  <ul>
+    <li>Developed core enterprise features on Laravel/PostgreSQL, including responsive interfaces and backend
+      query optimization on production data.</li>
+    <li>Improved application performance through query tuning and code refactoring on the product's most-used
+      modules.</li>
+  </ul>
+
+  <div class="role">
+    <span><b>MERN Stack Intern</b> | SARL Art Promotion</span>
+    <span class="date">Mar 2024 – Jun 2024</span>
+  </div>
+  <ul>
+    <li>Built a catering management platform end to end (React, Express, MongoDB); owned the frontend
+      architecture and coordinated task assignment within the team.</li>
+  </ul>
+
+  <h2>Portfolio</h2>
+  <p>
+    49 projects and 21 delivery documents — specifications, Gantt plans, UML architecture, test campaigns and
+    severity-classified bug reports — at
+    <a href="https://massaid-safia.netlify.app/" style="color:#1E3A8A">massaid-safia.netlify.app</a>.
+  </p>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <p><b>Project Management:</b> Agile/Scrum, sprint planning, requirements engineering (cahier des charges),
+      feasibility studies, UML, Gantt, RACI, Jira, Confluence, Trello, Asana</p>
+    <p><b>Front-End:</b> React, Vue.js, JavaScript (ES6+), Tailwind CSS, HTML5/CSS3, SCSS, Bootstrap 5</p>
+    <p><b>Back-End &amp; Desktop:</b> Laravel/PHP, Node.js/Express, Python (Flask), ASP.NET Core, C# WinForms,
+      REST APIs</p>
+    <p><b>Databases:</b> PostgreSQL, MySQL, MongoDB, Redis</p>
+    <p><b>UI/UX Design:</b> Figma, Adobe XD, wireframing, prototyping, design systems</p>
+    <p><b>QA &amp; Testing:</b> Functional &amp; regression testing, API testing (Postman), load testing (Locust),
+      TestRail, severity-classified bug reports</p>
+  </div>
+
+  <h2>Education</h2>
+  <div class="role">
+    <span><b>Master's Degree — Computer Systems</b> | Université Mouloud Mammeri, Tizi-Ouzou, Algeria</span>
+    <span class="date">2024</span>
+  </div>
+  <div class="role">
+    <span><b>Bachelor's Degree — Computer Systems</b> | Université Mouloud Mammeri, Tizi-Ouzou, Algeria</span>
+    <span class="date">2022</span>
+  </div>
+
+  <h2>Languages</h2>
+  <p>Arabic (native) &middot; French (fluent) &middot; English (professional — technical reading &amp; writing)</p>
+
+</body>
+
+</html>
